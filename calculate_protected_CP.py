@@ -1068,6 +1068,19 @@ ecosections_layer = loadLayer(source_mxd, ecosections.name, sr_code,
                               None, scaling_attribute, new_scaling_field,
                               None)
 
+#####
+### Load subregional layer into workspace
+### This is the one layer that has all the subregions in it.
+### It is used to determine which subregion each MPA is in
+#####
+
+layer_list = arcpy.mapping.ListLayers(arcpy.mapping.MapDocument(source_mxd))
+for lyr in layer_list:
+   if lyr.isFeatureLayer and (lyr.datasetName.startswith('mpatt_rgn_subregions')):
+       subregions_ALL = loadRegionLayer(source_mxd, lyr.name,
+                                                sr_code, new_bc_area_field,
+                                                new_bc_total_area_field)
+
 
 #####
 ### Load MPA layers into workspace, create consistent name attribute, and merge together
@@ -1079,10 +1092,11 @@ if print_status:
 mpa_area_attribute = 'etp_mpa_area_TOTAL'
 merged_name_field = 'NAME_E'
 final_mpa_fc_name = 'mpas'
+mpa_subregion = 'subregion'
 
 
 final_mpa_fc_name = prepareMPAs(source_mxd, sr_code, mpa_area_attribute,
-                                final_mpa_fc_name, merged_name_field, mpa_name_fields)
+                                final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion)
 
 #####
 ### Load subregional layers into workspace
