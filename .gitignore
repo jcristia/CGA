@@ -1,3 +1,5 @@
-spatial/
 output/
 *.vs/
+*.pyproj
+*.sln
+spatial/
