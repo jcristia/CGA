@@ -659,7 +659,7 @@ def shouldInclude(pct_in_mpa, threshold, im, fc, mpa):
     
 def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scaling_attribute,
                      mpa_name_attribute, mpa_area_attribute, new_bc_total_area_field,
-                     pct_of_mpa_field, pct_of_total_field):
+                     pct_of_mpa_field, pct_of_total_field, mpa_subregion_field, mpa_area_attribute_section):
             
     working_intersect = base_layer + '_Intersect'
 
@@ -680,15 +680,18 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
     
     if detailed_status:
         print '...Dissolving ' + base_layer
-    arcpy.Dissolve_management(working_intersect, working_dissolved, mpa_name_attribute,
+    arcpy.Dissolve_management(working_intersect, working_dissolved, [mpa_name_attribute, "ecosection"],
                               [[clipped_adjusted_area, 'SUM'], [new_bc_total_area_field, 'FIRST'],
-                               [mpa_area_attribute, 'FIRST'], [mpa_name_attribute, 'FIRST']])
+                               [mpa_area_attribute, 'FIRST'], [mpa_area_attribute_section, 'FIRST'],
+                              [mpa_subregion_field, 'FIRST']])
 
     # Rename fields for simplicities sake
     renameField(working_dissolved, 'SUM_' + clipped_adjusted_area, clipped_adjusted_area, 'DOUBLE')
     renameField(working_dissolved, 'FIRST_' + new_bc_total_area_field, new_bc_total_area_field, 'DOUBLE')
     renameField(working_dissolved, 'FIRST_' + mpa_area_attribute, mpa_area_attribute, 'DOUBLE')
-    renameField(working_dissolved, 'FIRST_' + mpa_name_attribute, mpa_name_attribute, 'TEXT')
+    renameField(working_dissolved, 'FIRST_' + mpa_area_attribute_section, mpa_area_attribute_section, 'DOUBLE')
+    renameField(working_dissolved, 'FIRST_' + mpa_subregion_field, mpa_subregion_field, 'TEXT')
+
     
     arcpy.AddField_management(working_dissolved, pct_of_mpa_field, 'DOUBLE')
     arcpy.AddField_management(working_dissolved, pct_of_total_field, 'DOUBLE')
@@ -726,7 +729,7 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
 
 def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                        pct_of_total_field, pct_of_mpa_field, mpa_name_attribute,
-                       scaling_attribute, threshold, subregion, imatrix):
+                       scaling_attribute, threshold, subregion, imatrix, mpa_subregion_field, mpa_area_attribute_section):
     mpas = {}
     sliver_freq = {} # added 20180205 to get sliver frequencies
 
@@ -745,7 +748,8 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
     # Crunch the geometry for the whole region
     processed_layer = process_geometry(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                                        scaling_attribute, mpa_name_attribute, mpa_area_attribute,
-                                       new_bc_total_area_field, pct_of_mpa_field, pct_of_total_field)
+                                       new_bc_total_area_field, pct_of_mpa_field, pct_of_total_field,
+                                       mpa_subregion_field, mpa_area_attribute_section)
 
     # Read the statistics for the whole region into a dict
     with arcpy.da.SearchCursor(
@@ -1209,7 +1213,8 @@ for lyr in layer_list:
     # Determine if in which MPAs and calculate statistics
     mpa_presence, sliver_freq = calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                                       pct_of_total_field, pct_of_mpa_field, merged_name_field,
-                                      new_scaling_field, threshold, subregion, inclusion_matrix)
+                                      new_scaling_field, threshold, subregion, inclusion_matrix,
+                                      mpa_subregion_field, mpa_area_attribute_section)
 
 
     # If subregion fc split off that subregion tag on the fc name
