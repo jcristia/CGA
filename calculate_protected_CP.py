@@ -311,7 +311,7 @@ def calculateTotalArea(layer, area_field):
 # (mpa_name_field), and calculates the area of each (mpa_area_field)
 #
         
-def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_merged_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL):
+def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section, final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL, ecosections_layer):
     # Get MPA layers
     mxd = arcpy.mapping.MapDocument(source_mxd)
     layers = arcpy.mapping.ListLayers(mxd)
@@ -353,20 +353,18 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_merged_name, merged_nam
             fm.removeFieldMap(fm.findFieldMapIndex(field.name))
 
     # Perform merge and calculate area field
-    arcpy.Merge_management(working_layers, mpa_merged_name, fm)
+    arcpy.Merge_management(working_layers, "mpas_merged", fm)
 
-    calculateArea(mpa_merged_name, mpa_area_field)
-
-    # Clean up
+    # Clean up the individual mpa files
     if cleanUpTempData:
         for layer in working_layers:
             arcpy.Delete_management(layer)
 
     # JC 20180204
     # Determine which subregion each MPA is in
-    arcpy.AddField_management(mpa_merged_name,"subregion_mpa","TEXT")
-    arcpy.Intersect_analysis([mpa_merged_name,subregions_ALL], "mpa_sub_intersect", "NO_FID")
-    with arcpy.da.UpdateCursor(mpa_merged_name, ["NAME_E","subregion_mpa"]) as cursor_mpa:
+    arcpy.AddField_management("mpas_merged","subregion_mpa","TEXT")
+    arcpy.Intersect_analysis(["mpas_merged",subregions_ALL], "mpa_sub_intersect", "NO_FID")
+    with arcpy.da.UpdateCursor("mpas_merged", ["NAME_E","subregion_mpa"]) as cursor_mpa:
         for mpa in cursor_mpa:
             mpa_name = (mpa[0].replace("'", "''")).encode('utf8') # the where clause requires double apostrophes
             where = "NAME_E = '{0}'".format(mpa_name)
@@ -380,9 +378,24 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_merged_name, merged_nam
                 mpa[1] = subr
                 cursor_mpa.updateRow(mpa)
     arcpy.Delete_management("mpa_sub_intersect")
+    
+    # JC: changed field name to _TOTAL so this needs to be done before the intersect with ecosections
+    # so that the area of the total mpa gets carried forward
+    calculateArea("mpas_merged", mpa_area_field)
 
+    # JC: intersect mpas and ecosections, then dissolve by mpa and ecosection
+    arcpy.Intersect_analysis(["mpas_merged",ecosections_layer], "mpa_ecosect_intersect")
+    arcpy.Dissolve_management("mpa_ecosect_intersect", final_mpa_fc_name, ["NAME_E", "ecosection"],[["subregion_mpa", "FIRST"],[mpa_area_field, "FIRST"]],"MULTI_PART")
+    # Rename fields to get rid of the labels the dissolve appends to the beginning
+    renameField(final_mpa_fc_name, 'FIRST_' + "subregion_mpa", "subregion_mpa", 'TEXT')
+    renameField(final_mpa_fc_name, 'FIRST_' + mpa_area_field, mpa_area_field, 'DOUBLE')   
+    # JC: add area field to calculate the area of each piece of an mpa in overlapping ecosections
+    calculateArea(final_mpa_fc_name, mpa_area_attribute_section)
+    # clean up merge and intersect datasets
+    arcpy.Delete_management("mpas_merged")
+    arcpy.Delete_management("mpa_ecosect_intersect")
 
-    return mpa_merged_name
+    return final_mpa_fc_name
 
 ## buildScalingDict ##
 #
@@ -464,11 +477,12 @@ def loadLayer(source_mxd, layer_name, sr_code, new_bc_area_field, new_bc_total_a
     else: # If no scaling then just use 1 for scaling
         arcpy.CalculateField_management(working_layer, new_scaling_field,
                                         '1', 'PYTHON_9.3')
-    keep_fields = [new_scaling_field]
+    
+    keep_fields = [new_scaling_field, 'ecosection'] # JC: added ecosection to this list
 
     # Delete fields that aren't important
     for field in arcpy.ListFields(working_layer):
-        # Don't delete Object ID or Geometry
+        # Don't delete Object ID or Geometry 
         if field.type in ['OID','Geometry']:
             continue
 
@@ -1113,10 +1127,11 @@ mpa_area_attribute = 'etp_mpa_area_TOTAL'
 merged_name_field = 'NAME_E'
 final_mpa_fc_name = 'mpas'
 mpa_subregion_field = 'subregion'
+mpa_area_attribute_section = 'etp_mpa_area_SECTION'
 
 
-final_mpa_fc_name = prepareMPAs(source_mxd, sr_code, mpa_area_attribute,
-                                final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL)
+final_mpa_fc_name = prepareMPAs(source_mxd, sr_code, mpa_area_attribute, mpa_area_attribute_section,
+                                final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL, ecosections_layer)
 
 #####
 ### Load subregional layers into workspace
