@@ -311,7 +311,7 @@ def calculateTotalArea(layer, area_field):
 # (mpa_name_field), and calculates the area of each (mpa_area_field)
 #
         
-def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_merged_name, merged_name_field, mpa_name_fields):
+def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_merged_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL):
     # Get MPA layers
     mxd = arcpy.mapping.MapDocument(source_mxd)
     layers = arcpy.mapping.ListLayers(mxd)
@@ -361,6 +361,26 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_merged_name, merged_nam
     if cleanUpTempData:
         for layer in working_layers:
             arcpy.Delete_management(layer)
+
+    # JC 20180204
+    # Determine which subregion each MPA is in
+    arcpy.AddField_management(mpa_merged_name,"subregion_mpa","TEXT")
+    arcpy.Intersect_analysis([mpa_merged_name,subregions_ALL], "mpa_sub_intersect", "NO_FID")
+    with arcpy.da.UpdateCursor(mpa_merged_name, ["NAME_E","subregion_mpa"]) as cursor_mpa:
+        for mpa in cursor_mpa:
+            mpa_name = (mpa[0].replace("'", "''")).encode('utf8') # the where clause requires double apostrophes
+            where = "NAME_E = '{0}'".format(mpa_name)
+            with arcpy.da.SearchCursor("mpa_sub_intersect", ["NAME_E", "subregion", "Shape_Area"], where) as cursor_mpasub:
+                shpArea = 0.0
+                subr = None
+                for row in cursor_mpasub:
+                    if row[2] > shpArea:
+                        shpArea = row[2]
+                        subr = row[1]
+                mpa[1] = subr
+                cursor_mpa.updateRow(mpa)
+    arcpy.Delete_management("mpa_sub_intersect")
+
 
     return mpa_merged_name
 
@@ -1092,11 +1112,11 @@ if print_status:
 mpa_area_attribute = 'etp_mpa_area_TOTAL'
 merged_name_field = 'NAME_E'
 final_mpa_fc_name = 'mpas'
-mpa_subregion = 'subregion'
+mpa_subregion_field = 'subregion'
 
 
 final_mpa_fc_name = prepareMPAs(source_mxd, sr_code, mpa_area_attribute,
-                                final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion)
+                                final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL)
 
 #####
 ### Load subregional layers into workspace
