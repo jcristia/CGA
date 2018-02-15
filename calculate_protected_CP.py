@@ -659,7 +659,8 @@ def shouldInclude(pct_in_mpa, threshold, im, fc, mpa):
     
 def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scaling_attribute,
                      mpa_name_attribute, mpa_area_attribute, new_bc_total_area_field,
-                     pct_of_mpa_field, pct_of_total_field, mpa_subregion_field, mpa_area_attribute_section):
+                     pct_of_mpa_field, pct_of_total_field, mpa_subregion_field, mpa_area_attribute_section,
+                     clipped_adj_area_mpaTotal, pct_of_mpa_field_Total):
             
     working_intersect = base_layer + '_Intersect'
 
@@ -694,17 +695,42 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
 
     
     arcpy.AddField_management(working_dissolved, pct_of_mpa_field, 'DOUBLE')
+    arcpy.AddField_management(working_dissolved, clipped_adj_area_mpaTotal, 'DOUBLE')
+    arcpy.AddField_management(working_dissolved, pct_of_mpa_field_Total, 'DOUBLE')
     arcpy.AddField_management(working_dissolved, pct_of_total_field, 'DOUBLE')
 
     # Calculate percentages
     arcpy.CalculateField_management(working_dissolved, pct_of_mpa_field,
                                     '!{0}!/!{1}!'.format(clipped_adjusted_area,mpa_area_attribute),
                                     'PYTHON_9.3')
-
     arcpy.CalculateField_management(working_dissolved, pct_of_total_field,
                                     '!{0}!/!{1}!'.format(clipped_adjusted_area,new_bc_total_area_field),
                                     'PYTHON_9.3')
     
+    # JC: calculate new total fields
+    # get unique list of mpas
+    mpa_list = []
+    with arcpy.da.SearchCursor(working_dissolved, [mpa_name_attribute]) as cursor:
+        for row in cursor:
+            if row[0] not in mpa_list:
+                mpa_list.append(row[0])
+    # add up feature areas by mpa
+    for mpa in mpa_list:
+        mpa_name = (mpa.replace("'", "''")).encode('utf8') # the where clause requires double apostrophes
+        where = "{0} = '{1}'".format(mpa_name_attribute, mpa_name)
+        with arcpy.da.UpdateCursor(working_dissolved, [clipped_adjusted_area, clipped_adj_area_mpaTotal], where) as cursor:
+            sum_area = 0.0
+            for row in cursor:
+                sum_area += row[0]
+            cursor.reset()
+            for row in cursor:
+                row[1] = sum_area
+                cursor.updateRow(row)
+
+    arcpy.CalculateField_management(working_dissolved, pct_of_mpa_field_Total,
+                                    '!{0}!/!{1}!'.format(clipped_adj_area_mpaTotal,mpa_area_attribute),
+                                    'PYTHON_9.3')
+
     # Clean up
     if cleanUpTempData:
         for layer in arcpy.ListFeatureClasses(base_layer + '_*'):
@@ -729,7 +755,7 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
 
 def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                        pct_of_total_field, pct_of_mpa_field, mpa_name_attribute,
-                       scaling_attribute, threshold, subregion, imatrix, mpa_subregion_field, mpa_area_attribute_section):
+                       scaling_attribute, threshold, subregion, imatrix, mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total):
     mpas = {}
     sliver_freq = {} # added 20180205 to get sliver frequencies
 
@@ -749,7 +775,8 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
     processed_layer = process_geometry(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                                        scaling_attribute, mpa_name_attribute, mpa_area_attribute,
                                        new_bc_total_area_field, pct_of_mpa_field, pct_of_total_field,
-                                       mpa_subregion_field, mpa_area_attribute_section)
+                                       mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal,
+                                      pct_of_mpa_field_Total)
 
     # Read the statistics for the whole region into a dict
     with arcpy.da.SearchCursor(
@@ -1180,6 +1207,9 @@ arcpy.env.overwriteOutput = True
 clipped_adjusted_area = 'etp_ac_area_adj'
 pct_of_total_field = 'pct_of_total'
 pct_of_mpa_field = 'pct_of_mpa'
+# JC fields added
+clipped_adj_area_mpaTotal = 'etp_ac_area_adj_mpaTotal'
+pct_of_mpa_field_Total = 'pct_of_mpa_Total'
 
 hu_in_mpas,cp_in_mpas = {}, {}
 percent_overlap = {}
@@ -1214,7 +1244,8 @@ for lyr in layer_list:
     mpa_presence, sliver_freq = calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                                       pct_of_total_field, pct_of_mpa_field, merged_name_field,
                                       new_scaling_field, threshold, subregion, inclusion_matrix,
-                                      mpa_subregion_field, mpa_area_attribute_section)
+                                      mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal,
+                                      pct_of_mpa_field_Total)
 
 
     # If subregion fc split off that subregion tag on the fc name
