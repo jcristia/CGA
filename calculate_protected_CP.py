@@ -362,9 +362,9 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
 
     # JC 20180204
     # Determine which subregion each MPA is in
-    arcpy.AddField_management("mpas_merged","subregion_mpa","TEXT")
+    arcpy.AddField_management("mpas_merged", mpa_subregion_field,"TEXT")
     arcpy.Intersect_analysis(["mpas_merged",subregions_ALL], "mpa_sub_intersect", "NO_FID")
-    with arcpy.da.UpdateCursor("mpas_merged", ["NAME_E","subregion_mpa"]) as cursor_mpa:
+    with arcpy.da.UpdateCursor("mpas_merged", ["NAME_E", mpa_subregion_field]) as cursor_mpa:
         for mpa in cursor_mpa:
             mpa_name = (mpa[0].replace("'", "''")).encode('utf8') # the where clause requires double apostrophes
             where = "NAME_E = '{0}'".format(mpa_name)
@@ -385,9 +385,9 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
 
     # JC: intersect mpas and ecosections, then dissolve by mpa and ecosection
     arcpy.Intersect_analysis(["mpas_merged",ecosections_layer], "mpa_ecosect_intersect")
-    arcpy.Dissolve_management("mpa_ecosect_intersect", final_mpa_fc_name, ["NAME_E", "ecosection"],[["subregion_mpa", "FIRST"],[mpa_area_field, "FIRST"]],"MULTI_PART")
+    arcpy.Dissolve_management("mpa_ecosect_intersect", final_mpa_fc_name, ["NAME_E", "ecosection"],[[mpa_subregion_field, "FIRST"],[mpa_area_field, "FIRST"]],"MULTI_PART")
     # Rename fields to get rid of the labels the dissolve appends to the beginning
-    renameField(final_mpa_fc_name, 'FIRST_' + "subregion_mpa", "subregion_mpa", 'TEXT')
+    renameField(final_mpa_fc_name, 'FIRST_' + mpa_subregion_field, mpa_subregion_field, 'TEXT')
     renameField(final_mpa_fc_name, 'FIRST_' + mpa_area_field, mpa_area_field, 'DOUBLE')   
     # JC: add area field to calculate the area of each piece of an mpa in overlapping ecosections
     calculateArea(final_mpa_fc_name, mpa_area_attribute_section)
@@ -1126,7 +1126,7 @@ if print_status:
 mpa_area_attribute = 'etp_mpa_area_TOTAL'
 merged_name_field = 'NAME_E'
 final_mpa_fc_name = 'mpas'
-mpa_subregion_field = 'subregion'
+mpa_subregion_field = 'subregion_mpa'
 mpa_area_attribute_section = 'etp_mpa_area_SECTION'
 
 
