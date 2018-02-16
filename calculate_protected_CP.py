@@ -1108,6 +1108,21 @@ def writeOutputTable2(o_table_2, ofile):
 
             w.writerow([cp] + row)
 
+def writeOutputTable3(percent_overlap, output3_path):
+    cols = ['mpa','type','cp_hu','percent_overlap']
+
+    with open(output3_path, 'wb') as f:
+        w = csv.writer(f)
+
+        # Write header
+        w.writerow(cols)
+
+        for mpa in percent_overlap:
+            for layer_type in percent_overlap[mpa]:
+                for cphu in percent_overlap[mpa][layer_type]:
+                        pct_o = percent_overlap[mpa][layer_type][cphu]['pct_overlap_cphu_mpa']
+                        w.writerow([mpa.encode('utf8'), layer_type, cphu, pct_o])
+
   ##               ##
 ###  Program start  ###
   ##               ##
@@ -1330,21 +1345,5 @@ writeOutputTable2(o_table_2, output2_path)
 #####
 ### Write percent overlap (sliver) table
 #####
-
-def writeOutputTable3(percent_overlap, output3_path):
-    cols = ['mpa','type','cp_hu','percent_overlap']
-
-    with open(output3_path, 'wb') as f:
-        w = csv.writer(f)
-
-        # Write header
-        w.writerow(cols)
-
-        for mpa in percent_overlap:
-            for layer_type in percent_overlap[mpa]:
-                for cphu in percent_overlap[mpa][layer_type]:
-                        pct_o = percent_overlap[mpa][layer_type][cphu]['pct_overlap_cphu_mpa']
-                        mpa = mpa.encode('utf8') # this handles special characters in mpa names, otherwise an error is thrown
-                        w.writerow([mpa, layer_type, cphu, pct_o])
 
 writeOutputTable3(percent_overlap, output3_path)
