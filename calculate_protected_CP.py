@@ -998,7 +998,8 @@ def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
                                                       'uscaled_area': cp_in_mpas[mpa][ecosection][cp]['clip_area'],
                                                       'scaled_area': None,
                                                       'pct_of_mpa': None,
-                                                      'pct_of_og': None}
+                                                      'pct_of_og': None,
+                                                      'subregion': cp_in_mpas[mpa][ecosection][cp]['subregion']}
 
                     # Calculate effectiveness
                     num_high, num_mod, num_low = countInteractions(cp_in_mpa_i[mpa][cp]['interactions'])
@@ -1030,8 +1031,8 @@ def writeOutputTable1(otable, opath):
     # Get a list of all the CPs (i.e. columns) needed
     cp_list = []
     for mpa in otable:
-        for region in otable[mpa]:
-            for cp in otable[mpa][region]:
+        for ecosection in otable[mpa]:
+            for cp in otable[mpa][ecosection]:
                 if cp not in cp_list:
                     cp_list.append(cp)
 
@@ -1041,20 +1042,20 @@ def writeOutputTable1(otable, opath):
     with open(opath, 'wb') as f:
         w = csv.writer(f)
 
-        # Write header with extra cols at start (for MPA names and regions)
-        w.writerow(['','']+cp_list)
+        # Write header with extra cols at start (for MPA names, regions, and ecosections)
+        w.writerow(['MPA','Subregion','Ecosection']+cp_list)
 
         for mpa in otable:
-            for region in otable[mpa]:
+            for ecosection in otable[mpa]:
                 # Build empty row
                 row = ['' for i in range(0, len(cp_list))]
 
                 # Put value where it belongs in the list
-                for cp in otable[mpa][region]:
-                    pct_of_og = otable[mpa][region][cp]['pct_of_og']
+                for cp in otable[mpa][ecosection]:
+                    pct_of_og = otable[mpa][ecosection][cp]['pct_of_og']
                     row[cp_list.index(cp)] = pct_of_og
-                    
-                w.writerow([mpa, region] + row)
+                subregion = otable[mpa][ecosection][cp]['subregion']  # the subregion is the same for each cp within an mpa, so it doesn't matter which one I pull from 
+                w.writerow([mpa.encode('utf8'), subregion, ecosection] + row)
 
 
 def createOutputTable2(o_table_1):
