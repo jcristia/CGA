@@ -943,17 +943,20 @@ def identifyInteractions(hu_in_mpas, cp_in_mpas, imatrix):
         if mpa not in cp_in_mpa_i:
             cp_in_mpa_i[mpa] = {}
 
-        # Only need to check for interactions on a regional level
-        for cp in cp_in_mpas[mpa]['region']:
-            if cp not in cp_in_mpa_i[mpa]:
-                    cp_in_mpa_i[mpa][cp] = {'interactions': [],
-                                            'eff_score': None}
-                    
-            for hu in hu_in_mpas[mpa]:
-                interaction = determineInteraction(imatrix, cp, hu)
-
-                if interaction is not None:
-                    cp_in_mpa_i[mpa][cp]['interactions'].append(interaction)
+        for ecosection in cp_in_mpas[mpa]:
+            # we only need to know the interaction once. The ecosection doesn't matter here.
+            for cp in cp_in_mpas[mpa][ecosection]:
+                if cp not in cp_in_mpa_i[mpa]:
+                        cp_in_mpa_i[mpa][cp] = {'interactions': [],
+                                                'eff_score': None}
+                else:
+                    continue  # we only need the cp once per mpa, so if we have already encountered it then skip
+                        
+                for hu in hu_in_mpas[mpa]:
+                    interaction = determineInteraction(imatrix, cp, hu)
+    
+                    if interaction is not None:
+                        cp_in_mpa_i[mpa][cp]['interactions'].append(interaction)
 
     return cp_in_mpa_i
 
@@ -976,23 +979,23 @@ def identifyInteractions(hu_in_mpas, cp_in_mpas, imatrix):
 def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
     o_table_1 = {}
 
-    regions = ['region', 'CC', 'HG', 'NC', 'NCVI']
+    ecosections = ["Johnstone Strait", "Continental Slope", "Dixon Entrance", "Strait of Georgia", "Juan de Fuca Strait", "Queen Charlotte Strait", "North Coast Fjords", "Hecate Strait", "Queen Charlotte Sound", "Vancouver Island Shelf", "Transitional Pacific", "Subarctic Pacific"]
     
     for mpa in cp_in_mpa_i:
         if mpa not in o_table_1:
             o_table_1[mpa] = {}
 
         for cp in cp_in_mpa_i[mpa]:
-            for region in regions:
-                if region in cp_in_mpas[mpa] and cp in cp_in_mpas[mpa][region]:                    
-                    if region not in o_table_1[mpa]:
-                        o_table_1[mpa][region] = {}
+            for ecosection in ecosections:
+                if ecosection in cp_in_mpas[mpa] and cp in cp_in_mpas[mpa][ecosection]:                    
+                    if ecosection not in o_table_1[mpa]:
+                        o_table_1[mpa][ecosection] = {}
 
                     # Pre populate dict with already known values
-                    if cp not in o_table_1[mpa][region]:
-                        o_table_1[mpa][region][cp] = {'mpa_area': cp_in_mpas[mpa][region][cp]['mpa_area'],
-                                                      'og_area': cp_in_mpas[mpa][region][cp]['orig_area'],
-                                                      'uscaled_area': cp_in_mpas[mpa][region][cp]['clip_area'],
+                    if cp not in o_table_1[mpa][ecosection]:
+                        o_table_1[mpa][ecosection][cp] = {'mpa_area': cp_in_mpas[mpa][ecosection][cp]['mpa_area'],
+                                                      'og_area': cp_in_mpas[mpa][ecosection][cp]['orig_area'],
+                                                      'uscaled_area': cp_in_mpas[mpa][ecosection][cp]['clip_area'],
                                                       'scaled_area': None,
                                                       'pct_of_mpa': None,
                                                       'pct_of_og': None}
@@ -1006,15 +1009,15 @@ def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
 
                     # Rescale areas and calculate new percentages
                     eff_score = cp_in_mpa_i[mpa][cp]['eff_score']
-                    unscaled_area = o_table_1[mpa][region][cp]['uscaled_area']
-                    o_table_1[mpa][region][cp]['scaled_area'] = eff_score * unscaled_area
+                    unscaled_area = o_table_1[mpa][ecosection][cp]['uscaled_area']
+                    o_table_1[mpa][ecosection][cp]['scaled_area'] = eff_score * unscaled_area
 
-                    scaled_area = o_table_1[mpa][region][cp]['scaled_area']
-                    mpa_area = o_table_1[mpa][region][cp]['mpa_area']
-                    og_area = o_table_1[mpa][region][cp]['og_area']
+                    scaled_area = o_table_1[mpa][ecosection][cp]['scaled_area']
+                    mpa_area = o_table_1[mpa][ecosection][cp]['mpa_area']
+                    og_area = o_table_1[mpa][ecosection][cp]['og_area']
 
-                    o_table_1[mpa][region][cp]['pct_of_mpa'] = scaled_area / mpa_area
-                    o_table_1[mpa][region][cp]['pct_of_og'] = scaled_area / og_area
+                    o_table_1[mpa][ecosection][cp]['pct_of_mpa'] = scaled_area / mpa_area
+                    o_table_1[mpa][ecosection][cp]['pct_of_og'] = scaled_area / og_area
                 
     return o_table_1
 
@@ -1291,13 +1294,14 @@ for mpa in inclusion_matrix:
                 hu_in_mpas[mpa] = {}
 
             if hu not in hu_in_mpas[mpa]:    
-                hu_in_mpas[mpa][hu] = {'clip_area': 1, # These values shouldn't matter I don't think
+                hu_in_mpas[mpa][hu] = {'ecosect_placeholder': # I dont think these values or the ecosection name matters here since all we need to know is if an hu occurs in an mpa.
+                                       {'clip_area': 1,
                                        'orig_area': 1,
                                        'mpa_area': 1,
                                        'region_area': 1,
                                        'pct_in_mpa': 1,
                                        'pct_of_region': 1,
-                                       'pct_of_total': 1}
+                                       'pct_of_total': 1}}
 # Clean up
 if cleanUpTempData:
     arcpy.Delete_management(working_gdb)
