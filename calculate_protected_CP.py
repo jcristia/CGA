@@ -782,13 +782,15 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
     with arcpy.da.SearchCursor(
             processed_layer,
             [mpa_name_attribute,mpa_area_attribute,pct_of_mpa_field,pct_of_total_field,
-             new_bc_total_area_field,clipped_adjusted_area, "Shape_Area"]
+             new_bc_total_area_field,clipped_adjusted_area, "Shape_Area", "ecosection", mpa_subregion_field,
+             mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total]
     ) as cursor:
         # i.e. for each mpa which technically has hu/cp in it
         for row in cursor:
-            mpa_name, mpa_area, pct_in_mpa = row[0], row[1], row[2]
+            mpa_name, mpa_area, pct_of_mpa = row[0], row[1], row[2]
             pct_of_total, hucp_og_area, hucp_clip_area = row[3], row[4], row[5]
-            Shape_Area = row[6]  # added for populating sliver dictionary. Need feature area in case we use importance factor and etp_ac_area_adj changes
+            ecosect, subreg_mpa, mpa_area_ecosect  = row[6], row[7], row[8]
+            hucp_clip_area_mpaTotal, pct_of_mpa_Total = row[9], row[10]
 
             # each HU/CP is a dict w/ info on its name, clipped area, and total area of
             # the original layer
@@ -796,16 +798,17 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
             # Checks if hu/cp makes up greater than 5% (or whatever) of mpa
             datasetname = working_layer if subregion is not None else '_'.join(working_layer.split('_')[:-1])
             
-            pct_overlap_cphu_mpa = Shape_Area / mpa_area
-            sliver_freq[mpa_name] = {'pct_overlap_cphu_mpa': pct_overlap_cphu_mpa}
+            if mpa_name not in sliver_freq:
+                sliver_freq[mpa_name] = {'pct_overlap_cphu_mpa': pct_of_mpa_Total}
+                # this should only need to be written once, even if there are multiple features for each mpa
 
-            if shouldInclude(pct_in_mpa, threshold, imatrix, datasetname, mpa_name):
+            if shouldInclude(pct_of_mpa_Total, threshold, imatrix, datasetname, mpa_name):
                 pct_of_region = (hucp_clip_area / region_area) if region_area is not None else None
                 mpas[mpa_name] = {'clip_area': hucp_clip_area,
                                   'orig_area': hucp_og_area,
                                   'mpa_area': mpa_area,
                                   'region_area': region_area,
-                                  'pct_in_mpa': pct_in_mpa,
+                                  'pct_in_mpa': pct_of_mpa,
                                   'pct_of_region': pct_of_region,
                                   'pct_of_total': pct_of_total}
               
