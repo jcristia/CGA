@@ -1263,14 +1263,15 @@ for lyr in layer_list:
             if mpa not in hu_in_mpas:
                 hu_in_mpas[mpa] = {}
             hu_in_mpas[mpa][working_layer] = mpa_presence[mpa]
+            # JC: all we need to know is if an hu occurs in an mpa. We don't care about its area measurements at this point, so I can just keep this as is.
     else:        
         for mpa in mpa_presence:
             if mpa not in cp_in_mpas:
                 cp_in_mpas[mpa] = {}
-
-            if subregion not in cp_in_mpas[mpa]:
-                cp_in_mpas[mpa][subregion] = {}
-            cp_in_mpas[mpa][subregion][working_layer] = mpa_presence[mpa]
+            for ecosection in mpa_presence[mpa]:
+                if ecosection not in cp_in_mpas[mpa]:
+                    cp_in_mpas[mpa][ecosection] = {}
+                cp_in_mpas[mpa][ecosection][working_layer] = mpa_presence[mpa][ecosection]
 
     # Populate percent_overlap dictionary (added 20180205)
     for mpa in sliver_freq:
