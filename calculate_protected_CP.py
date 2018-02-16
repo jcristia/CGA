@@ -804,7 +804,10 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
 
             if shouldInclude(pct_of_mpa_Total, threshold, imatrix, datasetname, mpa_name):
                 pct_of_region = (hucp_clip_area / region_area) if region_area is not None else None
-                mpas[mpa_name] = {'clip_area': hucp_clip_area,
+                if mpa_name not in mpas:
+                    mpas[mpa_name] = {}
+                mpas[mpa_name][ecosect] = {'subregion': subreg_mpa,
+                                  'clip_area': hucp_clip_area,
                                   'orig_area': hucp_og_area,
                                   'mpa_area': mpa_area,
                                   'region_area': region_area,
