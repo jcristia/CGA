@@ -782,7 +782,7 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
     with arcpy.da.SearchCursor(
             processed_layer,
             [mpa_name_attribute,mpa_area_attribute,pct_of_mpa_field,pct_of_total_field,
-             new_bc_total_area_field,clipped_adjusted_area, "Shape_Area", "ecosection", mpa_subregion_field,
+             new_bc_total_area_field,clipped_adjusted_area, "ecosection", mpa_subregion_field,
              mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total]
     ) as cursor:
         # i.e. for each mpa which technically has hu/cp in it
