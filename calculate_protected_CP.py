@@ -254,6 +254,18 @@ override_n = True
 override_u = None # This one behaves differently from _y and _n please read above and
                   # be careful when setting
 
+### Conservation Priority area overlap ###
+#
+# Each conservation priority is intersected with each subgregion and ecosection to get the total area
+# of the CP that falls in each. A dictionary is created to hold these values.
+# Set to true if you want a completely new dictionary, otherwise 'False' will check if feature exists in dict,
+# and if not it will do an interesect and add it.
+# For repetitive runs of the CGA where the CP inputs don't change, it will save time to not do an intersect and dissolve
+# on every CP on every run.
+
+cpOverlap_newDict = True
+cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\cpOverlap.csv'
+
 
 ######################
 ### Implementation ###
@@ -822,6 +834,37 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
             
     return mpas, sliver_freq
 
+
+
+##
+# Build CP area overlap dictionary from csv file
+##
+
+def buildOverlapDict(cpOverlap_DictPath, cp_area_overlap_dict):
+    
+    print "hi"
+    # read csv
+    # for each cp
+    # for each column header
+    # write as cp_area_overlap_dict[cp][subeco] = {total_sub_area: 0.0}
+    return cp_area_overlap_dict
+
+##
+# Intersect cp layers with subregions/ecosections
+# This is done to get the total area of a cp within each subregion/ecosection
+##
+
+def calcCPlyrOverlap(cp_area_overlap_dict, working_layer, ecosections_layer, subregions_ALL):
+    
+    print "hi"
+    # intersect
+    # dissolve
+    # write to dict
+    return cp_area_overlap_dict
+
+
+
+
 ## calcEffectivenessScore ##
 #
 # Takes the number of interactions for a cp broken down by severity and spits out an effectiveness score
@@ -1210,6 +1253,11 @@ for layer in layer_list:
 ### Load HU/CP layers into workspace, calculate areas etc
 #####
 
+# Load CP area overlap dictionary
+cp_area_overlap_dict = {}
+if cpOverlap_newDict is False:
+    cp_area_overlap_dict = buildOverlapDict(cpOverlap_DictPath, cp_area_overlap_dict)
+
 # Load attribute scaling file if necessary
 scaling_dict = None
 if scaling_attribute_file is not None:
@@ -1265,6 +1313,11 @@ for lyr in layer_list:
     rlayer = rlayers[subregion] if subregion in rlayers else None
     subregion = 'region' if rlayer is None else subregion
     
+    # find area of cp in each ecosection and subregion
+    if layer_type == 'cp' and working_layer not in cp_area_overlap_dict:
+        cp_area_overlap_dict = calcCPlyrOverlap(cp_area_overlap_dict, working_layer,
+                         ecosections_layer, subregions_ALL)
+
     # Determine if in which MPAs and calculate statistics
     mpa_presence, sliver_freq = calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                                       pct_of_total_field, pct_of_mpa_field, merged_name_field,
