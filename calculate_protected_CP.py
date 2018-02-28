@@ -57,7 +57,7 @@ detailed_status = True
 #
 ##
 
-source_mxd = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\spatial\CP_HU_MPA_Layers.mxd'
+source_mxd = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\spatial\CP_HU_MPA_Layers.mxd'
 
 ### scaling_attribute & scaling_attribute_file ###
 #
@@ -93,7 +93,7 @@ scaling_attribute_file = None
 #
 ##
 
-working_gdb_folder = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\spatial\working_TEMP'
+working_gdb_folder = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\spatial\working_TEMP'
 
 ### sr_code ###
 #
@@ -164,7 +164,7 @@ mpa_name_fields = ['NAME_E', 'Name_E']
 # doesn't exist then you will miss the first row of your data.
 ##
 
-imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\example_interaction_matrix.csv'
+imatrix_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\input\example_interaction_matrix.csv'
 
 ### output1_path & output2_path ###
 #
@@ -172,9 +172,9 @@ imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_File
 #
 ##
 
-output1_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table1.csv'
+output1_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\output\table1.csv'
 
-output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table2.csv'
+output2_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\output\table2.csv'
 
 ### output3_path ###
 #
@@ -183,7 +183,7 @@ output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_File
 #
 ##
 
-output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table3_slivers.csv'
+output3_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\output\table3_slivers.csv'
 
 ### complexFeatureClasses ###
 #
@@ -226,7 +226,7 @@ cleanUpTempData = False
 # variables below
 #
 
-inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\example_inclusion_matrix.csv'
+inclusion_matrix_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\input\example_inclusion_matrix.csv'
 
 ### override_y & _n & _u ###
 #
@@ -264,7 +264,7 @@ override_u = None # This one behaves differently from _y and _n please read abov
 # on every CP on every run.
 
 cpOverlap_newDict = True
-cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\cpOverlap.csv'
+cpOverlap_DictPath = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\input\cpOverlap.csv'
 
 
 ######################
@@ -845,7 +845,7 @@ def buildOverlapDict(cpOverlap_DictPath, cp_area_overlap_dict):
     print "hi"
     # read csv
     # for each cp
-    # for each column header
+    # for each column header (OR MAYBE I SHOULD DO THIS IN A DATABASE STYLE)
     # write as cp_area_overlap_dict[cp][subeco] = {total_sub_area: 0.0}
     return cp_area_overlap_dict
 
@@ -856,10 +856,39 @@ def buildOverlapDict(cpOverlap_DictPath, cp_area_overlap_dict):
 
 def calcCPlyrOverlap(cp_area_overlap_dict, working_layer, ecosections_layer, subregions_ALL):
     
-    print "hi"
     # intersect
-    # dissolve
-    # write to dict
+    subr_intersect = working_layer + '_subInt'
+    ecos_intersect = working_layer + '_ecoInt'
+
+    # Intersect with subregions
+    if detailed_status:
+        print '...Intersecting ' + working_layer
+    arcpy.Intersect_analysis([working_layer, subregions_ALL], subr_intersect)
+    arcpy.Intersect_analysis([working_layer, ecosections_layer], ecos_intersect)
+
+    # Dissolve by mpa_name_attribute field summing adjusted area
+    subr_dissolved = working_layer + '_subDissolved'
+    ecos_dissolved = working_layer + '_ecoDissolved'
+    
+    if detailed_status:
+        print '...Dissolving ' + working_layer
+    arcpy.Dissolve_management(subr_intersect, subr_dissolved, ["subregion"])
+    arcpy.Dissolve_management(ecos_intersect, ecos_dissolved, ["ecosection"])
+
+    cp_area_overlap_dict[working_layer] = {}
+    with arcpy.da.SearchCursor(subr_dissolved, ['subregion','Shape_Area']) as cursor:
+        for row in cursor:
+            cp_area_overlap_dict[working_layer][row[0]] = {'Area' : row[1]}
+    with arcpy.da.SearchCursor(ecos_dissolved, ['ecosection','Shape_Area']) as cursor:
+        for row in cursor:
+            cp_area_overlap_dict[working_layer][row[0]] = {'Area' : row[1]}
+
+    # delete
+    arcpy.Delete_management(subr_intersect)
+    arcpy.Delete_management(ecos_intersect)
+    arcpy.Delete_management(subr_dissolved)
+    arcpy.Delete_management(ecos_dissolved)
+
     return cp_area_overlap_dict
 
 
@@ -1001,6 +1030,19 @@ def identifyInteractions(hu_in_mpas, cp_in_mpas, imatrix):
                     if interaction is not None:
                         cp_in_mpa_i[mpa][cp]['interactions'].append(interaction)
 
+    # add in any mpas that were not in hu_in_mpas but were in cp_in_mpas. These need to be carried forward, even if they do not have any interactions.
+    for mpa in cp_in_mpas:
+        if mpa not in cp_in_mpa_i:
+            cp_in_mpa_i[mpa] = {}
+            for ecosection in cp_in_mpas[mpa]:
+                for cp in cp_in_mpas[mpa][ecosection]:
+                    if cp not in cp_in_mpa_i[mpa]:
+                        cp_in_mpa_i[mpa][cp] = {'interactions': [],
+                                                'eff_score': None}
+                else:
+                    continue  # we only need the cp once per mpa, so if we have already encountered it then skip
+
+
     return cp_in_mpa_i
 
 ## prepareOutputTable1 ##
@@ -1101,42 +1143,43 @@ def writeOutputTable1(otable, opath):
                 w.writerow([mpa.encode('utf8'), subregion, ecosection] + row)
 
 
-def createOutputTable2(o_table_1):
+def createOutputTable2(o_table_1, cp_area_overlap_dict):
     table2 = {}
 
     fields = ['original', 'protected', 'pct']
 
     for mpa in o_table_1:
-        for region in o_table_1[mpa]:
-            for cp in o_table_1[mpa][region]:
-                cp_data = o_table_1[mpa][region][cp]
+        for ecosection in o_table_1[mpa]:
+            for cp in o_table_1[mpa][ecosection]:
+                cp_data = o_table_1[mpa][ecosection][cp]
 
                 if cp not in table2:
                     table2[cp] = {}
 
-                if region not in table2[cp]:
-                    table2[cp][region] = {}
+                if ecosection not in table2[cp]:
+                    table2[cp][ecosection] = {}
                     
                 for field in fields:
-                    if field not in table2[cp][region]:
-                        table2[cp][region][field] = 0.0
-
+                    if field not in table2[cp][ecosection]:
+                        table2[cp][ecosection][field] = 0.0
+                # get total area in ecosection
+                orig_area_eco = cp_area_overlap_dict[cp][ecosection]['Area']
                 # Sum up protected area from all MPAs for CP
-                table2[cp][region]['original'] = cp_data['og_area']
-                table2[cp][region]['protected'] = table2[cp][region]['protected'] \
+                table2[cp][ecosection]['original'] = orig_area_eco
+                table2[cp][ecosection]['protected'] = table2[cp][ecosection]['protected'] \
                                                  + cp_data['scaled_area']
 
     # Calculate percentages
     for cp in table2:
-        for region in table2[cp]:
-            if table2[cp][region]['original'] != 0:
-                table2[cp][region]['pct'] = table2[cp][region]['protected']/table2[cp][region]['original']
+        for ecosection in table2[cp]:
+            if table2[cp][ecosection]['original'] != 0:
+                table2[cp][ecosection]['pct'] = table2[cp][ecosection]['protected']/table2[cp][ecosection]['original']
 
     return table2
 
 
 def writeOutputTable2(o_table_2, ofile):
-    cols = ['region','CC','NC','NCVI','HG']
+    cols = ['Johnstone Strait','Continental Slope','Dixon Entrance','Strait of Georgia','Juan de Fuca Strait', 'Queen Charlotte Strait', 'North Coast Fjords', 'Hecate Strait', 'Queen Charlotte Sound', 'Vancouver Island Shelf', 'Transitional Pacific', 'Subarctic Pacific']
 
     with open(ofile, 'wb') as f:
         w = csv.writer(f)
@@ -1146,8 +1189,8 @@ def writeOutputTable2(o_table_2, ofile):
 
         for cp in o_table_2:
             row = ['' for i in range(len(cols))]
-            for sr in o_table_2[cp]:
-                row[cols.index(sr)] = o_table_2[cp][sr]['pct']
+            for eco_sub in o_table_2[cp]:
+                row[cols.index(eco_sub)] = o_table_2[cp][eco_sub]['pct']
 
             w.writerow([cp] + row)
 
@@ -1354,6 +1397,17 @@ for lyr in layer_list:
         percent_overlap[mpa][layer_type][working_layer] = sliver_freq[mpa]
 
 
+# cpoverlap dict to csv to be used in future sessions
+cols = ['cp','section_region','area_overlap']
+with open(cpOverlap_DictPath, 'wb') as f:
+    w = csv.writer(f)
+    w.writerow(cols)
+    for cp in cp_area_overlap_dict:
+        for sec_reg in cp_area_overlap_dict[cp]:
+                area_o = cp_area_overlap_dict[cp][sec_reg]['Area']
+                w.writerow([cp, sec_reg, area_o])
+
+
 # Tack in dummy data for HU that should be in each MPA according to the interaction matrix
 # but didn't have spatial data that sufficiently intersected
 for mpa in inclusion_matrix:
@@ -1391,7 +1445,7 @@ writeOutputTable1(o_table_1, output1_path)
 ### Create and write output table 2
 #####
 
-o_table_2 = createOutputTable2(o_table_1)
+o_table_2 = createOutputTable2(o_table_1, cp_area_overlap_dict)
 
 writeOutputTable2(o_table_2, output2_path)
 
