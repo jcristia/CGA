@@ -841,12 +841,22 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
 ##
 
 def buildOverlapDict(cpOverlap_DictPath, cp_area_overlap_dict):
-    
-    print "hi"
-    # read csv
-    # for each cp
-    # for each column header (OR MAYBE I SHOULD DO THIS IN A DATABASE STYLE)
-    # write as cp_area_overlap_dict[cp][subeco] = {total_sub_area: 0.0}
+
+    with open(cpOverlap_DictPath, 'rb') as csvfile:
+        reader = csv.reader(csvfile)
+        reader.next()
+        for row in reader:
+            fc_name = row[0]
+            section = row[1]
+            area = float(row[2])
+
+            if fc_name not in cp_area_overlap_dict:
+                cp_area_overlap_dict[fc_name] = {}
+            if section not in cp_area_overlap_dict[fc_name]:
+                cp_area_overlap_dict[fc_name][section] = {}
+
+            cp_area_overlap_dict[fc_name][section] = {'Area': area}
+
     return cp_area_overlap_dict
 
 ##
@@ -857,37 +867,59 @@ def buildOverlapDict(cpOverlap_DictPath, cp_area_overlap_dict):
 def calcCPlyrOverlap(cp_area_overlap_dict, working_layer, ecosections_layer, subregions_ALL):
     
     # intersect
-    subr_intersect = working_layer + '_subInt'
-    ecos_intersect = working_layer + '_ecoInt'
+    subr_union = working_layer + '_subUnion'
+    ecos_union = working_layer + '_ecoUnion'
 
-    # Intersect with subregions
+    # Union with subregions-ecosections
+    # We don't want overlapping parts to be combined so only a union works
     if detailed_status:
-        print '...Intersecting ' + working_layer
-    arcpy.Intersect_analysis([working_layer, subregions_ALL], subr_intersect)
-    arcpy.Intersect_analysis([working_layer, ecosections_layer], ecos_intersect)
+        print '...Union ' + working_layer
+    arcpy.Union_analysis([working_layer, subregions_ALL], subr_union)
+    arcpy.Union_analysis([working_layer, ecosections_layer], ecos_union)
 
-    # Dissolve by mpa_name_attribute field summing adjusted area
+    # delete records that do not overlap
+    FID_wlyr = "FID_" + working_layer
+    FID_subr = "FID_" + subregions_ALL
+    FID_ecos = "FID_" + ecosections_layer
+    with arcpy.da.UpdateCursor(subr_union, [FID_wlyr, FID_subr]) as cursor:
+        for row in cursor:
+            if row[0] == -1 or row[1] == -1:
+                cursor.deleteRow()
+    with arcpy.da.UpdateCursor(ecos_union, [FID_wlyr, FID_ecos]) as cursor:
+        for row in cursor:
+            if row[0] == -1 or row[1] == -1:
+                cursor.deleteRow()
+
+    # add area field that will be summed when dissolving
+    ecosub_area_field = 'ecosub_area'
+    arcpy.AddField_management(subr_union, ecosub_area_field, "DOUBLE")
+    arcpy.AddField_management(ecos_union, ecosub_area_field, "DOUBLE")
+    arcpy.CalculateField_management(subr_union, ecosub_area_field, '!shape.area!', 'PYTHON_9.3')
+    arcpy.CalculateField_management(ecos_union, ecosub_area_field, '!shape.area!', 'PYTHON_9.3')
+
+    # Dissolve by ecosection/subregion field summing ecosub_area_field
     subr_dissolved = working_layer + '_subDissolved'
     ecos_dissolved = working_layer + '_ecoDissolved'
     
     if detailed_status:
         print '...Dissolving ' + working_layer
-    arcpy.Dissolve_management(subr_intersect, subr_dissolved, ["subregion"])
-    arcpy.Dissolve_management(ecos_intersect, ecos_dissolved, ["ecosection"])
+    arcpy.Dissolve_management(subr_union, subr_dissolved, ['subregion'], [[ecosub_area_field, 'SUM']])
+    arcpy.Dissolve_management(ecos_union, ecos_dissolved, ['ecosection'], [[ecosub_area_field, 'SUM']])
 
     cp_area_overlap_dict[working_layer] = {}
-    with arcpy.da.SearchCursor(subr_dissolved, ['subregion','Shape_Area']) as cursor:
+    with arcpy.da.SearchCursor(subr_dissolved, ['subregion', "SUM_" + ecosub_area_field]) as cursor:
         for row in cursor:
             cp_area_overlap_dict[working_layer][row[0]] = {'Area' : row[1]}
-    with arcpy.da.SearchCursor(ecos_dissolved, ['ecosection','Shape_Area']) as cursor:
+    with arcpy.da.SearchCursor(ecos_dissolved, ['ecosection', "SUM_" + ecosub_area_field]) as cursor:
         for row in cursor:
             cp_area_overlap_dict[working_layer][row[0]] = {'Area' : row[1]}
 
     # delete
-    arcpy.Delete_management(subr_intersect)
-    arcpy.Delete_management(ecos_intersect)
-    arcpy.Delete_management(subr_dissolved)
-    arcpy.Delete_management(ecos_dissolved)
+    if cleanUpTempData:
+        arcpy.Delete_management(subr_union)
+        arcpy.Delete_management(ecos_union)
+        arcpy.Delete_management(subr_dissolved)
+        arcpy.Delete_management(ecos_dissolved)
 
     return cp_area_overlap_dict
 
@@ -992,8 +1024,8 @@ def determineInteraction(imatrix, cp, hu):
     if cp in imatrix:
         if hu in imatrix[cp]:
             return imatrix[cp][hu]
-    else:
-        print cp + " not in imatrix"
+    #else:
+        #print cp + " not in imatrix"
         # I don't want to make this an error since it is possible that a cp has no interactions
         # Therefore it's very important that names match between files and the imatrix
 
@@ -1158,28 +1190,46 @@ def createOutputTable2(o_table_1, cp_area_overlap_dict):
 
                 if ecosection not in table2[cp]:
                     table2[cp][ecosection] = {}
-                    
+
+                subregion = cp_data['subregion']
+                if subregion not in table2[cp]:
+                    table2[cp][subregion] = {}
+
+
                 for field in fields:
                     if field not in table2[cp][ecosection]:
                         table2[cp][ecosection][field] = 0.0
+
+                for field in fields:
+                    if field not in table2[cp][subregion]:
+                        table2[cp][subregion][field] = 0.0
+                
                 # get total area in ecosection
                 orig_area_eco = cp_area_overlap_dict[cp][ecosection]['Area']
+                if subregion is not None:
+                    orig_area_sub = cp_area_overlap_dict[cp][subregion]['Area']
+                else:
+                    orig_area_sub = 1 # this shouldn't matter since we won't write the pct of subregion-None out to table 2 anyways
+
                 # Sum up protected area from all MPAs for CP
                 table2[cp][ecosection]['original'] = orig_area_eco
                 table2[cp][ecosection]['protected'] = table2[cp][ecosection]['protected'] \
                                                  + cp_data['scaled_area']
 
+                table2[cp][subregion]['original'] = orig_area_sub
+                table2[cp][subregion]['protected'] = table2[cp][subregion]['protected'] \
+                                                 + cp_data['scaled_area']
     # Calculate percentages
     for cp in table2:
-        for ecosection in table2[cp]:
-            if table2[cp][ecosection]['original'] != 0:
-                table2[cp][ecosection]['pct'] = table2[cp][ecosection]['protected']/table2[cp][ecosection]['original']
+        for ecosub in table2[cp]:
+            if table2[cp][ecosub]['original'] != 0:
+                table2[cp][ecosub]['pct'] = table2[cp][ecosub]['protected']/table2[cp][ecosub]['original']
 
     return table2
 
 
 def writeOutputTable2(o_table_2, ofile):
-    cols = ['Johnstone Strait','Continental Slope','Dixon Entrance','Strait of Georgia','Juan de Fuca Strait', 'Queen Charlotte Strait', 'North Coast Fjords', 'Hecate Strait', 'Queen Charlotte Sound', 'Vancouver Island Shelf', 'Transitional Pacific', 'Subarctic Pacific']
+    cols = ['Johnstone Strait','Continental Slope','Dixon Entrance','Strait of Georgia','Juan de Fuca Strait', 'Queen Charlotte Strait', 'North Coast Fjords', 'Hecate Strait', 'Queen Charlotte Sound', 'Vancouver Island Shelf', 'Transitional Pacific', 'Subarctic Pacific', 'NCVI', 'CC', 'NC', 'NCCC', 'HG']
 
     with open(ofile, 'wb') as f:
         w = csv.writer(f)
@@ -1190,7 +1240,8 @@ def writeOutputTable2(o_table_2, ofile):
         for cp in o_table_2:
             row = ['' for i in range(len(cols))]
             for eco_sub in o_table_2[cp]:
-                row[cols.index(eco_sub)] = o_table_2[cp][eco_sub]['pct']
+                if eco_sub is not None:
+                    row[cols.index(eco_sub)] = o_table_2[cp][eco_sub]['pct']
 
             w.writerow([cp] + row)
 
