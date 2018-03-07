@@ -57,7 +57,7 @@ detailed_status = True
 #
 ##
 
-source_mxd = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\spatial\CP_HU_MPA_Layers.mxd'
+source_mxd = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\spatial\CP_HU_MPA_Layers.mxd'
 
 ### scaling_attribute & scaling_attribute_file ###
 #
@@ -93,7 +93,7 @@ scaling_attribute_file = None
 #
 ##
 
-working_gdb_folder = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\spatial\working_TEMP'
+working_gdb_folder = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\spatial\working_TEMP'
 
 ### sr_code ###
 #
@@ -121,8 +121,8 @@ sr_code = 3005 # NAD_1983_BC_Environment_Albers
 #
 ##
 
-cp_presence_threshold = 0.05
-hu_presence_threshold = 0.05
+cp_presence_threshold = 0.0
+hu_presence_threshold = 0.0
 
 layer_presence_threshold_file = None
 
@@ -164,7 +164,7 @@ mpa_name_fields = ['NAME_E', 'Name_E']
 # doesn't exist then you will miss the first row of your data.
 ##
 
-imatrix_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\input\example_interaction_matrix.csv'
+imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\example_interaction_matrix.csv'
 
 ### output1_path & output2_path ###
 #
@@ -172,9 +172,9 @@ imatrix_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\input\exampl
 #
 ##
 
-output1_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\output\table1.csv'
+output1_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table1.csv'
 
-output2_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\output\table2.csv'
+output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table2.csv'
 
 ### output3_path ###
 #
@@ -183,7 +183,7 @@ output2_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\output\table
 #
 ##
 
-output3_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\output\table3_slivers.csv'
+output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table3_slivers.csv'
 
 ### complexFeatureClasses ###
 #
@@ -226,7 +226,7 @@ cleanUpTempData = False
 # variables below
 #
 
-inclusion_matrix_path = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\input\example_inclusion_matrix.csv'
+inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\example_inclusion_matrix.csv'
 
 ### override_y & _n & _u ###
 #
@@ -264,7 +264,7 @@ override_u = None # This one behaves differently from _y and _n please read abov
 # on every CP on every run.
 
 cpOverlap_newDict = True
-cpOverlap_DictPath = r'C:\Users\GSLab\Desktop\Cristiani_John\CGA\20180206\input\cpOverlap.csv'
+cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\cpOverlap.csv'
 
 
 ######################
@@ -1144,36 +1144,48 @@ def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
 # Writes the final output to disk
 #
 
-def writeOutputTable1(otable, opath):
-    # Get a list of all the CPs (i.e. columns) needed
-    cp_list = []
-    for mpa in otable:
-        for ecosection in otable[mpa]:
-            for cp in otable[mpa][ecosection]:
-                if cp not in cp_list:
-                    cp_list.append(cp)
+#def writeOutputTable1(otable, opath):
+#    # Get a list of all the CPs (i.e. columns) needed
+#    cp_list = []
+#    for mpa in otable:
+#        for ecosection in otable[mpa]:
+#            for cp in otable[mpa][ecosection]:
+#                if cp not in cp_list:
+#                    cp_list.append(cp)
 
-    # Sort that list so it's easier to find something            
-    cp_list.sort()
+#    # Sort that list so it's easier to find something            
+#    cp_list.sort()
+
+#    with open(opath, 'wb') as f:
+#        w = csv.writer(f)
+
+#        # Write header with extra cols at start (for MPA names, regions, and ecosections)
+#        w.writerow(['MPA','Subregion','Ecosection']+cp_list)
+
+#        for mpa in otable:
+#            for ecosection in otable[mpa]:
+#                # Build empty row
+#                row = ['' for i in range(0, len(cp_list))]
+
+#                # Put value where it belongs in the list
+#                for cp in otable[mpa][ecosection]:
+#                    pct_of_og = otable[mpa][ecosection][cp]['pct_of_og']
+#                    row[cp_list.index(cp)] = pct_of_og
+#                subregion = otable[mpa][ecosection][cp]['subregion']  # the subregion is the same for each cp within an mpa, so it doesn't matter which one I pull from 
+#                w.writerow([mpa.encode('utf8'), subregion, ecosection] + row)
+def writeOutputTable1(otable, opath):
 
     with open(opath, 'wb') as f:
         w = csv.writer(f)
 
-        # Write header with extra cols at start (for MPA names, regions, and ecosections)
-        w.writerow(['MPA','Subregion','Ecosection']+cp_list)
+        w.writerow(['MPA','Subregion','Ecosection', 'CP', 'Percent'])
 
         for mpa in otable:
             for ecosection in otable[mpa]:
-                # Build empty row
-                row = ['' for i in range(0, len(cp_list))]
-
-                # Put value where it belongs in the list
                 for cp in otable[mpa][ecosection]:
                     pct_of_og = otable[mpa][ecosection][cp]['pct_of_og']
-                    row[cp_list.index(cp)] = pct_of_og
-                subregion = otable[mpa][ecosection][cp]['subregion']  # the subregion is the same for each cp within an mpa, so it doesn't matter which one I pull from 
-                w.writerow([mpa.encode('utf8'), subregion, ecosection] + row)
-
+                    subregion = otable[mpa][ecosection][cp]['subregion']  # the subregion is the same for each cp within an mpa, so it doesn't matter which one I pull from 
+                    w.writerow([mpa.encode('utf8'), subregion, ecosection, cp, pct_of_og])
 
 def createOutputTable2(o_table_1, cp_area_overlap_dict):
     table2 = {}
@@ -1228,22 +1240,37 @@ def createOutputTable2(o_table_1, cp_area_overlap_dict):
     return table2
 
 
+#def writeOutputTable2(o_table_2, ofile):
+#    cols = ['Johnstone Strait','Continental Slope','Dixon Entrance','Strait of Georgia','Juan de Fuca Strait', 'Queen Charlotte Strait', 'North Coast Fjords', 'Hecate Strait', 'Queen Charlotte Sound', 'Vancouver Island Shelf', 'Transitional Pacific', 'Subarctic Pacific', 'NCVI', 'CC', 'NC', 'NCCC', 'HG']
+
+#    with open(ofile, 'wb') as f:
+#        w = csv.writer(f)
+
+#        # Write header
+#        w.writerow(['']+cols)
+
+#        for cp in o_table_2:
+#            row = ['' for i in range(len(cols))]
+#            for eco_sub in o_table_2[cp]:
+#                if eco_sub is not None:
+#                    row[cols.index(eco_sub)] = o_table_2[cp][eco_sub]['pct']
+
+#            w.writerow([cp] + row)
 def writeOutputTable2(o_table_2, ofile):
-    cols = ['Johnstone Strait','Continental Slope','Dixon Entrance','Strait of Georgia','Juan de Fuca Strait', 'Queen Charlotte Strait', 'North Coast Fjords', 'Hecate Strait', 'Queen Charlotte Sound', 'Vancouver Island Shelf', 'Transitional Pacific', 'Subarctic Pacific', 'NCVI', 'CC', 'NC', 'NCCC', 'HG']
 
     with open(ofile, 'wb') as f:
         w = csv.writer(f)
 
         # Write header
-        w.writerow(['']+cols)
+        w.writerow(['cp', 'ecosection_subregion', 'percent'])
 
         for cp in o_table_2:
-            row = ['' for i in range(len(cols))]
             for eco_sub in o_table_2[cp]:
                 if eco_sub is not None:
-                    row[cols.index(eco_sub)] = o_table_2[cp][eco_sub]['pct']
+                    pct_of_ecosub = o_table_2[cp][eco_sub]['pct']
+                    w.writerow([cp, eco_sub, pct_of_ecosub])
 
-            w.writerow([cp] + row)
+
 
 def writeOutputTable3(percent_overlap, output3_path):
     cols = ['mpa','type','cp_hu','percent_overlap']
@@ -1288,7 +1315,7 @@ new_scaling_field = 'etp_scaling'
 
 layer_list = arcpy.mapping.ListLayers(arcpy.mapping.MapDocument(source_mxd))
 for lyr in layer_list:
-    if lyr.isFeatureLayer and (lyr.datasetName.startswith('mpatt_eco_coarse_ecosections')):
+    if lyr.isFeatureLayer and (lyr.datasetName == 'mpatt_eco_coarse_ecosections_data'):
         ecosections = lyr
 ecosections_layer = loadLayer(source_mxd, ecosections.name, sr_code,
                               new_bc_area_field, new_bc_total_area_field,
