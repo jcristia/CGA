@@ -132,7 +132,7 @@ layer_presence_threshold_file = None
 #
 ##
 
-mpa_name_fields = ['NAME_E', 'Name_E']
+mpa_name_fields = ['Name_E', 'NAME_E']
 
 ### imatrix_path ###
 #
@@ -191,9 +191,13 @@ output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_File
 # are too complex to process as is. These get split into single part features
 # which hopefully will solve most of those issues.
 #
+# For features classes that split by attribute prior to this script, you can just
+# include the name up until the "_{value}". You do not need to enter in every instance
+# of it.
+#
 ##
 
-complexFeatureClasses = ['mpatt_eco_coarse_bottompatches_data']
+complexFeatureClasses = ['mpatt_eco_coarse_bottompatches_data', 'mpatt_eco_coarse_geomorphicunits_data', 'mpatt_eco_coarse_coastalclasses_data']
 
 ### cleanUpTempData ###
 #
@@ -203,7 +207,7 @@ complexFeatureClasses = ['mpatt_eco_coarse_bottompatches_data']
 #
 ##
 
-cleanUpTempData = False
+cleanUpTempData = True
 
 ### inclusion_matrix_path ###
 #
@@ -1414,7 +1418,12 @@ for lyr in layer_list:
     # Load layer into memory, reprojecting to albers, calculate areas etc
     # If a layer is complex and causes processing to fail populate
     # complexFeatureClasses above and hopefully that fixes it
-    is_complex = lyr.name in complexFeatureClasses
+    is_complex = False
+    for fc in complexFeatureClasses:
+        if lyr.datasetName.startswith(fc):
+            is_complex = True 
+    #is_complex = lyr.name in complexFeatureClasses
+
     working_layer = loadLayer(source_mxd, lyr.name, sr_code,
                               new_bc_area_field, new_bc_total_area_field,
                               scaling_dict, scaling_attribute, new_scaling_field,
