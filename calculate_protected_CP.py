@@ -132,7 +132,7 @@ layer_presence_threshold_file = None
 #
 ##
 
-mpa_name_fields = ['Name_E', 'NAME_E']
+mpa_name_fields = ['UID']
 
 ### imatrix_path ###
 #
@@ -207,7 +207,7 @@ complexFeatureClasses = ['mpatt_eco_coarse_bottompatches_data', 'mpatt_eco_coars
 #
 ##
 
-cleanUpTempData = True
+cleanUpTempData = False
 
 ### inclusion_matrix_path ###
 #
@@ -463,6 +463,7 @@ def loadLayer(source_mxd, layer_name, sr_code, new_bc_area_field, new_bc_total_a
     working_layer = layer.datasetName
     orig_name = working_layer
 
+    arcpy.env.XYResolution = "0.0001 Meters" # project will fail if a resolution is set too low
     arcpy.Project_management(layer.dataSource, layer.datasetName,
                              arcpy.SpatialReference(sr_code))
     
@@ -883,6 +884,9 @@ def calcCPlyrOverlap(cp_area_overlap_dict, working_layer, ecosections_layer, sub
 
     # delete records that do not overlap
     FID_wlyr = "FID_" + working_layer
+    if len(FID_wlyr) > 64:
+        cut = len(FID_wlyr) - 64
+        FID_wlyr = FID_wlyr[:-cut]
     FID_subr = "FID_" + subregions_ALL
     FID_ecos = "FID_" + ecosections_layer
     with arcpy.da.UpdateCursor(subr_union, [FID_wlyr, FID_subr]) as cursor:
