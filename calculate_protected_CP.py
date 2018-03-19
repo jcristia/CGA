@@ -319,6 +319,33 @@ def calculateTotalArea(layer, area_field):
 
     return summed_total
     
+## createMPAdict ##
+#
+# creates a dictionary of MPA attributes to use as a lookup reference
+# this was easier than carrying all these attributes through in the MPA dataset and every subsequent dictionary
+# NOTE: this means that for all future data prep, any MPA dataset must have the same schema
+#
+        
+def createMPAdict(source_mxd, merged_name_field):
+    # Get MPA layers
+    mxd = arcpy.mapping.MapDocument(source_mxd)
+    layers = arcpy.mapping.ListLayers(mxd)
+    mpa_layers = [lyr for lyr in layers if lyr.isFeatureLayer and lyr.datasetName.startswith('mpatt_mpa_')]
+
+    mpa_dict = {}
+
+    for layer in mpa_layers:
+        with arcpy.da.SearchCursor(layer, ["UID","PARENT_ID","NAME_E", "BIOME", "TYPE_E", "MGMT_E"]) as mpa_cursor:
+            for row in mpa_cursor:
+                mpa_dict[row[0]] = {}
+                mpa_dict[row[0]] = {'parent_id' : row[1],
+                                    'name' : row[2],
+                                    'biome' : row[3],
+                                    'type' : row[4],
+                                    'mgmt_e' : row[5]}
+
+    return mpa_dict
+
 ## prepareMPAs ##
 #
 # Gets MPA layers from mxd by reading the dataset name and merges them all
@@ -1357,6 +1384,8 @@ final_mpa_fc_name = 'mpas'
 mpa_subregion_field = 'subregion_mpa'
 mpa_area_attribute_section = 'etp_mpa_area_SECTION'
 
+# create the mpa dictionary lookup
+mpa_dict = createMPAdict(source_mxd, merged_name_field)
 
 final_mpa_fc_name = prepareMPAs(source_mxd, sr_code, mpa_area_attribute, mpa_area_attribute_section,
                                 final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL, ecosections_layer)
