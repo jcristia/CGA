@@ -342,7 +342,7 @@ def createMPAdict(source_mxd, merged_name_field):
                                     'name' : row[2],
                                     'biome' : row[3],
                                     'type' : row[4],
-                                    'mgmt_e' : row[5]}
+                                    'mgmt' : row[5]}
 
     return mpa_dict
 
@@ -1208,19 +1208,24 @@ def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
 #                    row[cp_list.index(cp)] = pct_of_og
 #                subregion = otable[mpa][ecosection][cp]['subregion']  # the subregion is the same for each cp within an mpa, so it doesn't matter which one I pull from 
 #                w.writerow([mpa.encode('utf8'), subregion, ecosection] + row)
-def writeOutputTable1(otable, opath):
+def writeOutputTable1(otable, opath, mpa_dict):
 
     with open(opath, 'wb') as f:
         w = csv.writer(f)
 
-        w.writerow(['MPA','Subregion','Ecosection', 'CP', 'Percent'])
+        w.writerow(['UID','parentid','name', 'biome', 'type', 'management', 'subregion', 'ecosection', 'CP', 'proportion'])
 
         for mpa in otable:
+            parentid = mpa_dict[mpa]['parent_id']
+            name = mpa_dict[mpa]['name']
+            biome = mpa_dict[mpa]['biome']
+            type = mpa_dict[mpa]['type']
+            mgmt = mpa_dict[mpa]['mgmt']
             for ecosection in otable[mpa]:
                 for cp in otable[mpa][ecosection]:
                     pct_of_og = otable[mpa][ecosection][cp]['pct_of_og']
                     subregion = otable[mpa][ecosection][cp]['subregion']  # the subregion is the same for each cp within an mpa, so it doesn't matter which one I pull from 
-                    w.writerow([mpa.encode('utf8'), subregion, ecosection, cp, pct_of_og])
+                    w.writerow([mpa.encode('utf8'), parentid, name.encode('utf8'), biome, type, mgmt, subregion, ecosection, cp, pct_of_og])
 
 def createOutputTable2(o_table_1, cp_area_overlap_dict):
     table2 = {}
@@ -1297,7 +1302,7 @@ def writeOutputTable2(o_table_2, ofile):
         w = csv.writer(f)
 
         # Write header
-        w.writerow(['cp', 'ecosection_subregion', 'percent'])
+        w.writerow(['cp', 'ecosection_subregion', 'proportion'])
 
         for cp in o_table_2:
             for eco_sub in o_table_2[cp]:
@@ -1559,7 +1564,7 @@ cp_in_mpa_i = identifyInteractions(hu_in_mpas, cp_in_mpas, imatrix)
 
 o_table_1 = prepareOutputTable1(cp_in_mpa_i, cp_in_mpas)
 
-writeOutputTable1(o_table_1, output1_path)
+writeOutputTable1(o_table_1, output1_path, mpa_dict)
 
 #####
 ### Create and write output table 2
