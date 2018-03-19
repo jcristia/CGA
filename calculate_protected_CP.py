@@ -380,11 +380,11 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
     # Determine which subregion each MPA is in
     arcpy.AddField_management("mpas_merged", mpa_subregion_field,"TEXT")
     arcpy.Intersect_analysis(["mpas_merged",subregions_ALL], "mpa_sub_intersect", "NO_FID")
-    with arcpy.da.UpdateCursor("mpas_merged", ["NAME_E", mpa_subregion_field]) as cursor_mpa:
+    with arcpy.da.UpdateCursor("mpas_merged", [merged_name_field, mpa_subregion_field]) as cursor_mpa:
         for mpa in cursor_mpa:
             mpa_name = (mpa[0].replace("'", "''")).encode('utf8') # the where clause requires double apostrophes
-            where = "NAME_E = '{0}'".format(mpa_name)
-            with arcpy.da.SearchCursor("mpa_sub_intersect", ["NAME_E", "subregion", "Shape_Area"], where) as cursor_mpasub:
+            where = "{0} = '{1}'".format(merged_name_field, mpa_name)
+            with arcpy.da.SearchCursor("mpa_sub_intersect", [merged_name_field, "subregion", "Shape_Area"], where) as cursor_mpasub:
                 shpArea = 0.0
                 subr = None
                 for row in cursor_mpasub:
@@ -401,7 +401,7 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
 
     # JC: intersect mpas and ecosections, then dissolve by mpa and ecosection
     arcpy.Intersect_analysis(["mpas_merged",ecosections_layer], "mpa_ecosect_intersect")
-    arcpy.Dissolve_management("mpa_ecosect_intersect", final_mpa_fc_name, ["NAME_E", "ecosection"],[[mpa_subregion_field, "FIRST"],[mpa_area_field, "FIRST"]],"MULTI_PART")
+    arcpy.Dissolve_management("mpa_ecosect_intersect", final_mpa_fc_name, [merged_name_field, "ecosection"],[[mpa_subregion_field, "FIRST"],[mpa_area_field, "FIRST"]],"MULTI_PART")
     # Rename fields to get rid of the labels the dissolve appends to the beginning
     renameField(final_mpa_fc_name, 'FIRST_' + mpa_subregion_field, mpa_subregion_field, 'TEXT')
     renameField(final_mpa_fc_name, 'FIRST_' + mpa_area_field, mpa_area_field, 'DOUBLE')   
@@ -1352,7 +1352,7 @@ if print_status:
     print "Preparing MPAs"
 
 mpa_area_attribute = 'etp_mpa_area_TOTAL'
-merged_name_field = 'NAME_E'
+merged_name_field = 'NAME_UID'   # make sure this is unique and does not exist in any of the input mpa datasets. If it is not unique it screws up the field mapping. It may not throw an error and is hard to detect.
 final_mpa_fc_name = 'mpas'
 mpa_subregion_field = 'subregion_mpa'
 mpa_area_attribute_section = 'etp_mpa_area_SECTION'
