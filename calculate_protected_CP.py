@@ -183,7 +183,7 @@ output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_File
 #
 ##
 
-output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table3_slivers.csv'
+output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table3.csv'
 
 ### complexFeatureClasses ###
 #
@@ -207,7 +207,7 @@ complexFeatureClasses = ['mpatt_eco_coarse_bottompatches_data', 'mpatt_eco_coars
 #
 ##
 
-cleanUpTempData = False
+cleanUpTempData = True
 
 ### inclusion_matrix_path ###
 #
@@ -720,6 +720,10 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
     arcpy.CalculateField_management(working_intersect, clipped_adjusted_area,
                                     '!shape.area!*!{0}!'.format(scaling_attribute), 'PYTHON_9.3')
 
+    # add feature count attribute and calculate to 1, then in dissolve do a sum
+    # first check if an intersect maintains 2 overlapping features
+
+
     # Dissolve by mpa_name_attribute field summing adjusted area
     working_dissolved = base_layer + '_Dissolved'
     
@@ -1147,7 +1151,7 @@ def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
                     if cp not in o_table_1[mpa][ecosection]:
                         o_table_1[mpa][ecosection][cp] = {'mpa_area': cp_in_mpas[mpa][ecosection][cp]['mpa_area'],
                                                       'og_area': cp_in_mpas[mpa][ecosection][cp]['orig_area'],
-                                                      'uscaled_area': cp_in_mpas[mpa][ecosection][cp]['clip_area'],
+                                                      'unscaled_area': cp_in_mpas[mpa][ecosection][cp]['clip_area'],
                                                       'scaled_area': None,
                                                       'pct_of_mpa': None,
                                                       'pct_of_og': None,
@@ -1162,7 +1166,7 @@ def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
 
                     # Rescale areas and calculate new percentages
                     eff_score = cp_in_mpa_i[mpa][cp]['eff_score']
-                    unscaled_area = o_table_1[mpa][ecosection][cp]['uscaled_area']
+                    unscaled_area = o_table_1[mpa][ecosection][cp]['unscaled_area']
                     o_table_1[mpa][ecosection][cp]['scaled_area'] = eff_score * unscaled_area
 
                     scaled_area = o_table_1[mpa][ecosection][cp]['scaled_area']
@@ -1213,7 +1217,7 @@ def writeOutputTable1(otable, opath, mpa_dict):
     with open(opath, 'wb') as f:
         w = csv.writer(f)
 
-        w.writerow(['UID','parentid','name', 'biome', 'type', 'management', 'subregion', 'ecosection', 'CP', 'proportion'])
+        w.writerow(['UID','parentid','name', 'biome', 'type', 'management', 'subregion', 'ecosection', 'CP', 'proportion', 'unscaled_area', 'scaled_area'])
 
         for mpa in otable:
             parentid = mpa_dict[mpa]['parent_id']
@@ -1224,8 +1228,10 @@ def writeOutputTable1(otable, opath, mpa_dict):
             for ecosection in otable[mpa]:
                 for cp in otable[mpa][ecosection]:
                     pct_of_og = otable[mpa][ecosection][cp]['pct_of_og']
-                    subregion = otable[mpa][ecosection][cp]['subregion']  # the subregion is the same for each cp within an mpa, so it doesn't matter which one I pull from 
-                    w.writerow([mpa.encode('utf8'), parentid, name.encode('utf8'), biome, type, mgmt, subregion, ecosection, cp, pct_of_og])
+                    subregion = otable[mpa][ecosection][cp]['subregion']
+                    unscaled_area = otable[mpa][ecosection][cp]['unscaled_area']
+                    scaled_area = otable[mpa][ecosection][cp]['scaled_area']
+                    w.writerow([mpa.encode('utf8'), parentid, name.encode('utf8'), biome, type, mgmt, subregion, ecosection, cp, pct_of_og, unscaled_area, scaled_area])
 
 def createOutputTable2(o_table_1, cp_area_overlap_dict):
     table2 = {}
@@ -1302,13 +1308,15 @@ def writeOutputTable2(o_table_2, ofile):
         w = csv.writer(f)
 
         # Write header
-        w.writerow(['cp', 'ecosection_subregion', 'proportion'])
+        w.writerow(['cp', 'ecosection_subregion', 'proportion', 'original_area', 'protected_area'])
 
         for cp in o_table_2:
             for eco_sub in o_table_2[cp]:
                 if eco_sub is not None:
                     pct_of_ecosub = o_table_2[cp][eco_sub]['pct']
-                    w.writerow([cp, eco_sub, pct_of_ecosub])
+                    orig_area = o_table_2[cp][eco_sub]['original']
+                    protected = o_table_2[cp][eco_sub]['protected']
+                    w.writerow([cp, eco_sub, pct_of_ecosub, orig_area, protected])
 
 
 
