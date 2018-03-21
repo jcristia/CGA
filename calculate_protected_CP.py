@@ -1250,33 +1250,51 @@ def createOutputTable2(o_table_1, cp_area_overlap_dict):
                     table2[cp][ecosection] = {}
 
                 subregion = cp_data['subregion']
-                if subregion not in table2[cp]:
-                    table2[cp][subregion] = {}
+                # I had to wrap any mention of subregion in this function in the below IF statement
+                # The issue: a few rare cases where the mpa is assigned a subregion because some of it overlaps that subregion, but some of it is also overlaps a blank area or a different subregion, AND the cp touches the mpa, BUT the cp does not touch the subregion. Therefore there ends up being a discrepancy where the subregion is not in the cp_area_overlap_dict of that cp, but it is in the o_table_1 (since this one is based on the mpa
+                # I'm thinking the best way to handle this: if the cp is not in the subregion, then it is not in the subregion. So perhaps it is just an if statement before to just not write it for that one.
+                # However, this now results in any MPA that has a subregion of NONE not being carried forward from this point forward.
+                # This does not matter for now, since I don't write None out in table2. If for some reason I need to know that areas that don't fall in a subregion then I will need to consider this.
+                # Also, I considered the scenario where an mpa overlaps two subregions but it is only assigned one, and the cp overlaps the part of the unlisted subregion. This should be fine because as of right now this only affects the middle piece of the hecate strait sponge reef mpa, which we can just split out if needed.
+                # This if statement can help identify those areas:
+                #if subregion not in cp_area_overlap_dict[cp] and subregion is not None:
+                #    print cp
+                #    print cp_data
+                #    print mpa
+                #    print cp_area_overlap_dict[cp]
 
+                if subregion in cp_area_overlap_dict[cp]:
+                    if subregion not in table2[cp]:
+                        table2[cp][subregion] = {}
 
                 for field in fields:
                     if field not in table2[cp][ecosection]:
                         table2[cp][ecosection][field] = 0.0
-
-                for field in fields:
-                    if field not in table2[cp][subregion]:
-                        table2[cp][subregion][field] = 0.0
+                
+                if subregion in cp_area_overlap_dict[cp]:
+                    for field in fields:
+                        if field not in table2[cp][subregion]:
+                            table2[cp][subregion][field] = 0.0
                 
                 # get total area in ecosection
                 orig_area_eco = cp_area_overlap_dict[cp][ecosection]['Area']
-                if subregion is not None:
-                    orig_area_sub = cp_area_overlap_dict[cp][subregion]['Area']
-                else:
-                    orig_area_sub = 1 # this shouldn't matter since we won't write the pct of subregion-None out to table 2 anyways
+
+                if subregion in cp_area_overlap_dict[cp]:
+                    if subregion is not None:
+                        orig_area_sub = cp_area_overlap_dict[cp][subregion]['Area']
+                    else:
+                        # I think the script will never get here now that it is wrapped in the if statement above this one. I will leave this in though in case I revert back.
+                        orig_area_sub = 1 # this shouldn't matter since we won't write the pct of subregion-None out to table 2 anyways
 
                 # Sum up protected area from all MPAs for CP
                 table2[cp][ecosection]['original'] = orig_area_eco
                 table2[cp][ecosection]['protected'] = table2[cp][ecosection]['protected'] \
                                                  + cp_data['scaled_area']
 
-                table2[cp][subregion]['original'] = orig_area_sub
-                table2[cp][subregion]['protected'] = table2[cp][subregion]['protected'] \
-                                                 + cp_data['scaled_area']
+                if subregion in cp_area_overlap_dict[cp]:
+                    table2[cp][subregion]['original'] = orig_area_sub
+                    table2[cp][subregion]['protected'] = table2[cp][subregion]['protected'] \
+                                                     + cp_data['scaled_area']
     # Calculate percentages
     for cp in table2:
         for ecosub in table2[cp]:
