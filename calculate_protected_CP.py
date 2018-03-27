@@ -354,7 +354,7 @@ def createMPAdict(source_mxd, merged_name_field):
 # (mpa_name_field), and calculates the area of each (mpa_area_field)
 #
         
-def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section, final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL, ecosections_layer):
+def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section, final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL, ecosections_layer, mpa_marine_area):
     # Get MPA layers
     mxd = arcpy.mapping.MapDocument(source_mxd)
     layers = arcpy.mapping.ListLayers(mxd)
@@ -392,7 +392,7 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
     fm.addFieldMap(fmap)
 
     for field in fm.fields:
-        if field.name != merged_name_field:
+        if field.name != merged_name_field and field.name != mpa_marine_area:
             fm.removeFieldMap(fm.findFieldMapIndex(field.name))
 
     # Perform merge and calculate area field
@@ -425,6 +425,8 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
     # JC: changed field name to _TOTAL so this needs to be done before the intersect with ecosections
     # so that the area of the total mpa gets carried forward
     calculateArea("mpas_merged", mpa_area_field)
+    # now that we are using just the marine area of the protected area, we should just calculate the total as being the marine area
+    arcpy.CalculateField_management("mpas_merged", mpa_area_field, '!' + mpa_marine_area + '!', 'PYTHON_9.3') 
 
     # JC: intersect mpas and ecosections, then dissolve by mpa and ecosection
     arcpy.Intersect_analysis(["mpas_merged",ecosections_layer], "mpa_ecosect_intersect")
@@ -1414,12 +1416,13 @@ merged_name_field = 'NAME_UID'   # make sure this is unique and does not exist i
 final_mpa_fc_name = 'mpas'
 mpa_subregion_field = 'subregion_mpa'
 mpa_area_attribute_section = 'etp_mpa_area_SECTION'
+mpa_marine_area = 'marine_m2' # this is now required: we have combined terrestrial and marine portions of a protected area, but we are only concerned with the calculation of the marine area
 
 # create the mpa dictionary lookup
 mpa_dict = createMPAdict(source_mxd, merged_name_field)
 
 final_mpa_fc_name = prepareMPAs(source_mxd, sr_code, mpa_area_attribute, mpa_area_attribute_section,
-                                final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL, ecosections_layer)
+                                final_mpa_fc_name, merged_name_field, mpa_name_fields, mpa_subregion_field, subregions_ALL, ecosections_layer, mpa_marine_area)
 
 #####
 ### Load subregional layers into workspace
