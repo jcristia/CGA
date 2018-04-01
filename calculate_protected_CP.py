@@ -230,7 +230,7 @@ cleanUpTempData = False
 # variables below
 #
 
-inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\example_inclusion_matrix.csv'
+inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\inclusion-matrix_SEMI-FINAL_20180328.csv'
 
 ### override_y & _n & _u ###
 #
@@ -255,7 +255,7 @@ inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT
 override_y = False
 override_n = True
 
-override_u = None # This one behaves differently from _y and _n please read above and
+override_u = True # This one behaves differently from _y and _n please read above and
                   # be careful when setting
 
 ### Conservation Priority area overlap ###
@@ -652,7 +652,7 @@ def readMPAInclusionMatrix(mpath):
                 # Get feature class name from header
                 fc_name = header[i]
                 # Set inclusion value to whatever value is in the file unless its blank
-                inclusion_matrix[mpa][fc_name] = row[i].strip() if row[i].strip() in ('Y', 'N', 'U') else None
+                inclusion_matrix[mpa][fc_name] = row[i].strip() if row[i].strip() in ('Y', 'N', 'U', 'Y*', 'Y**', 'Y?', '?', 'Z') else None
                 
     return inclusion_matrix
 
@@ -678,7 +678,7 @@ def shouldInclude(pct_in_mpa, threshold, im, fc, mpa):
         return pct_in_mpa > threshold
 
     # If inclusion value is Y and override is disabled then include it
-    if i_val is 'Y' and not override_y:
+    if i_val in ['Y', 'Y*', 'Y**', 'Z'] and not override_y:
         return True
 
     # See above but for N
@@ -686,7 +686,7 @@ def shouldInclude(pct_in_mpa, threshold, im, fc, mpa):
         return False
 
     # If value is U do what override asks
-    if i_val is 'U' and override_u is not None:
+    if i_val in ['U', '?', 'Y?'] and override_u is not None:
         return override_u
 
     # Otherwise override whatever value is in i_val with conventional test
@@ -1567,7 +1567,7 @@ with open(cpOverlap_DictPath, 'wb') as f:
 # but didn't have spatial data that sufficiently intersected
 for mpa in inclusion_matrix:
     for hu in inclusion_matrix[mpa]:
-        if inclusion_matrix[mpa][hu] == 'Y' or (inclusion_matrix[mpa][hu] == 'U' and override_u is True):  # this OR statement was an addition and has not been tested yet
+        if inclusion_matrix[mpa][hu] in ['Y', 'Y*', 'Y**', 'Z'] or (inclusion_matrix[mpa][hu] in ['U', '?', 'Y?'] and override_u is True):  # this OR statement was an addition and has not been tested yet
             if mpa not in hu_in_mpas:
                 hu_in_mpas[mpa] = {}
 
