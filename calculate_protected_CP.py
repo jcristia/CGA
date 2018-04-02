@@ -197,7 +197,7 @@ output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_File
 #
 ##
 
-complexFeatureClasses = ['mpatt_eco_coarse_bottompatches_data', 'mpatt_eco_coarse_geomorphicunits_data', 'mpatt_eco_coarse_coastalclasses_data']
+complexFeatureClasses = ['eco_coarse_bottompatches_polygons_d', 'eco_coarse_geomorphicunits_polygons_d', 'eco_coarse_coastalclasses_lines_d']
 
 ### cleanUpTempData ###
 #
@@ -330,7 +330,7 @@ def createMPAdict(source_mxd, merged_name_field):
     # Get MPA layers
     mxd = arcpy.mapping.MapDocument(source_mxd)
     layers = arcpy.mapping.ListLayers(mxd)
-    mpa_layers = [lyr for lyr in layers if lyr.isFeatureLayer and lyr.datasetName.startswith('mpatt_mpa_')]
+    mpa_layers = [lyr for lyr in layers if lyr.isFeatureLayer and lyr.datasetName.startswith('mpatt_mpa')]
 
     mpa_dict = {}
 
@@ -358,7 +358,7 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
     # Get MPA layers
     mxd = arcpy.mapping.MapDocument(source_mxd)
     layers = arcpy.mapping.ListLayers(mxd)
-    mpa_layers = [lyr for lyr in layers if lyr.isFeatureLayer and lyr.datasetName.startswith('mpatt_mpa_')]
+    mpa_layers = [lyr for lyr in layers if lyr.isFeatureLayer and lyr.datasetName.startswith('mpatt_mpa')]
 
     # Load layers into workspace (and project)
     working_layers = []
@@ -1383,7 +1383,7 @@ new_scaling_field = 'etp_scaling'
 
 layer_list = arcpy.mapping.ListLayers(arcpy.mapping.MapDocument(source_mxd))
 for lyr in layer_list:
-    if lyr.isFeatureLayer and (lyr.datasetName == 'mpatt_eco_coarse_ecosections_data'):
+    if lyr.isFeatureLayer and (lyr.datasetName == 'eco_coarse_ecosections_polygons_d'):
         ecosections = lyr
 ecosections_layer = loadLayer(source_mxd, ecosections.name, sr_code,
                               new_bc_area_field, new_bc_total_area_field,
@@ -1398,7 +1398,7 @@ ecosections_layer = loadLayer(source_mxd, ecosections.name, sr_code,
 
 layer_list = arcpy.mapping.ListLayers(arcpy.mapping.MapDocument(source_mxd))
 for lyr in layer_list:
-   if lyr.isFeatureLayer and (lyr.datasetName.startswith('mpatt_rgn_subregions')):
+   if lyr.isFeatureLayer and (lyr.datasetName.startswith('rgn_subregions')):
        subregions_ALL = loadRegionLayer(source_mxd, lyr.name,
                                                 sr_code, new_bc_area_field,
                                                 new_bc_total_area_field)
@@ -1430,7 +1430,7 @@ final_mpa_fc_name = prepareMPAs(source_mxd, sr_code, mpa_area_attribute, mpa_are
 
 layer_list = arcpy.mapping.ListLayers(arcpy.mapping.MapDocument(source_mxd))
 layer_list = [lyr for lyr in layer_list if lyr.isFeatureLayer \
-              and (lyr.datasetName.startswith('mpatt_rgn_subregion_'))]
+              and (lyr.datasetName.startswith('rgn_subregion_'))]
 
 rlayers = {}
 
@@ -1464,8 +1464,8 @@ inclusion_matrix = readMPAInclusionMatrix(inclusion_matrix_path)
 # Generate layer list based on dataset names
 layer_list = arcpy.mapping.ListLayers(arcpy.mapping.MapDocument(source_mxd))
 layer_list = [lyr for lyr in layer_list if lyr.isFeatureLayer \
-              and (lyr.datasetName.startswith('mpatt_eco_') \
-                   or lyr.datasetName.startswith('mpatt_hu_'))]
+              and (lyr.datasetName.startswith('eco_') \
+                   or lyr.datasetName.startswith('hu_'))]
 
 arcpy.env.overwriteOutput = True
 
@@ -1497,7 +1497,7 @@ for lyr in layer_list:
                               scaling_dict, scaling_attribute, new_scaling_field,
                               is_complex)
 
-    layer_type = 'cp' if working_layer.startswith('mpatt_eco_') else 'hu'
+    layer_type = 'cp' if working_layer.startswith('eco_') else 'hu'
 
     # Set to default hu/cp presence threshold and overwrite with value in threshold_dict
     # if possible
