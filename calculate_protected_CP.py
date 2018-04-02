@@ -164,7 +164,7 @@ mpa_name_fields = ['UID']
 # doesn't exist then you will miss the first row of your data.
 ##
 
-imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\example_interaction_matrix.csv'
+imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\interactionmatrix_SAMPLE_20180329.csv'
 
 ### output1_path & output2_path ###
 #
@@ -1061,8 +1061,8 @@ def loadInteractionsMatrix(imatrix_path):
             # without the s
             #
             hu = regex.sub('', row[0]).lower()
-            cp = regex.sub('', row[2]).lower()
-            interaction = row[3]
+            cp = regex.sub('', row[1]).lower()
+            interaction = row[2]
 
             # The file uses a different conventions than the docs
             # I was working off of

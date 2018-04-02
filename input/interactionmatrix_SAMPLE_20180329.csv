@@ -1,0 +1,413 @@
+Sub-Activity,SpeciesCommonName,ConsequenceScore
+Trolling/Rod and Reel,Albacoretuna,LOW
+Trolling/Rod and Reel,Albacoretuna,LOW
+Floating Raft/Floating Bag Suspension,AncientMurrelet,LOW
+Bottom Trawling,Arrowtoothflounder,LOW
+Longlines,BaldEagle,LOW
+NA,BaldEagle,MODERATE
+NA,BaldEagle,MODERATE
+Catastrophic oil spills,BaldEagle,MODERATE
+Trap,BambooCoral,LOW
+Trap,BambooCoral,LOW
+Bottom Trawling,Bamboocoral,HIGH
+Bottom Longline,Bamboocoral,MODERATE
+Catastrophic oil spills,BarrowsGoldeneye,HIGH
+Mid-water gill-nets,Baskingshark,HIGH
+Purse Seine,Baskingshark,HIGH
+Bottom Trawling,Baskingshark,HIGH
+Bottom Longline,Baskingshark,HIGH
+Open Net Pens,Baskingshark,HIGH
+Trolling/Rod and Reel,Bigeyethreshershark,LOW
+Trolling/Rod and Reel,Bigeyethreshershark,LOW
+Bottom Trawling,Bigeyethreshershark,LOW
+Bottom Trawling,Bigskate,LOW
+Bottom Longline,Bigskate,LOW
+NA,Blackchiton,HIGH
+NA,Blackchiton,HIGH
+Bottom Longline,Blackfootedalbatross,HIGH
+Longlines,BlackOystercatcher,MODERATE
+Floating Raft/Floating Bag Suspension,BlackOystercatcher,MODERATE
+Bottom Trawling,Blackskate/sandpaperskate,LOW
+Catastrophic oil spills,Blackturnstone,HIGH
+Trolling/Rod and Reel,Blueshark,LOW
+Trolling/Rod and Reel,Blueshark,LOW
+Bottom Trawling,Blueshark,LOW
+Bottom Longline,Blueshark,LOW
+Vessel Strikes,Bluewhale,MODERATE
+Vessel Noise,Bluewhale,MODERATE
+Vessel Sonar,Bluewhale,HIGH
+NA,Bluewhale,MODERATE
+NA,Bluewhale,MODERATE
+Bottom Trawling,Bluntnosesixgillshark,MODERATE
+Bottom Trawling,Bocaccio,LOW
+Kelp Harvest,Bocaccio,MODERATE
+Trap,Boxcrabs,MODERATE
+Trap,Boxcrabs,MODERATE
+Mid-water gill-nets,Brandt’scormorant,HIGH
+Beach Seeding,Brandt’sCormorant,MODERATE
+Longlines,Brandt’sCormorant,MODERATE
+Floating Raft/Floating Bag Suspension,Brandt’sCormorant,MODERATE
+Beach Seeding,Brant,LOW
+Longlines,Brant,LOW
+Floating Raft/Floating Bag Suspension,Brant,LOW
+Bottom Trawling,Browncatshark,MODERATE
+NA,Butterclam,LOW
+NA,Butterclam,LOW
+Bottom Longline,Californiagull,MODERATE
+Beach Seeding,CaliforniaGull,LOW
+Longlines,CaliforniaGull,LOW
+Floating Raft/Floating Bag Suspension,CaliforniaGull,LOW
+Bottom Trawling,Californiasealion,LOW
+Open Net Pens,Californiasealion,MODERATE
+Vessel Sonar,Californiasealion,MODERATE
+Mid-water gill-nets,Cassin’sauklets,MODERATE
+Mid-water gill-nets,Commonmurres,HIGH
+Extraction of Oil and Gas,Commonmurres,MODERATE
+Trap,Coonstripeshrimp,HIGH
+Trap,Coonstripeshrimp,HIGH
+Mid-water gill-nets,Dallsporpoise,LOW
+Bottom Trawling,Dallsporpoise,LOW
+Bottom Trawling,Darksplotchedrockfish,HIGH
+Mid-water gill-nets,DoublecrestedCormorant,MODERATE
+Beach Seeding,DoublecrestedCormorant,LOW
+Longlines,DoublecrestedCormorant,LOW
+Floating Raft/Floating Bag Suspension,DoublecrestedCormorant,LOW
+Bottom Trawling,Doversole,MODERATE
+Trap,Dungenesscrab,MODERATE
+Trap,Dungenesscrab,MODERATE
+Log storage and handling,Dungenesscrab,MODERATE
+Beach Seeding,Eelgrass,MODERATE
+Longlines,Eelgrass,MODERATE
+Floating Raft/Floating Bag Suspension,Eelgrass,MODERATE
+Anchoring,Eelgrass,HIGH
+NA,Eschrichtiusrobustus,MODERATE
+Mid-water gill-nets,Eulachon,HIGH
+NA,Eulachon,HIGH
+NA,Eulachon,HIGH
+Vessel Strikes,FinWhale,HIGH
+Vessel Noise,FinWhale,MODERATE
+NA,Finwhale,MODERATE
+NA,FinWhale,MODERATE
+Seismic surveys,FinWhale,MODERATE
+Bottom Trawling,Flatheadsole,MODERATE
+Longlines,Fucus,LOW
+Floating Raft/Floating Bag Suspension,Fucus,LOW
+NA,Fucus,HIGH
+NA,Geoduckclam,LOW
+NA,Geoduckclam,LOW
+Longlines,Geoduckclam,LOW
+Floating Raft/Floating Bag Suspension,Geoduckclam,LOW
+Trap,GiantPacificOctopus,MODERATE
+Trap,GiantPacificOctopus,MODERATE
+NA,GiantPacificOctopus,LOW
+NA,GiantPacificOctopus,LOW
+NA,Giantredseacucumber,LOW
+NA,Giantredseacucumber,LOW
+Bottom Longline,Glaucouswingedgull,MODERATE
+Beach Seeding,GlaucouswingedGull,LOW
+Longlines,GlaucouswingedGull,LOW
+Floating Raft/Floating Bag Suspension,GlaucouswingedGull,LOW
+Open Net Pens,GreatBlueHeron,MODERATE
+Beach Seeding,GreatBlueHeron,LOW
+Longlines,GreatBlueHeron,LOW
+Floating Raft/Floating Bag Suspension,GreatBlueHeron,LOW
+NA,Greenseaurchin,LOW
+NA,Greenseaurchin,LOW
+Mid-water gill-nets,Greensturgeon,MODERATE
+Bottom Trawling,Greensturgeon,MODERATE
+NA,Greensturgeon,MODERATE
+Sewage effluent from terrestrial outfall areas,Greensturgeon,MODERATE
+Mid-water gill-nets,Greywhales,LOW
+Trolling/Rod and Reel,Greywhales,LOW
+Trolling/Rod and Reel,Greywhales,LOW
+Purse Seine,Greywhales,LOW
+Trap,Greywhales,LOW
+Trap,Greywhales,LOW
+Open Net Pens,Greywhales,MODERATE
+Longlines,Greywhales,LOW
+Floating Raft/Floating Bag Suspension,Greywhales,LOW
+Vessel Strikes,Greywhales,MODERATE
+Vessel Noise,Greywhales,MODERATE
+Vessel Sonar,Greywhales,MODERATE
+NA,Greywhales,MODERATE
+NA,Grizzlybears,MODERATE
+NA,Gumbootchiton,LOW
+NA,Gumbootchiton,LOW
+Mid-water gill-nets,Harbourporpoise,HIGH
+Trolling/Rod and Reel,Harbourporpoise,LOW
+Trolling/Rod and Reel,Harbourporpoise,LOW
+Bottom Trawling,Harbourporpoise,LOW
+Open Net Pens,Harbourporpoise,MODERATE
+"Wind turbines in shallow, transitional and deep waters",Harbourporpoise,MODERATE
+Mid-water gill-nets,Harbourseal,LOW
+Trolling/Rod and Reel,Harbourseal,LOW
+Trolling/Rod and Reel,Harbourseal,LOW
+Bottom Trawling,Harbourseal,LOW
+Bottom Longline,Harbourseal,LOW
+Open Net Pens,Harbourseal,HIGH
+Tidal Stream,Harbourseal,MODERATE
+Catastrophic oil spills,HarlequinDuck,HIGH
+Bottom Longline,Herringgull,MODERATE
+NA,Horseclam,LOW
+NA,Horseclam,LOW
+Trap,HumpbackShrimp,HIGH
+Trap,HumpbackShrimp,HIGH
+Bottom Trawling,Humpbackshrimp,MODERATE
+Mid-water gill-nets,Humpbackwhale,MODERATE
+Purse Seine,Humpbackwhale,LOW
+Trap,Humpbackwhale,MODERATE
+Trap,Humpbackwhale,MODERATE
+Longlines,HumpbackWhale,LOW
+Floating Raft/Floating Bag Suspension,HumpbackWhale,LOW
+Vessel Strikes,HumpbackWhale,MODERATE
+Vessel Noise,HumpbackWhale,MODERATE
+Vessel Sonar,HumpbackWhale,HIGH
+NA,HumpbackWhale,MODERATE
+NA,HumpbackWhale,MODERATE
+Seismic surveys,HumpbackWhale,MODERATE
+Kelp Harvest,kelpgreenling,MODERATE
+Kelp Harvest,kelpperch,MODERATE
+Trap,KingCrabs,MODERATE
+Trap,KingCrabs,MODERATE
+Mid-water gill-nets,Leatherbackseaturtle,MODERATE
+Purse Seine,Leatherbackseaturtle,MODERATE
+Trap,Leatherbackseaturtle,MODERATE
+Trap,Leatherbackseaturtle,MODERATE
+Longlines,Leatherbackseaturtle,MODERATE
+Floating Raft/Floating Bag Suspension,Leatherbackseaturtle,MODERATE
+Vessel Strikes,Leatherbackseaturtle,MODERATE
+NA,Leatherbackseaturtle,MODERATE
+Pelagic and mid-water trawls,Lingcod,LOW
+Bottom Trawling,Lingcod,LOW
+Bottom Longline,Lingcod,LOW
+NA,Lingcod,MODERATE
+Fish Stocking,Lingcod,LOW
+NA,Littleneckclam,MODERATE
+NA,Littleneckclam,MODERATE
+Bottom Trawling,Longnoseskate,HIGH
+Bottom Longline,Longnoseskate,HIGH
+Bottom Trawling,Longspinethornyhead,HIGH
+Catastrophic oil spills,Longtailedduck,HIGH
+Beach Seeding,"Loon,unspecified",LOW
+Longlines,"Loon,unspecified",LOW
+Floating Raft/Floating Bag Suspension,"Loon,unspecified",LOW
+Other Vessel Interactions,"Loon,unspecified",MODERATE
+NA,Manilaclam,LOW
+NA,Manilaclam,LOW
+Mid-water gill-nets,Marbledmurrelet,HIGH
+Trolling/Rod and Reel,Marbledmurrelet,MODERATE
+Trolling/Rod and Reel,Marbledmurrelet,MODERATE
+Purse Seine,Marbledmurrelet,MODERATE
+Beach Seeding,MarbledMurrelet,MODERATE
+Longlines,MarbledMurrelet,MODERATE
+Floating Raft/Floating Bag Suspension,MarbledMurrelet,MODERATE
+Other Vessel Interactions,MarbledMurrelet,MODERATE
+NA,MarbledMurrelet,MODERATE
+NA,MarbledMurrelet,MODERATE
+Catastrophic oil spills,Marbledmurrelet,HIGH
+Beach Seeding,MewGull,LOW
+Longlines,MewGull,LOW
+Floating Raft/Floating Bag Suspension,MewGull,LOW
+Beach Seeding,Nativelittleneckclam,MODERATE
+NA,Northernabalone,HIGH
+NA,Northernabalone,HIGH
+NA,Northernabalone,HIGH
+NA,Northernabalone,HIGH
+Fish Stocking,Northernabalone,MODERATE
+Purse Seine,Northernanchovy,LOW
+Bottom Trawling,Northernelephantseal,LOW
+Hook and Line,NorthernFulmar,HIGH
+Hook and Line,NorthernFulmar,HIGH
+Bottom Trawling,Northernfurseal,MODERATE
+Bottom Trawling,Northernpinkshrimp,LOW
+Mid-water gill-nets,Orca/KillerWhale,LOW
+Trolling/Rod and Reel,Orca/KillerWhale,LOW
+Trolling/Rod and Reel,Orca/KillerWhale,LOW
+Purse Seine,Orca/KillerWhale,LOW
+Bottom Trawling,Orca/KillerWhale,LOW
+Bottom Longline,Orca/KillerWhale,LOW
+Open Net Pens,Orca/KillerWhale,HIGH
+Longlines,Orca/KillerWhale,MODERATE
+Floating Raft/Floating Bag Suspension,Orca/KillerWhale,MODERATE
+Vessel Strikes,Orca/KillerWhale,LOW
+Vessel Noise,Orca/KillerWhale,MODERATE
+Vessel Sonar,Orca/KillerWhale,HIGH
+NA,Orca/KillerWhale,MODERATE
+NA,Orca/KillerWhale,MODERATE
+Catastrophic oil spills,Orca/KillerWhale,HIGH
+Tidal Stream,Orca/KillerWhale,MODERATE
+Dumping of dredged soils and other materials,Orca/KillerWhale,MODERATE
+NA,Otherepifaunalbivalves:PinkScallopandSpinyScallop,MODERATE
+NA,Otherepifaunalbivalves:PinkScallopandSpinyScallop,MODERATE
+Bottom Trawling,Pacificcod,MODERATE
+Kelp Harvest,Pacificcod,MODERATE
+Bottom Trawling,Pacifichake,LOW
+Bottom Trawling,Pacifichalibut,LOW
+Bottom Longline,Pacifichalibut,LOW
+Mid-water gill-nets,Pacificherring,MODERATE
+Purse Seine,Pacificherring,MODERATE
+Kelp Harvest,PacificHerring,MODERATE
+Pelagic and mid-water trawls,Pacificoceanperch,MODERATE
+Bottom Trawling,Pacificoceanperch,MODERATE
+Purse Seine,Pacificsardine,MODERATE
+Bottom Trawling,Pacificsaury,LOW
+Bottom Trawling,Pacifictomcod,LOW
+Mid-water gill-nets,Pacificwhitesideddolphin,LOW
+Bottom Trawling,Pacificwhitesideddolphin,LOW
+Open Net Pens,Pacificwhitesideddolphin,MODERATE
+Mid-water gill-nets,Pelagiccormorant,MODERATE
+Beach Seeding,PelagicCormorant,MODERATE
+Longlines,PelagicCormorant,MODERATE
+Floating Raft/Floating Bag Suspension,PelagicCormorant,MODERATE
+NA,Pelagiccormorant,MODERATE
+NA,Pelagiccormorant,MODERATE
+NA,PeregrineFalcon,MODERATE
+NA,PeregrineFalcon,MODERATE
+Bottom Trawling,Petralesole,MODERATE
+Mid-water gill-nets,Pinksalmon,LOW
+Purse Seine,Pinksalmon,LOW
+Fish Stocking,Pinksalmon,HIGH
+Kelp Harvest,Quillback,MODERATE
+NA,Razorclam,LOW
+NA,Razorclam,LOW
+Trap,Red/WhitetreeCoral,LOW
+Trap,Red/WhitetreeCoral,LOW
+Bottom Trawling,Red/whitetreecoral,HIGH
+Bottom Longline,Red/whitetreecoral,MODERATE
+Trap,RedRockCrab,MODERATE
+Trap,RedRockCrab,MODERATE
+Longlines,RedRockCrab,LOW
+Floating Raft/Floating Bag Suspension,RedRockCrab,LOW
+NA,Redseaurchin,LOW
+NA,Redseaurchin,LOW
+Mid-water gill-nets,Rhinocerosauklets,HIGH
+Mid-water gill-nets,Rissosdolphin,LOW
+Bottom Trawling,Rissosdolphin,LOW
+Open Net Pens,Riverotter,LOW
+Kelp Harvest,rockfishBlack,MODERATE
+Pelagic and mid-water trawls,rockfishCanary,MODERATE
+Bottom Trawling,rockfishCanary,LOW
+Bottom Longline,rockfishchina,HIGH
+Kelp Harvest,rockfishchina,MODERATE
+Trap,rockfishCopper,MODERATE
+Trap,rockfishCopper,MODERATE
+Bottom Longline,rockfishCopper,HIGH
+Kelp Harvest,rockfishCopper,MODERATE
+Pelagic and mid-water trawls,rockfishDarkblotched,HIGH
+Pelagic and mid-water trawls,rockfishGreenstriped,MODERATE
+Bottom Trawling,rockfishGreenstriped,MODERATE
+Trap,rockfishQuillback,MODERATE
+Trap,rockfishQuillback,MODERATE
+Bottom Longline,rockfishQuillback,MODERATE
+Pelagic and mid-water trawls,rockfishRedbanded,HIGH
+Bottom Trawling,rockfishRedbanded,HIGH
+Bottom Longline,rockfishRedbanded,HIGH
+Pelagic and mid-water trawls,rockfishRedstripe,HIGH
+Bottom Trawling,rockfishRedstripe,HIGH
+Pelagic and mid-water trawls,rockfishRougheye,HIGH
+Bottom Trawling,rockfishRougheye,HIGH
+Bottom Longline,rockfishRougheye,HIGH
+Pelagic and mid-water trawls,rockfishShortraker,HIGH
+Bottom Trawling,rockfishShortraker,HIGH
+Bottom Longline,rockfishShortraker,HIGH
+Pelagic and mid-water trawls,rockfishsilvergray,LOW
+Bottom Trawling,rockfishsilvergray,LOW
+Pelagic and mid-water trawls,rockfishwidow,HIGH
+Bottom Trawling,rockfishwidow,HIGH
+Trap,rockfishYelloweye,LOW
+Trap,rockfishYelloweye,LOW
+Bottom Longline,rockfishYelloweye,HIGH
+Pelagic and mid-water trawls,rockfishYellowtail,LOW
+Bottom Trawling,rockfishYellowtail,LOW
+Bottom Longline,rockfishYellowtail,LOW
+Kelp Harvest,rockfishYellowtail,MODERATE
+Bottom Trawling,Roughtailskate,LOW
+Trap,Sablefish,LOW
+Trap,Sablefish,LOW
+Bottom Trawling,Sablefish,LOW
+Bottom Longline,Sablefish,LOW
+Trolling/Rod and Reel,salmonchinook,LOW
+Trolling/Rod and Reel,salmonchinook,LOW
+Open Net Pens,salmonChinook,MODERATE
+Fish Stocking,salmonchinook,HIGH
+Mid-water gill-nets,salmonchum,MODERATE
+Purse Seine,salmonchum,MODERATE
+Open Net Pens,salmonChum,MODERATE
+Fish Stocking,salmonchum,HIGH
+Trolling/Rod and Reel,salmoncoho,LOW
+Trolling/Rod and Reel,salmoncoho,LOW
+Open Net Pens,salmonCoho,HIGH
+Fish Stocking,salmoncoho,HIGH
+Open Net Pens,salmonPink,HIGH
+Mid-water gill-nets,Salmonshark,LOW
+Purse Seine,Salmonshark,LOW
+Bottom Trawling,Salmonshark,LOW
+NA,Salmonshark,LOW
+Mid-water gill-nets,salmonSockeye,MODERATE
+Purse Seine,salmonSockeye,MODERATE
+Open Net Pens,salmonSockeye,HIGH
+Fish Stocking,salmonSockeye,HIGH
+NA,Sandlance,LOW
+NA,Sandlance,LOW
+Seaweed Harvest,Sandlance,MODERATE
+Mid-water gill-nets,SeaOtter,MODERATE
+Trap,SeaOtter,MODERATE
+Trap,SeaOtter,MODERATE
+Open Net Pens,SeaOtter,MODERATE
+Catastrophic oil spills,SeaOtter,HIGH
+Hook and Line,Shinerperch,LOW
+Hook and Line,Shinerperch,LOW
+Bottom Trawling,Shortspinethornyhead,HIGH
+Bottom Trawling,Sidestripeshrimp,LOW
+Trap,Smoothpinkshrimp,MODERATE
+Trap,Smoothpinkshrimp,MODERATE
+Bottom Trawling,Smoothpinkshrimp,LOW
+Bottom Trawling,soleEnglish,LOW
+Bottom Trawling,solerex,MODERATE
+Bottom Trawling,soleRock,LOW
+Bottom Trawling,Soupfinortopeshark,MODERATE
+Bottom Longline,Soupfinortopeshark,MODERATE
+Bottom Longline,Spermwhales,MODERATE
+Open Net Pens,Spermwhales,MODERATE
+Longlines,Spermwhales,LOW
+Floating Raft/Floating Bag Suspension,Spermwhales,LOW
+Vessel Sonar,Spermwhales,MODERATE
+Bottom Trawling,Spinydogfish,LOW
+Bottom Longline,Spinydogfish,LOW
+Trap,SpotPrawn,LOW
+Trap,SpotPrawn,LOW
+Trap,Squatlobster,MODERATE
+Trap,Squatlobster,MODERATE
+Bottom Trawling,Starryflounder,MODERATE
+Fish Stocking,Steelhead,HIGH
+Trolling/Rod and Reel,Stellarsealion,MODERATE
+Trolling/Rod and Reel,Stellarsealion,MODERATE
+Bottom Trawling,Stellarsealion,MODERATE
+Bottom Longline,Stellarsealion,LOW
+Open Net Pens,Stellersealion,MODERATE
+Kelp Harvest,StripedSeaperch,MODERATE
+Mid-water gill-nets,Surfsmelt,MODERATE
+Mid-water gill-nets,Surfsmelt,MODERATE
+NA,Surfsmelt,MODERATE
+NA,Surfsmelt,MODERATE
+Seaweed Harvest,Surfsmelt,MODERATE
+Trap,TannerCrabs,MODERATE
+Trap,TannerCrabs,MODERATE
+Longlines,Thayer’sGull,LOW
+Floating Raft/Floating Bag Suspension,Thayer’sGull,LOW
+Beach Seeding,ThayersGull,LOW
+Bottom Longline,Tigerrockfish,HIGH
+NA,Tuftedpuffins,HIGH
+NA,Tuftedpuffins,HIGH
+Mid-water gill-nets,UnspecifiedCormorant,HIGH
+Kelp Harvest,UnspecifiedCormorant,MODERATE
+NA,Varnishclam,LOW
+NA,Varnishclam,LOW
+Bottom Trawling,Walleyepollock,LOW
+Bottom Trawling,Whiteshark,LOW
+Bottom Trawling,Wolfeel,LOW
+Hook and Line,Wolfeel,LOW
+Hook and Line,Wolfeel,LOW
+Pelagic and mid-water trawls,Yellowmouthrockfish,MODERATE
+Bottom Trawling,Yellowmouthrockfish,MODERATE
+Open Net Pens,ZosteramarinaandZjaponica,HIGH
