@@ -164,7 +164,7 @@ mpa_name_fields = ['UID']
 # doesn't exist then you will miss the first row of your data.
 ##
 
-imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\interactionmatrix_SAMPLE_20180329.csv'
+imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\interactionmatrix_FINAL_20180404.csv'
 
 ### output1_path & output2_path ###
 #
@@ -207,7 +207,7 @@ complexFeatureClasses = ['eco_coarse_bottompatches_polygons_d', 'eco_coarse_geom
 #
 ##
 
-cleanUpTempData = False
+cleanUpTempData = True
 
 ### inclusion_matrix_path ###
 #
@@ -230,7 +230,7 @@ cleanUpTempData = False
 # variables below
 #
 
-inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\inclusion-matrix_SEMI-FINAL_20180328.csv'
+inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\inclusion-matrix_FINAL_20180404.csv'
 
 ### override_y & _n & _u ###
 #
@@ -1060,17 +1060,20 @@ def loadInteractionsMatrix(imatrix_path):
             # mpatt dataset is called mpatt_eco_birds_tuftedpuffin_colonies_seasketch
             # without the s
             #
-            hu = regex.sub('', row[0]).lower()
-            cp = regex.sub('', row[1]).lower()
-            interaction = row[2]
+            hu = regex.sub('', row[3]).lower()
+            cp = regex.sub('', row[2]).lower()
+            interaction = row[5]
 
             # The file uses a different conventions than the docs
             # I was working off of
-            if interaction == 'VERY HIGH':
+            if interaction == 'VERY HIGH' or interaction == 'Major Negative':
                 interaction = 'HIGH'
                 
-            if interaction == 'MEDIUM':
+            if interaction == 'MEDIUM' or interaction == 'Minor Negative':
                 interaction = 'MODERATE'
+
+            if interaction == 'Negligible':
+                interaction = 'LOW'
 
             if cp not in imatrix:
                 imatrix[cp] = {}
@@ -1086,9 +1089,9 @@ def loadInteractionsMatrix(imatrix_path):
 #
 
 def determineInteraction(imatrix, cp, hu):
-    cp = cp.split('_')[3]
-    hu = hu.split('_')[2]
-    
+    cp = cp.split('_')[2]
+    hu = hu.split('_')[3]
+
     if cp in imatrix:
         if hu in imatrix[cp]:
             return imatrix[cp][hu]
@@ -1096,7 +1099,6 @@ def determineInteraction(imatrix, cp, hu):
         #print cp + " not in imatrix"
         # I don't want to make this an error since it is possible that a cp has no interactions
         # Therefore it's very important that names match between files and the imatrix
-
     return None
 
 ## identifyInteractions ##
@@ -1126,7 +1128,6 @@ def identifyInteractions(hu_in_mpas, cp_in_mpas, imatrix):
                         
                 for hu in hu_in_mpas[mpa]:
                     interaction = determineInteraction(imatrix, cp, hu)
-    
                     if interaction is not None:
                         cp_in_mpa_i[mpa][cp]['interactions'].append(interaction)
 
@@ -1489,7 +1490,8 @@ for lyr in layer_list:
     is_complex = False
     for fc in complexFeatureClasses:
         if lyr.datasetName.startswith(fc):
-            is_complex = True 
+            is_complex = True
+            break 
     #is_complex = lyr.name in complexFeatureClasses
 
     working_layer = loadLayer(source_mxd, lyr.name, sr_code,
