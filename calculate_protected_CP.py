@@ -57,7 +57,7 @@ detailed_status = True
 #
 ##
 
-source_mxd = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\spatial\CP_HU_MPA_Layers.mxd'
+source_mxd = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\spatial\CP_HU_MPA_Layers.mxd'
 
 ### scaling_attribute & scaling_attribute_file ###
 #
@@ -93,7 +93,7 @@ scaling_attribute_file = None
 #
 ##
 
-working_gdb_folder = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\spatial\working_TEMP'
+working_gdb_folder = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\spatial\working_TEMP'
 
 ### sr_code ###
 #
@@ -164,7 +164,7 @@ mpa_name_fields = ['UID']
 # doesn't exist then you will miss the first row of your data.
 ##
 
-imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\interactionmatrix_FINAL_20180404.csv'
+imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\interactionmatrix_FINAL_20180404.csv'
 
 ### output1_path & output2_path ###
 #
@@ -172,9 +172,9 @@ imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_File
 #
 ##
 
-output1_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table1.csv'
+output1_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\output\table1.csv'
 
-output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table2.csv'
+output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\output\table2.csv'
 
 ### output3_path ###
 #
@@ -183,7 +183,7 @@ output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_File
 #
 ##
 
-output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\output\table3.csv'
+output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\output\table3.csv'
 
 ### complexFeatureClasses ###
 #
@@ -207,7 +207,7 @@ complexFeatureClasses = ['eco_coarse_bottompatches_polygons_d', 'eco_coarse_geom
 #
 ##
 
-cleanUpTempData = True
+cleanUpTempData = False
 
 ### inclusion_matrix_path ###
 #
@@ -230,7 +230,7 @@ cleanUpTempData = True
 # variables below
 #
 
-inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\inclusion-matrix_FINAL_20180404.csv'
+inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\inclusion-matrix_FINAL_20180404.csv'
 
 ### override_y & _n & _u ###
 #
@@ -268,7 +268,7 @@ override_u = True # This one behaves differently from _y and _n please read abov
 # on every CP on every run.
 
 cpOverlap_newDict = True
-cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180206\input\cpOverlap.csv'
+cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\cpOverlap.csv'
 
 
 ######################
@@ -480,7 +480,7 @@ def buildScalingDict(scaling_attribute_file):
 #
 
 def loadLayer(source_mxd, layer_name, sr_code, new_bc_area_field, new_bc_total_area_field,
-              scaling_dict, scaling_attribute, new_scaling_field, is_complex):
+              scaling_dict, scaling_attribute, new_scaling_field, is_complex, density_field):
     if detailed_status:
         print 'Loading ' + layer_name
     
@@ -524,7 +524,7 @@ def loadLayer(source_mxd, layer_name, sr_code, new_bc_area_field, new_bc_total_a
         arcpy.CalculateField_management(working_layer, new_scaling_field,
                                         '1', 'PYTHON_9.3')
     
-    keep_fields = [new_scaling_field, 'ecosection'] # JC: added ecosection to this list
+    keep_fields = [new_scaling_field, 'ecosection', density_field]
 
     # Delete fields that aren't important
     for field in arcpy.ListFields(working_layer):
@@ -706,7 +706,7 @@ def shouldInclude(pct_in_mpa, threshold, im, fc, mpa):
 def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scaling_attribute,
                      mpa_name_attribute, mpa_area_attribute, new_bc_total_area_field,
                      pct_of_mpa_field, pct_of_total_field, mpa_subregion_field, mpa_area_attribute_section,
-                     clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, feature_count_field):
+                     clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, feature_count_field, density_field, value_type):
             
     working_intersect = base_layer + '_Intersect'
 
@@ -722,8 +722,29 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
     arcpy.CalculateField_management(working_intersect, clipped_adjusted_area,
                                     '!shape.area!*!{0}!'.format(scaling_attribute), 'PYTHON_9.3')
 
+    # if it is a density/diversity based feature, recalculate totals
+    if value_type == 'density':
+        with arcpy.da.UpdateCursor(working_intersect, [density_field, clipped_adjusted_area, new_bc_area_field, new_bc_total_area_field]) as cursor:
+            for row in cursor:
+                if row[1] != row[2]:
+                    newValue = (row[1]/row[2]) * row[0]  # newValue = (newarea/oldarea) * value
+                    row[1] = newValue
+                    row[2] = row[0] # make the feature area the original density value
+                else:
+                    row[1] = row[0]
+                    row[2] = row[0]
+                cursor.updateRow(row)
+        # then redo total area with new_bc_area_field
+        total_area = calculateTotalArea(working_intersect, new_bc_area_field)
+        arcpy.CalculateField_management(working_intersect, new_bc_total_area_field, total_area, 'PYTHON_9.3')
+
+
     # add feature count attribute to determine how many unique features of a cp fall within an mpa
     # intersect will cut overlapping features up, so to get a count we need to identify by unique FID
+
+    # 20180417 - TO FIX FEATURE COUNT ISSUE I could first dissolve by intersect_field, mpa_name, and ecosection
+    # THEN I would calculate field to 1
+    # THEN I would dissolve again and sum the feature_count_field
 
     arcpy.AddField_management(working_intersect, feature_count_field, 'SHORT')
 
@@ -831,7 +852,7 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
 
 def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                        pct_of_total_field, pct_of_mpa_field, mpa_name_attribute,
-                       scaling_attribute, threshold, subregion, imatrix, mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, feature_count_field):
+                       scaling_attribute, threshold, subregion, imatrix, mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, feature_count_field, density_field, value_type):
     mpas = {}
     sliver_freq = {} # added 20180205 to get sliver frequencies
 
@@ -852,7 +873,7 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                                        scaling_attribute, mpa_name_attribute, mpa_area_attribute,
                                        new_bc_total_area_field, pct_of_mpa_field, pct_of_total_field,
                                        mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal,
-                                      pct_of_mpa_field_Total, feature_count_field)
+                                      pct_of_mpa_field_Total, feature_count_field, density_field, value_type)
 
     # Read the statistics for the whole region into a dict
     with arcpy.da.SearchCursor(
@@ -929,7 +950,7 @@ def buildOverlapDict(cpOverlap_DictPath, cp_area_overlap_dict):
 # This is done to get the total area of a cp within each subregion/ecosection
 ##
 
-def calcCPlyrOverlap(cp_area_overlap_dict, working_layer, ecosections_layer, subregions_ALL):
+def calcCPlyrOverlap(cp_area_overlap_dict, working_layer, ecosections_layer, subregions_ALL, density_field, value_type):
     
     # intersect
     subr_union = working_layer + '_subUnion'
@@ -964,6 +985,38 @@ def calcCPlyrOverlap(cp_area_overlap_dict, working_layer, ecosections_layer, sub
     arcpy.AddField_management(ecos_union, ecosub_area_field, "DOUBLE")
     arcpy.CalculateField_management(subr_union, ecosub_area_field, '!shape.area!', 'PYTHON_9.3')
     arcpy.CalculateField_management(ecos_union, ecosub_area_field, '!shape.area!', 'PYTHON_9.3')
+
+
+    ## if it is a density/diversity based feature, recalculate totals
+    if value_type == 'density':
+        with arcpy.da.UpdateCursor(subr_union, [density_field, ecosub_area_field, new_bc_area_field, new_bc_total_area_field]) as cursor:
+            for row in cursor:
+                if row[1] != row[2]:
+                    newValue = (row[1]/row[2]) * row[0]  # newValue = (newarea/oldarea) * value
+                    row[1] = newValue
+                    row[2] = row[0] # make the feature area the original density value
+                else:
+                    row[1] = row[0]
+                    row[2] = row[0]
+                cursor.updateRow(row)
+        # then redo total area with new_bc_area_field
+        total_area = calculateTotalArea(subr_union, new_bc_area_field)
+        arcpy.CalculateField_management(subr_union, new_bc_total_area_field, total_area, 'PYTHON_9.3')
+
+    if value_type == 'density':
+        with arcpy.da.UpdateCursor(ecos_union, [density_field, ecosub_area_field, new_bc_area_field, new_bc_total_area_field]) as cursor:
+            for row in cursor:
+                if row[1] != row[2]:
+                    newValue = (row[1]/row[2]) * row[0]  # newValue = (newarea/oldarea) * value
+                    row[1] = newValue
+                    row[2] = row[0] # make the feature area the original density value
+                else:
+                    row[1] = row[0]
+                    row[2] = row[0]
+                cursor.updateRow(row)
+        # then redo total area with new_bc_area_field
+        total_area = calculateTotalArea(ecos_union, new_bc_area_field)
+        arcpy.CalculateField_management(ecos_union, new_bc_total_area_field, total_area, 'PYTHON_9.3')
 
     # Dissolve by ecosection/subregion field summing ecosub_area_field
     subr_dissolved = working_layer + '_subDissolved'
@@ -1389,7 +1442,7 @@ for lyr in layer_list:
 ecosections_layer = loadLayer(source_mxd, ecosections.name, sr_code,
                               new_bc_area_field, new_bc_total_area_field,
                               None, scaling_attribute, new_scaling_field,
-                              None)
+                              None, "area")
 
 #####
 ### Load subregional layer into workspace
@@ -1477,6 +1530,7 @@ pct_of_mpa_field = 'pct_of_mpa'
 clipped_adj_area_mpaTotal = 'etp_ac_area_adj_mpaTotal'
 pct_of_mpa_field_Total = 'pct_of_mpa_Total'
 feature_count_field = "feature_count"
+density_field = "value"
 
 hu_in_mpas,cp_in_mpas = {}, {}
 percent_overlap = {}
@@ -1497,7 +1551,7 @@ for lyr in layer_list:
     working_layer = loadLayer(source_mxd, lyr.name, sr_code,
                               new_bc_area_field, new_bc_total_area_field,
                               scaling_dict, scaling_attribute, new_scaling_field,
-                              is_complex)
+                              is_complex, density_field)
 
     layer_type = 'cp' if working_layer.startswith('eco_') else 'hu'
 
@@ -1513,17 +1567,24 @@ for lyr in layer_list:
     rlayer = rlayers[subregion] if subregion in rlayers else None
     subregion = 'region' if rlayer is None else subregion
     
+    # determine if layer values are based on area or density/diversity
+    value_type = 'area'
+    for field in arcpy.ListFields(working_layer):
+        if field.name == density_field:
+            value_type = 'density'
+            break
+
     # find area of cp in each ecosection and subregion
     if layer_type == 'cp' and working_layer not in cp_area_overlap_dict:
         cp_area_overlap_dict = calcCPlyrOverlap(cp_area_overlap_dict, working_layer,
-                         ecosections_layer, subregions_ALL)
-
+                         ecosections_layer, subregions_ALL, density_field, value_type)
+    
     # Determine if in which MPAs and calculate statistics
     mpa_presence, sliver_freq = calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                                       pct_of_total_field, pct_of_mpa_field, merged_name_field,
                                       new_scaling_field, threshold, subregion, inclusion_matrix,
                                       mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal,
-                                      pct_of_mpa_field_Total, feature_count_field)
+                                      pct_of_mpa_field_Total, feature_count_field, density_field, value_type)
 
 
     # If subregion fc split off that subregion tag on the fc name
