@@ -742,11 +742,7 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
     # add feature count attribute to determine how many unique features of a cp fall within an mpa
     # intersect will cut overlapping features up, so to get a count we need to identify by unique FID
 
-    # 20180417 - TO FIX FEATURE COUNT ISSUE I could first dissolve by intersect_field, mpa_name, and ecosection
-    # THEN I would calculate field to 1
-    # THEN I would dissolve again and sum the feature_count_field
-
-    arcpy.AddField_management(working_intersect, feature_count_field, 'SHORT')
+    arcpy.AddField_management(working_intersect, feature_count_field, 'FLOAT')
 
     intersect_field = "FID_" + base_layer
     if len(intersect_field) > 64:
@@ -768,9 +764,20 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
                 if row[0] not in temp_list:
                     temp_list.append(row[0])
             cursor.reset()
-            for row in cursor:
-                row[1] = len(temp_list)
-                cursor.updateRow(row)
+
+            for num in temp_list:
+                count = 0
+                for row in cursor:
+                    if row[0] == num:
+                        count += 1
+                proportion = 1.0 / float(count)
+                cursor.reset()
+                for row in cursor:
+                    if row[0] == num:
+                        row[1] = proportion
+                        print row[1]
+                        cursor.updateRow(row)
+                cursor.reset()
 
     # Dissolve by mpa_name_attribute field summing adjusted area
     working_dissolved = base_layer + '_Dissolved'
@@ -780,7 +787,7 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
     arcpy.Dissolve_management(working_intersect, working_dissolved, [mpa_name_attribute, "ecosection"],
                               [[clipped_adjusted_area, 'SUM'], [new_bc_total_area_field, 'FIRST'],
                                [mpa_area_attribute, 'FIRST'], [mpa_area_attribute_section, 'FIRST'],
-                              [mpa_subregion_field, 'FIRST'], [feature_count_field, 'FIRST']])
+                              [mpa_subregion_field, 'FIRST'], [feature_count_field, 'SUM']])
 
     # Rename fields for simplicities sake
     renameField(working_dissolved, 'SUM_' + clipped_adjusted_area, clipped_adjusted_area, 'DOUBLE')
@@ -788,7 +795,7 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
     renameField(working_dissolved, 'FIRST_' + mpa_area_attribute, mpa_area_attribute, 'DOUBLE')
     renameField(working_dissolved, 'FIRST_' + mpa_area_attribute_section, mpa_area_attribute_section, 'DOUBLE')
     renameField(working_dissolved, 'FIRST_' + mpa_subregion_field, mpa_subregion_field, 'TEXT')
-    renameField(working_dissolved, 'FIRST_' + feature_count_field, feature_count_field, 'SHORT')
+    renameField(working_dissolved, 'SUM_' + feature_count_field, feature_count_field, 'FLOAT')
 
     
     arcpy.AddField_management(working_dissolved, pct_of_mpa_field, 'DOUBLE')
