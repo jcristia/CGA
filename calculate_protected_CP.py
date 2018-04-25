@@ -8,6 +8,7 @@ import os, sys, csv, re
 ## Third party modules ##
 
 import arcpy
+import pandas as pd
 
 ## Authorship Information ##
 
@@ -269,6 +270,14 @@ override_u = True # This one behaves differently from _y and _n please read abov
 
 cpOverlap_newDict = True
 cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\cpOverlap.csv'
+
+### Join eco UIDs to table 1 output ###
+#
+# This requires pandas
+#
+
+ecoUIDs_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\mpatt_eco_UID-simple_FINAL_20180412.csv'
+output4_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\output\table1_joined.csv'
 
 
 ######################
@@ -1419,6 +1428,17 @@ def writeOutputTable3(percent_overlap, output3_path):
                         pct_o = percent_overlap[mpa][layer_type][cphu]['pct_overlap_cphu_mpa']
                         w.writerow([mpa.encode('utf8'), layer_type, cphu, pct_o])
 
+def joinUIDtoTable1(output1_path, ecoUIDs_path, output4_path):
+    
+    a = pd.read_csv(output1_path)
+    b = pd.read_csv(ecoUIDs_path)
+
+    joined = a.merge(b, left_on = 'CP', right_on = 'Desktop_UID', how = 'left')
+
+    joined.to_csv(output4_path, index = False)
+    
+
+
   ##               ##
 ###  Program start  ###
   ##               ##
@@ -1682,3 +1702,9 @@ writeOutputTable2(o_table_2, output2_path)
 #####
 
 writeOutputTable3(percent_overlap, output3_path)
+
+#####
+### Join eco UID table to table1
+#####
+
+joinUIDtoTable1(output1_path, ecoUIDs_path, output4_path)
