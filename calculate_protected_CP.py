@@ -775,7 +775,6 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
                 for row in cursor:
                     if row[0] == num:
                         row[1] = proportion
-                        print row[1]
                         cursor.updateRow(row)
                 cursor.reset()
 
@@ -1245,6 +1244,7 @@ def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
                                                       'scaled_area': None,
                                                       'pct_of_mpa': None,
                                                       'pct_of_og': None,
+                                                      'pct_of_og_unscaled': None,
                                                       'subregion': cp_in_mpas[mpa][ecosection][cp]['subregion'],
                                                       'feature_count' : cp_in_mpas[mpa][ecosection][cp]['feature_count']}
 
@@ -1266,6 +1266,7 @@ def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
 
                     o_table_1[mpa][ecosection][cp]['pct_of_mpa'] = scaled_area / mpa_area
                     o_table_1[mpa][ecosection][cp]['pct_of_og'] = scaled_area / og_area
+                    o_table_1[mpa][ecosection][cp]['pct_of_og_unscaled'] = unscaled_area / og_area
                 
     return o_table_1
 
@@ -1279,7 +1280,7 @@ def writeOutputTable1(otable, opath, mpa_dict):
     with open(opath, 'wb') as f:
         w = csv.writer(f)
 
-        w.writerow(['UID','parentid','name', 'biome', 'type', 'management', 'subregion', 'ecosection', 'CP', 'proportion', 'unscaled_area', 'scaled_area', 'feature_count'])
+        w.writerow(['UID','parentid','name', 'biome', 'type', 'management', 'subregion', 'ecosection', 'CP', 'proportion_scaled', 'proportion_unscaled', 'scaled_area','unscaled_area', 'total_area', 'feature_count_MPA'])
 
         for mpa in otable:
             parentid = mpa_dict[mpa]['parent_id']
@@ -1293,8 +1294,10 @@ def writeOutputTable1(otable, opath, mpa_dict):
                     subregion = otable[mpa][ecosection][cp]['subregion']
                     unscaled_area = otable[mpa][ecosection][cp]['unscaled_area']
                     scaled_area = otable[mpa][ecosection][cp]['scaled_area']
+                    total_area = otable[mpa][ecosection][cp]['og_area']
+                    pct_of_og_unscaled = otable[mpa][ecosection][cp]['pct_of_og_unscaled']
                     feature_count = otable[mpa][ecosection][cp]['feature_count']
-                    w.writerow([mpa.encode('utf8'), parentid, name.encode('utf8'), biome, type, mgmt, subregion, ecosection, cp, pct_of_og, unscaled_area, scaled_area, feature_count])
+                    w.writerow([mpa.encode('utf8'), parentid, name.encode('utf8'), biome, type, mgmt, subregion, ecosection, cp, pct_of_og, pct_of_og_unscaled, scaled_area, unscaled_area, total_area, feature_count])
 
 def createOutputTable2(o_table_1, cp_area_overlap_dict):
     table2 = {}
