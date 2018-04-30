@@ -231,7 +231,7 @@ cleanUpTempData = False
 # variables below
 #
 
-inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\inclusion-matrix_FINAL_20180404.csv'
+inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\inclusionmatrix_FINAL_20180430.csv'
 
 ### override_y & _n & _u ###
 #
@@ -276,7 +276,7 @@ cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CG
 # This requires pandas
 #
 
-ecoUIDs_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\mpatt_eco_UID-simple_FINAL_20180412.csv'
+ecoUIDs_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\mpatt_eco_UID-simple_FINAL_20180427.csv'
 output4_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\output\table1_joined.csv'
 
 

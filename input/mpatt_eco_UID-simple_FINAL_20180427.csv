@@ -1,0 +1,296 @@
+Gridded_UID,Desktop_UID,marxancode,section,speciesgroup,species,featuretype,attributetype,,final_target_low,final_target_med,final_target_high,Issue,Tracked,species name,postremoval
+eco_areas_estuaries_polygons_d,eco_areas_estuaries_polygons_d,3010700,eco,areas,estuaries,polygons,,Estuaries,20,40,60,,,Estuaries,no
+eco_areas_fishbenthic_cciradiversity_m,eco_areas_fishbenthic_cciradiversity_m,3020800,eco,areas,fishbenthic,cciradiversity,,Benthic Fish,10,20,30,,,Benthic Fish,no
+eco_areas_fishbenthic_phmasyndiversity_d,eco_areas_fishbenthic_phmasyndiversity_d,3020400,eco,areas,fishbenthic,phmasyndiversity,,Benthic Fish,10,20,30,,,Benthic Fish,no
+eco_areas_fishshelf_biomass_d,eco_areas_fishshelf_biomass_d,3020100,eco,areas,fishshelf,biomass,,Shelf Fish,10,20,30,,,Shelf Fish,no
+eco_areas_highcurrent_ebsa_d,eco_areas_highcurrent_ebsa_d,3010500,eco,areas,highcurrent,ebsa,,High Current,20,40,60,,,High Current,no
+eco_areas_highcurrent_nonebsa_d,eco_areas_highcurrent_nonebsa_d,3011200,eco,areas,highcurrent,nonebsa,,High Current^,0,0,0,,^,High Current,no
+eco_areas_highrugosity_polygons_d,eco_areas_highrugosity_polygons_d,3010100,eco,areas,highrugosity,polygons,,High Rugosity,20,40,60,,,High Rugosity,no
+eco_areas_importantbirdareas_polygons_d,eco_areas_importantbirdareas_polygons_d,3020700,eco,areas,importantbirdareas,polygons,,Important bird areas^,0,0,0,,^,Important bird areas,no
+eco_areas_invertsshelf_biomass_d,eco_areas_invertsshelf_biomass_d,3020200,eco,areas,invertsshelf,biomass,,Shelf Invertebrate,10,20,30,,,Shelf Invertebrate,no
+eco_areas_invertsshelf_diversity_d,eco_areas_invertsshelf_diversity_d,3020600,eco,areas,invertsshelf,diversity,,Shelf Invertebrate,10,20,30,,,Shelf Invertebrate,no
+eco_areas_richness_nearshorehabitat_d,eco_areas_richness_nearshorehabitat_d,3020300,eco,areas,richness,nearshorehabitat,,Richness,10,20,30,,,Richness,no
+eco_birds_albatross_density_m,eco_birds_albatross_density_m,5200100,eco,birds,albatross,density,,Albatrosses,10,15,20,,,Albatrosses,no
+eco_birds_ancientmurrelet_colonies_d,eco_birds_ancientmurrelet_colonies_d,5040100-300,eco,birds,ancientmurrelet,colonies,,Ancient Murrelet,40,50,60,,,Ancient Murrelet,yes
+eco_birds_ancientmurrelet_colonies_d_ri1,eco_birds_ancientmurrelet_colonies_d_ri1,5040100,eco,birds,ancientmurrelet,colonies,ri1,Ancient Murrelet ri1,40,50,60,,,Ancient Murrelet,no
+eco_birds_ancientmurrelet_colonies_d_ri2,eco_birds_ancientmurrelet_colonies_d_ri2,5040200,eco,birds,ancientmurrelet,colonies,ri2,Ancient Murrelet ri2,40,50,60,,,Ancient Murrelet,no
+eco_birds_ancientmurrelet_colonies_d_ri3,eco_birds_ancientmurrelet_colonies_d_ri3,5040300,eco,birds,ancientmurrelet,colonies,ri3,Ancient Murrelet ri3,40,50,60,,,Ancient Murrelet,no
+eco_birds_blackoystercatcher_nestingsites_d,eco_birds_blackoystercatcher_nestingsites_d,5140200,eco,birds,blackoystercatcher,nestingsites,,Black Oystercatcher,20,30,40,,,Black Oystercatcher,no
+eco_birds_brandtscormorant_colonies_d,eco_birds_brandtscormorant_colonies_d,"5090100, 300",eco,birds,brandtscormorant,colonies,,Brandt's cormorant,40,50,60,,,Brandt's cormorant,yes
+eco_birds_brandtscormorant_colonies_d_ri1,eco_birds_brandtscormorant_colonies_d_ri1,5090100,eco,birds,brandtscormorant,colonies,ri1,Brandt's cormorant ri1,40,50,60,,,Brandt's cormorant,no
+eco_birds_brandtscormorant_colonies_d_ri3,eco_birds_brandtscormorant_colonies_d_ri3,5090300,eco,birds,brandtscormorant,colonies,ri2,Brandt's cormorant ri2,40,50,60,,,Brandt's cormorant,no
+eco_birds_cassinsauklet_colonies_d,eco_birds_cassinsauklet_colonies_d,5050100-300,eco,birds,cassinsauklet,colonies,,Cassin's Auklet,40,50,60,,,Cassin's Auklet,yes
+eco_birds_cassinsauklet_colonies_d_ri1,eco_birds_cassinsauklet_colonies_d_ri1,5050100,eco,birds,cassinsauklet,colonies,ri1,Cassin's Auklet ri1,40,50,60,,,Cassin's Auklet,no
+eco_birds_cassinsauklet_colonies_d_ri2,eco_birds_cassinsauklet_colonies_d_ri2,5050200,eco,birds,cassinsauklet,colonies,ri2,Cassin's Auklet ri2,40,50,60,,,Cassin's Auklet,no
+eco_birds_cassinsauklet_colonies_d_ri3,eco_birds_cassinsauklet_colonies_d_ri3,5050300,eco,birds,cassinsauklet,colonies,ri3,Cassin's Auklet ri3,40,50,60,,,Cassin's Auklet,no
+eco_birds_commonmurre_colonies_d,eco_birds_commonmurre_colonies_d,"5060100, 300",eco,birds,commonmurre,colonies,,Common Murre,40,50,60,,,Common Murre,yes
+eco_birds_commonmurre_colonies_d_ri1,eco_birds_commonmurre_colonies_d_ri1,5060100,eco,birds,commonmurre,colonies,ri1,Common Murre ri1,40,50,60,,,Common Murre,no
+eco_birds_commonmurre_colonies_d_ri2,eco_birds_commonmurre_colonies_d_ri3,5060300,eco,birds,commonmurre,colonies,ri3,Common Murre ri3,40,50,60,,,Common Murre,no
+eco_birds_cormorant_density_m,eco_birds_cormorant_density_m,5300100,eco,birds,cormorant,density,,Double-crested cormorant,10,15,20,,,Double-crested cormorant,no
+eco_birds_cormorant_densitywinter_m,eco_birds_cormorant_densitywinter_m,5300200,eco,birds,cormorant,densitywinter,,Unspecified Cormorant  ,10,15,20,,,Unspecified Cormorant  ,no
+eco_birds_gooseswan_density_m,eco_birds_gooseswan_density_m,5270100,eco,birds,gooseswan,density,,Goose/Swan,10,15,20,,,Goose/Swan,no
+eco_birds_gooseswan_densitywinter_m,eco_birds_gooseswan_densitywinter_m,5270200,eco,birds,gooseswan,densitywinter,,Goose/Swan,10,15,20,,,Goose/Swan,no
+eco_birds_gull_density_m,eco_birds_gull_density_m,5260100,eco,birds,gull,density,,Gulls,10,15,20,,,Gulls,no
+eco_birds_gull_densitywinter_m,eco_birds_gull_densitywinter_m,5260200,eco,birds,gull,densitywinter,,Gulls,10,15,20,,,Gulls,no
+eco_birds_heron_nestsforaging_m,eco_birds_heron_nestsforaging_m,5160100,eco,birds,heron,nestsforaging,,Great Blue Heron,10,15,20,,,Great Blue Heron,no
+eco_birds_heron_densitywinter_m,eco_birds_heron_densitywinter_m,5350100,eco,birds,heron,densitywinter,,Great Blue Heron,10,15,20,,,Great Blue Heron,no
+eco_birds_hornedpuffin_colonies_d,eco_birds_hornedpuffin_colonies_d,"5020300, 300",eco,birds,hornedpuffin,colonies,,Horned Puffin,40,50,60,,,Horned Puffin,no
+eco_birds_hornedpuffin_colonies_d_ri3,eco_birds_hornedpuffin_colonies_d_ri3,5020300,eco,birds,hornedpuffin,colonies,,Horned Puffin,40,50,60,,,Horned Puffin,no
+eco_birds_loongrebe_density_d,eco_birds_loongrebe_density_d,5290100,eco,birds,loongrebe,density,,Loon/Grebe,10,15,20,,,Loon/Grebe,no
+eco_birds_loongrebe_densitywinter_d,eco_birds_loongrebe_densitywinter_d,5290200,eco,birds,loongrebe,densitywinter,,Loon/Grebe,10,15,20,,,Loon/Grebe,no
+eco_birds_mamu_density_d,eco_birds_mamu_density_d,5310100,eco,birds,mamu,density,,Marbled Murrelet,10,15,20,,,Marbled Murrelet,no
+eco_birds_mamu_densitywinter_d,eco_birds_mamu_densitywinter_d,5310200,eco,birds,mamu,densitywinter,,Marbled Murrelet,10,15,20,,,Marbled Murrelet,no
+eco_birds_murrelgalcid_density_d,eco_birds_murrelgalcid_density_d,5250100,eco,birds,murrelgalcid,density,,Murres/Large Alcids,10,15,20,,,Murres/Large Alcids,no
+eco_birds_murrelgalcid_densitywinter_d,eco_birds_murrelgalcid_densitywinter_d,5250200,eco,birds,murrelgalcid,densitywinter,,Murres/Large Alcids,10,15,20,,,Murres/Large Alcids,no
+eco_birds_pelagiccormorant_colonies_d,eco_birds_pelagiccormorant_colonies_d,5110100-300,eco,birds,pelagiccormorant,colonies,,Pelagic cormorant,20,30,40,,,Pelagic cormorant,yes
+eco_birds_pelagiccormorant_colonies_d_ri1,eco_birds_pelagiccormorant_colonies_d_ri1,5110100,eco,birds,pelagiccormorant,colonies,ri1,Pelagic cormorant ri1,20,30,40,,,Pelagic cormorant,no
+eco_birds_pelagiccormorant_colonies_d_ri2,eco_birds_pelagiccormorant_colonies_d_ri2,5110200,eco,birds,pelagiccormorant,colonies,ri2,Pelagic cormorant ri2,20,30,40,,,Pelagic cormorant,no
+eco_birds_pelagiccormorant_colonies_d_ri3,eco_birds_pelagiccormorant_colonies_d_ri3,5110300,eco,birds,pelagiccormorant,colonies,ri3,Pelagic cormorant ri3,20,30,40,,,Pelagic cormorant,no
+eco_birds_petrelphalarope_density_d,eco_birds_petrelphalarope_density_d,5220100,eco,birds,petrelphalarope,density,,Storm Petrel,10,15,20,,,Storm Petrel,no
+eco_birds_pigeonguillemot_colonies_d,eco_birds_pigeonguillemot_colonies_d,"5120100, 200",eco,birds,pigeonguillemot,colonies,,Pigeon Guillemot,20,30,40,,,Pigeon Guillemot,yes
+eco_birds_pigeonguillemot_colonies_d_ri1,eco_birds_pigeonguillemot_colonies_d_ri1,5120100,eco,birds,pigeonguillemot,colonies,ri1,Pigeon Guillemot ri1,20,30,40,,,Pigeon Guillemot,no
+eco_birds_pigeonguillemot_colonies_d_ri2,eco_birds_pigeonguillemot_colonies_d_ri2,5120200,eco,birds,pigeonguillemot,colonies,ri2,Pigeon Guillemot ri2,20,30,40,,,Pigeon Guillemot,no
+eco_birds_pigeonguillemot_density_m,eco_birds_pigeonguillemot_density_m,5320100,eco,birds,pigeonguillemot,density,,Pigeon Guillemot,10,15,20,,,Pigeon Guillemot,no
+eco_birds_puffin_density_d,eco_birds_puffin_density_d,5230100,eco,birds,puffin,density,,Puffins,10,15,20,,,Puffins,no
+eco_birds_rhinocerosauklet_colonies_d,eco_birds_rhinocerosauklet_colonies_d,5070100-300,eco,birds,rhinocerosauklet,colonies,,Rhinoceros Auklet,20,30,40,,,Rhinoceros Auklet,yes
+eco_birds_rhinocerosauklet_colonies_d_ri1,eco_birds_rhinocerosauklet_colonies_d_ri1,5070100,eco,birds,rhinocerosauklet,colonies,ri1,Rhinoceros Auklet ri1,20,30,40,,,Rhinoceros Auklet,no
+eco_birds_rhinocerosauklet_colonies_d_ri2,eco_birds_rhinocerosauklet_colonies_d_ri2,5070200,eco,birds,rhinocerosauklet,colonies,ri2,Rhinoceros Auklet ri2,20,30,40,,,Rhinoceros Auklet,no
+eco_birds_rhinocerosauklet_colonies_d_ri3,eco_birds_rhinocerosauklet_colonies_d_ri3,5070300,eco,birds,rhinocerosauklet,colonies,ri3,Rhinoceros Auklet ri3,20,30,40,,,Rhinoceros Auklet,no
+eco_birds_seabirds_ia_d,eco_birds_seabirds_ia_d,5170100,eco,birds,seabirds,ia,,Seabirds^,0,0,0,,^,Seabirds,no
+eco_birds_seaduck_keysites_d,eco_birds_seaduck_keysites_d,5180100,eco,birds,seaduck,keysites,,"Sea duck, unspecified",20,30,40,,,"Sea duck, unspecified",no
+eco_birds_seaduck_densitymoulting_d,eco_birds_seaduck_densitymoulting_d,5280100,eco,birds,seaduck,densitymoulting,,"Sea duck, unspecified",10,15,20,,,"Sea duck, unspecified",no
+eco_birds_seaduck_densitystaging_d,eco_birds_seaduck_densitystaging_d,5280200,eco,birds,seaduck,densitystaging,,"Sea duck, unspecified",10,15,20,,,"Sea duck, unspecified",no
+eco_birds_seaduck_densitywinter_d,eco_birds_seaduck_densitywinter_d,5280300,eco,birds,seaduck,densitywinter,,"Sea duck, unspecified",10,15,20,,,"Sea duck, unspecified",no
+eco_birds_shearwaterfulmar_density_d,eco_birds_shearwaterfulmar_density_d,5210100,eco,birds,shearwaterfulmar,density,,Shearwaters and Fulmars,10,15,20,,,Shearwaters and Fulmars,no
+eco_birds_shorebirdrock_density_d,eco_birds_shorebirdrock_density_d,5330100,eco,birds,shorebirdrock,density,,Shorebird (rocky),10,15,20,,,Shorebird (rocky),no
+eco_birds_shorebirdrock_stagingsites_d,eco_birds_shorebirdrock_stagingsites_d,5130100,eco,birds,shorebirdrock,stagingsites,,Shorebird (rocky),10,15,20,,,Shorebird (rocky),no
+eco_birds_shorebirdsand_density_d,eco_birds_shorebirdsand_density_d,5340100,eco,birds,shorebirdsand,density,,Shorebird (sand)^,0,0,0,,^,Shorebird (sand),no
+eco_birds_shorebirdsand_keysites_d,eco_birds_shorebirdsand_keysites_d,5150100,eco,birds,shorebirdsand,keysites,,Shorebird (sand),40,50,60,,,Shorebird (sand),no
+eco_birds_smallalcid_density_d,eco_birds_smallalcid_density_d,5240100,eco,birds,smallalcid,density,,Small Alcids,10,15,20,,,Small Alcids,no
+eco_birds_smallalcid_densitywinter_d,eco_birds_smallalcid_densitywinter_d,5240200,eco,birds,smallalcid,densitywinter,,Small Alcids,10,15,20,,,Small Alcids,no
+eco_birds_stormpetrel_colonies_d,eco_birds_stormpetrel_colonies_d,5010100-300,eco,birds,stormpetrel,colonies,,Storm Petrel,20,30,40,,,Storm Petrel,yes
+eco_birds_stormpetrel_colonies_d_ri1,eco_birds_stormpetrel_colonies_d_ri1,5010100,eco,birds,stormpetrel,colonies,ri1,Storm Petrel ri1,20,30,40,,,Storm Petrel,no
+eco_birds_stormpetrel_colonies_d_ri2,eco_birds_stormpetrel_colonies_d_ri2,5010200,eco,birds,stormpetrel,colonies,ri2,Storm Petrel ri2,20,30,40,,,Storm Petrel,no
+eco_birds_stormpetrel_colonies_d_ri3,eco_birds_stormpetrel_colonies_d_ri3,5010300,eco,birds,stormpetrel,colonies,ri3,Storm Petrel ri3,20,30,40,,,Storm Petrel,no
+eco_birds_thickbilledmurre_colonies_d,eco_birds_thickbilledmurre_colonies_d,5080300,eco,birds,thickbilledmurre,colonies,,Thick-billed Murre,40,50,60,,,Thick-billed Murre,no
+eco_birds_tuftedpuffin_colonies_d,eco_birds_tuftedpuffin_colonies_d,5030100-300,eco,birds,tuftedpuffin,colonies,,Tufted Puffin,40,50,60,,,Tufted Puffin,yes
+eco_birds_tuftedpuffin_colonies_d_ri1,eco_birds_tuftedpuffin_colonies_d_ri1,5030100,eco,birds,tuftedpuffin,colonies,ri1,Tufted Puffin ri1,40,50,60,,,Tufted Puffin,no
+eco_birds_tuftedpuffin_colonies_d_ri2,eco_birds_tuftedpuffin_colonies_d_ri2,5030200,eco,birds,tuftedpuffin,colonies,ri2,Tufted Puffin ri2,40,50,60,,,Tufted Puffin,no
+eco_birds_tuftedpuffin_colonies_d_ri3,eco_birds_tuftedpuffin_colonies_d_ri3,5030300,eco,birds,tuftedpuffin,colonies,ri3,Tufted Puffin ri3,40,50,60,,,Tufted Puffin,no
+eco_coarse_biophysicalunits_polygons_d,eco_coarse_biophysicalunits_polygons_d,3040100-3040500,eco,coarse,biophysicalunits,polygons,,Biophysical Units,10,20,30,,,Biophysical Units,yes
+eco_coarse_biophysicalunits_polygons_d_dogfishbank,eco_coarse_biophysicalunits_polygons_d_DogFishBank,3040100,eco,coarse,biophysicalunits,polygons,dogfishbank,Biophysical Units dogfishbank,10,20,30,,,Biophysical Units,no
+eco_coarse_biophysicalunits_polygons_d_otherbank,eco_coarse_biophysicalunits_polygons_d_OtherBank,3040200,eco,coarse,biophysicalunits,polygons,otherbank,Biophysical Units otherbank,10,20,30,,,Biophysical Units,no
+eco_coarse_biophysicalunits_polygons_d_shelf,eco_coarse_biophysicalunits_polygons_d_Shelf,3040300,eco,coarse,biophysicalunits,polygons,shelf,Biophysical Units shelf,10,20,30,,,Biophysical Units,no
+eco_coarse_biophysicalunits_polygons_d_slope,eco_coarse_biophysicalunits_polygons_d_Slope,3040400,eco,coarse,biophysicalunits,polygons,slope,Biophysical Units slope,10,20,30,,,Biophysical Units,no
+eco_coarse_biophysicalunits_polygons_d_trough,eco_coarse_biophysicalunits_polygons_d_Trough,3040500,eco,coarse,biophysicalunits,polygons,trough,Biophysical Units trough,10,20,30,,,Biophysical Units,no
+eco_coarse_bottompatches_polygons_d,eco_coarse_bottompatches_polygons_d,3050100-3050300,eco,coarse,bottompatches,polygons,,Bottom Patches,10,20,30,,,Bottom Patches,yes
+eco_coarse_bottompatches_polygons_d_hard,eco_coarse_bottompatches_polygons_d_BType11,3050100,eco,coarse,bottompatches,polygons,hard,Bottom Patches hard,10,20,30,,,Bottom Patches,no
+eco_coarse_bottompatches_polygons_d_mixed,eco_coarse_bottompatches_polygons_d_BType12,3050200,eco,coarse,bottompatches,polygons,mixed,Bottom Patches mixed,10,20,30,,,Bottom Patches,no
+eco_coarse_bottompatches_polygons_d_soft,eco_coarse_bottompatches_polygons_d_BType13,3050300,eco,coarse,bottompatches,polygons,soft,Bottom Patches soft,10,20,30,,,Bottom Patches,no
+eco_coarse_coastalclasses_lines_d,eco_coarse_coastalclasses_lines_d,3090100-3091400,eco,coarse,coastalclasses,lines,,Coastal Classes,10,20,30,,,Coastal Classes,yes
+eco_coarse_coastalclasses_lines_d_channel,eco_coarse_coastalclasses_lines_d_Channel,3090100,eco,coarse,coastalclasses,lines,channel,Coastal Classes channel,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_estuary,eco_coarse_coastalclasses_lines_d_estuaryorganicsfines,3090200,eco,coarse,coastalclasses,lines,estuary,Coastal Classes estuary,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_gravelbeach,eco_coarse_coastalclasses_lines_d_gravelbeach,3090300,eco,coarse,coastalclasses,lines,gravelbeach,Coastal Classes gravelbeach,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_gravelflat,eco_coarse_coastalclasses_lines_d_gravelflat,3090400,eco,coarse,coastalclasses,lines,gravelflat,Coastal Classes gravelflat,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_manmade,eco_coarse_coastalclasses_lines_d_manmade,3090500,eco,coarse,coastalclasses,lines,manmade,Coastal Classes manmade,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_mudflat,eco_coarse_coastalclasses_lines_d_mudflat,3090600,eco,coarse,coastalclasses,lines,mudflat,Coastal Classes mudflat,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_rockcliff,eco_coarse_coastalclasses_lines_d_rockcliff,3090700,eco,coarse,coastalclasses,lines,rockcliff,Coastal Classes rockcliff,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_rockplatform,eco_coarse_coastalclasses_lines_d_rockplatform,3090800,eco,coarse,coastalclasses,lines,rockplatform,Coastal Classes rockplatform,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_rockramp,eco_coarse_coastalclasses_lines_d_rockramp,3090900,eco,coarse,coastalclasses,lines,rockramp,Coastal Classes rockramp,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_sandgravelbeach,eco_coarse_coastalclasses_lines_d_sandandgravelbeach,3091000,eco,coarse,coastalclasses,lines,sandgravelbeach,Coastal Classes sandgravelbeach,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_sandgravelflatfan,eco_coarse_coastalclasses_lines_d_sandandgravelflatorfan,3091100,eco,coarse,coastalclasses,lines,sandgravelflatfan,Coastal Classes sandgravelflatfan,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_sandbeach,eco_coarse_coastalclasses_lines_d_sandbeach,3091200,eco,coarse,coastalclasses,lines,sandbeach,Coastal Classes sandbeach,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_sandflat,eco_coarse_coastalclasses_lines_d_sandflat,3091300,eco,coarse,coastalclasses,lines,sandflat,Coastal Classes sandflat,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_undefined,eco_coarse_coastalclasses_lines_d_undefined,3091400,eco,coarse,coastalclasses,lines,undefined,Coastal Classes undefined,10,20,30,,,Coastal Classes,no
+eco_coarse_ebsas_polygons_d,eco_coarse_ebsas_polygons_d,3100100-3102000 (alphabetical by name),eco,coarse,ebsas,polygons,,EBSAS,10,20,30,,,EBSAS,yes
+eco_coarse_ebsas_polygons_d_bellabellanearshore,eco_coarse_ebsas_polygons_d_bellabellanearshore,3100100,eco,coarse,ebsas,polygons,bellabellanearshore,EBSAS bellabellanearshore,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_brookspeninsula,eco_coarse_ebsas_polygons_d_brookspeninsula,3100200,eco,coarse,ebsas,polygons,brookspeninsula,EBSAS brookspeninsula,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_capestjames,eco_coarse_ebsas_polygons_d_capestjames,3100300,eco,coarse,ebsas,polygons,capestjames,EBSAS capestjames,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_centralmainland,eco_coarse_ebsas_polygons_d_centralmainland,3100400,eco,coarse,ebsas,polygons,centralmainland,EBSAS centralmainland,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_chathamsound,eco_coarse_ebsas_polygons_d_chathamsound,3100500,eco,coarse,ebsas,polygons,chathamsound,EBSAS chathamsound,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_dogfishbanks,eco_coarse_ebsas_polygons_d_dogfishbanks,3100600,eco,coarse,ebsas,polygons,dogfishbanks,EBSAS dogfishbanks,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_haidagwaiinearshore,eco_coarse_ebsas_polygons_d_haidagwaiinearshore,3100700,eco,coarse,ebsas,polygons,haidagwaiinearshore,EBSAS haidagwaiinearshore,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_hecatestrait,eco_coarse_ebsas_polygons_d_hecatestrait,3100800,eco,coarse,ebsas,polygons,hecatestrait,EBSAS hecatestrait,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_learmonthbank,eco_coarse_ebsas_polygons_d_learmonthbank,3100900,eco,coarse,ebsas,polygons,learmonthbank,EBSAS learmonthbank,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_mcintyrebay,eco_coarse_ebsas_polygons_d_mcintyrebay,3101000,eco,coarse,ebsas,polygons,mcintyrebay,EBSAS mcintyrebay,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_northislandstraits,eco_coarse_ebsas_polygons_d_northislandstraits,3101100,eco,coarse,ebsas,polygons,northislandstraits,EBSAS northislandstraits,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_scottislands,eco_coarse_ebsas_polygons_d_scottislands,3101200,eco,coarse,ebsas,polygons,scottislands,EBSAS scottislands,10,20,30,,,EBSAS,no
+eco_coarse_ebsas_polygons_d_shelfbreak,eco_coarse_ebsas_polygons_d_shelfbreak,3101300,eco,coarse,ebsas,polygons,shelfbreak,EBSAS shelfbreak,10,20,30,,,EBSAS,no
+eco_coarse_ecosections_polygons_d,eco_coarse_ecosections_polygons_d,3060100-3060800,eco,coarse,ecosections,polygons,,Ecosections,10,20,30,,,Ecosections,yes
+eco_coarse_ecosections_polygons_d_js,eco_coarse_ecosections_polygons_d_JohnstoneStrait,3060100,eco,coarse,ecosections,polygons,js,Ecosections js,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_cs,eco_coarse_ecosections_polygons_d_ContinentalSlope,3060200,eco,coarse,ecosections,polygons,cs,Ecosections cs,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_de,eco_coarse_ecosections_polygons_d_DixonEntrance,3060300,eco,coarse,ecosections,polygons,de,Ecosections de,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_qcst,eco_coarse_ecosections_polygons_d_QueenCharlotteStrait,3060400,eco,coarse,ecosections,polygons,qcst,Ecosections qcst,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_ncf,eco_coarse_ecosections_polygons_d_NorthCoastFjords,3060500,eco,coarse,ecosections,polygons,ncf,Ecosections ncf,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_hs,eco_coarse_ecosections_polygons_d_HecateStrait,3060600,eco,coarse,ecosections,polygons,hs,Ecosections hs,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_qcso,eco_coarse_ecosections_polygons_d_QueenCharlotteSound,3060700,eco,coarse,ecosections,polygons,qcso,Ecosections qcso,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_vis,eco_coarse_ecosections_polygons_d_vancouverislandshelf,3060800,eco,coarse,ecosections,polygons,vis,Ecosections vis,10,20,30,,,Ecosections,no
+eco_coarse_geomorphicunits_polygons_d,eco_coarse_geomorphicunits_polygons_d,3030100-3031400,eco,coarse,geomorphicunits,polygons,,Geomorphic Units,10,20,30,,,Geomorphic Units,yes
+eco_coarse_geomorphicunits_polygons_d_fjordcrest,eco_coarse_geomorphicunits_polygons_d_fjordcrest,3030100,eco,coarse,geomorphicunits,polygons,fjordcrest,Geomorphic Units fjordcrest,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_fjorddepression,eco_coarse_geomorphicunits_polygons_d_fjorddepression,3030200,eco,coarse,geomorphicunits,polygons,fjorddepression,Geomorphic Units fjorddepression,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_fjorddepressionfloor,eco_coarse_geomorphicunits_polygons_d_fjorddepressionfloor,3030300,eco,coarse,geomorphicunits,polygons,fjorddepressionfloor,Geomorphic Units fjorddepressionfloor,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_fjordmound,eco_coarse_geomorphicunits_polygons_d_fjordmound,3030400,eco,coarse,geomorphicunits,polygons,fjordmound,Geomorphic Units fjordmound,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_fjordwallsteep,eco_coarse_geomorphicunits_polygons_d_fjordwallsteep,3030500,eco,coarse,geomorphicunits,polygons,fjordwallsteep,Geomorphic Units fjordwallsteep,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_shelfcrest,eco_coarse_geomorphicunits_polygons_d_shelfcrest,3030600,eco,coarse,geomorphicunits,polygons,shelfcrest,Geomorphic Units shelfcrest,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_shelfdepression,eco_coarse_geomorphicunits_polygons_d_shelfdepression,3030700,eco,coarse,geomorphicunits,polygons,shelfdepression,Geomorphic Units shelfdepression,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_shelfdepressionfloor,eco_coarse_geomorphicunits_polygons_d_shelfdepressionfloor,3030800,eco,coarse,geomorphicunits,polygons,shelfdepressionfloor,Geomorphic Units shelfdepressionfloor,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_shelfmound,eco_coarse_geomorphicunits_polygons_d_shelfmound,3030900,eco,coarse,geomorphicunits,polygons,shelfmound,Geomorphic Units shelfmound,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_shelfwallsloping,eco_coarse_geomorphicunits_polygons_d_shelfwallsloping,3031000,eco,coarse,geomorphicunits,polygons,shelfwallsloping,Geomorphic Units shelfwallsloping,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_slopecanyonfloor,eco_coarse_geomorphicunits_polygons_d_slopecanyonfloor,3031100,eco,coarse,geomorphicunits,polygons,slopecanyonfloor,Geomorphic Units slopecanyonfloor,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_sloperidge,eco_coarse_geomorphicunits_polygons_d_sloperidge,3031200,eco,coarse,geomorphicunits,polygons,sloperidge,Geomorphic Units sloperidge,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_slopewallsloping,eco_coarse_geomorphicunits_polygons_d_slopewallsloping,3031300,eco,coarse,geomorphicunits,polygons,slopewallsloping,Geomorphic Units slopewallsloping,10,20,30,,,Geomorphic Units,no
+eco_coarse_geomorphicunits_polygons_d_slopewallsteep,eco_coarse_geomorphicunits_polygons_d_slopewallsteep,3031400,eco,coarse,geomorphicunits,polygons,slopewallsteep,Geomorphic Units slopewallsteep,10,20,30,,,Geomorphic Units,no
+eco_coarse_oceanreg_polygons_d,eco_coarse_oceanreg_polygons_d,3080100-3081500,eco,coarse,oceanreg,polygons,,ocean reg,10,20,30,,,ocean reg,yes
+eco_coarse_oceanreg_polygons_d_aristazabalbanksupwelling,eco_coarse_oceanreg_polygons_d_Id10,3080100,eco,coarse,oceanreg,polygons,aristazabalbanksupwelling,ocean reg aristazabalbanksupwelling,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_mainlandfjords,eco_coarse_oceanreg_polygons_d_Id11,3080200,eco,coarse,oceanreg,polygons,mainlandfjords,ocean reg mainlandfjords,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_capestjamestidalmixing,eco_coarse_oceanreg_polygons_d_Id12,3080300,eco,coarse,oceanreg,polygons,capestjamestidalmixing,ocean reg capestjamestidalmixing,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_easternqueencharlottesound,eco_coarse_oceanreg_polygons_d_Id13,3080400,eco,coarse,oceanreg,polygons,easternqueencharlottesound,ocean reg easternqueencharlottesound,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_capescotttidalmixing,eco_coarse_oceanreg_polygons_d_Id14,3080500,eco,coarse,oceanreg,polygons,capescotttidalmixing,ocean reg capescotttidalmixing,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_johnstonestrait,eco_coarse_oceanreg_polygons_d_Id15,3080600,eco,coarse,oceanreg,polygons,johnstonestrait,ocean reg johnstonestrait,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_vancouverislandshelfbreak,eco_coarse_oceanreg_polygons_d_Id16,3080600,eco,coarse,oceanreg,polygons,vancouverislandshelfbreak,ocean reg vancouverislandshelfbreak,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_vancouverislandinnershelf,eco_coarse_oceanreg_polygons_d_Id17,3080600,eco,coarse,oceanreg,polygons,vancouverislandinnershelf,ocean reg vancouverislandinnershelf,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_northernstraitofgeorgia,eco_coarse_oceanreg_polygons_d_Id18,3080700,eco,coarse,oceanreg,polygons,northernstraitofgeorgia,ocean reg northernstraitofgeorgia,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_coastalmixingregion,eco_coarse_oceanreg_polygons_d_Id2,3080800,eco,coarse,oceanreg,polygons,coastalmixingregion,ocean reg coastalmixingregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_sealaskamixingregion,eco_coarse_oceanreg_polygons_d_Id3,3080900,eco,coarse,oceanreg,polygons,sealaskamixingregion,ocean reg sealaskamixingregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_dixonentrancecoastalflowregion,eco_coarse_oceanreg_polygons_d_Id4,3081000,eco,coarse,oceanreg,polygons,dixonentrancecoastalflowregion,ocean reg dixonentrancecoastalflowregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_westcoastqciupwellingregion,eco_coarse_oceanreg_polygons_d_Id5,3081100,eco,coarse,oceanreg,polygons,westcoastqciupwellingregion,ocean reg westcoastqciupwellingregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_lowflownearshore,eco_coarse_oceanreg_polygons_d_Id6,3081200,eco,coarse,oceanreg,polygons,lowflownearshore,ocean reg lowflownearshore,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_dogfishbankfrontalregion,eco_coarse_oceanreg_polygons_d_Id7,3081300,eco,coarse,oceanreg,polygons,dogfishbankfrontalregion,ocean reg dogfishbankfrontalregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_rosespiteddy,eco_coarse_oceanreg_polygons_d_Id8,3081400,eco,coarse,oceanreg,polygons,rosespiteddy,ocean reg rosespiteddy,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_hecatestrait,eco_coarse_oceanreg_polygons_d_Id9,3081500,eco,coarse,oceanreg,polygons,hecatestrait,ocean reg hecatestrait,10,20,30,,,ocean reg,no
+eco_fish_arrowtooth_phmasynsab_m,eco_fish_arrowtooth_phmasynsab_m,6010100,eco,fish,arrowtooth,phmasynsab,,Arrowtooth flounder,10,15,20,,,Arrowtooth flounder,no
+eco_fish_bocaccio_phmasyn_m,eco_fish_rockfishbocaccio_phmasyn_m,6100100,eco,fish,rockfishbocaccio,phmasyn,,Bocaccio,40,50,60,,,Bocaccio,no
+eco_fish_dogfish_phmasyn_m,eco_fish_dogfish_phmasyn_m,6020100,eco,fish,dogfish,phmasyn,,Spiny Dogfish,10,15,20,,,Spiny Dogfish,no
+eco_fish_eulachon_spawn_d,eco_fish_eulachon_spawn_d,6030100,eco,fish,eulachon,spawn,,Eulachon,40,50,60,,,Eulachon,no
+eco_fish_eulachon_summer_d,eco_fish_eulachon_summer_d,6030200,eco,fish,eulachon,summer,,Eulachon,40,50,60,,,Eulachon,no
+eco_fish_hake_biomass_d,eco_fish_hake_biomass_d,6040100,eco,fish,hake,biomass,,Pacific hake ,10,15,20,1,,Pacific hake ,no
+eco_fish_halibut_phmasynsab_m,eco_fish_halibut_phmasynsab_m,6050100,eco,fish,halibut,phmasynsab,,Pacific Halibut ,10,15,20,,,Pacific Halibut ,no
+eco_fish_herring_ia_d,eco_fish_herring_ia_d,6060200,eco,fish,herring,ia,,Pacific herring ^,0,0,0,,^,Pacific herring ,no
+eco_fish_herring_spawn_d,eco_fish_herring_spawn_d,6060100,eco,fish,herring,spawn,,Pacific herring ,20,30,40,,,Pacific herring ,no
+eco_fish_lingcod_ccira_d,eco_fish_lingcod_ccira_d,6070400,eco,fish,lingcod,ccira,,Lingcod,20,30,40,,,Lingcod,no
+eco_fish_lingcod_phmasynsab_m,eco_fish_lingcod_phmasynsab_m,6070100,eco,fish,lingcod,phmasynsab,,Lingcod,20,30,40,,,Lingcod,no
+eco_fish_pacificcod_phmasyn_m,eco_fish_pacificcod_phmasyn_m,6080100,eco,fish,pacificcod,phmasyn,,Pacific Cod ,10,15,20,,,Pacific Cod ,no
+eco_fish_pacificoceanperch_syn_m,eco_fish_pacificoceanperch_syn_m,6160100,eco,fish,pacificoceanperch,syn,,Pacific Ocean perch ,10,15,20,,,Pacific Ocean perch ,no
+eco_fish_pollock_syn_m,eco_fish_pollock_syn_m,6090100,eco,fish,pollock,syn,,Walleye Pollock ,10,15,20,,,Walleye Pollock ,no
+eco_fish_rockfishbocaccio_ccira_d,eco_fish_rockfishbocaccio_ccira_d,6100300,eco,fish,rockfishbocaccio,ccira,,Bocaccio,40,50,60,,,Bocaccio,no
+eco_fish_rockfishcanary_ccira_d,eco_fish_rockfishcanary_ccira_d,6110300,eco,fish,rockfishcanary,ccira,,Canary Rockfish,10,15,20,,,Canary Rockfish,no
+eco_fish_rockfishcanary_phmasyn_m,eco_fish_rockfishcanary_phmasyn_m,6110100,eco,fish,rockfishcanary,phmasyn,,Canary Rockfish,10,15,20,,,Canary Rockfish,no
+eco_fish_rockfishchina_ccira_d,eco_fish_rockfishchina_ccira_d,6120200,eco,fish,rockfishchina,ccira,,China rockfish,20,30,40,,,China rockfish,no
+eco_fish_rockfishchina_phma_m,eco_fish_rockfishchina_phma_m,6120100,eco,fish,rockfishchina,phma,,China rockfish,20,30,40,,,China rockfish,no
+eco_fish_rockfishcopper_phmasyn_m,eco_fish_rockfishcopper_phmasyn_m,6130100,eco,fish,rockfishcopper,phmasyn,,Copper rockfish,20,30,40,,,Copper rockfish,no
+eco_fish_rockfishdarkblotched_syn_m,eco_fish_rockfishdarkblotched_syn_m,6140100,eco,fish,rockfishdarkblotched,syn,,Darkblotched rockfish,20,30,40,,,Darkblotched rockfish,no
+eco_fish_rockfishgreenstriped_phmasyn_m,eco_fish_rockfishgreenstriped_phmasyn_m,6150100,eco,fish,rockfishgreenstriped,phmasyn,,Greenstriped rockfish,10,15,20,,,Greenstriped rockfish,no
+eco_fish_rockfishmidlived_ccira_d,eco_fish_rockfishmidlived_ccira_d,6600100,eco,fish,rockfishmidlived,ccira,,Mid-lived Rockfish,20,30,40,,,Mid-lived Rockfish,no
+eco_fish_rockfishquillback_ccira_d,eco_fish_rockfishquillback_ccira_d,6170300,eco,fish,rockfishquillback,ccira,,Quillback Rockfish,20,30,40,,,Quillback Rockfish,no
+eco_fish_rockfishquillback_phmasyn_m,eco_fish_rockfishquillback_phmasyn_m,6170100,eco,fish,rockfishquillback,phmasyn,,Quillback Rockfish,20,30,40,,,Quillback Rockfish,no
+eco_fish_rockfishredstripe_syn_m,eco_fish_rockfishredstripe_syn_m,6180100,eco,fish,rockfishredstripe,syn,,Redstripe rockfish,20,30,40,,,Redstripe rockfish,no
+eco_fish_rockfishrosethorn_ccira_d,eco_fish_rockfishrosethorn_ccira_d,6190300,eco,fish,rockfishrosethorn,ccira,,Rosethorn rockfish^,0,0,0,,^,Rosethorn rockfish,no
+eco_fish_rockfishrosethorn_phmasyn_m,eco_fish_rockfishrosethorn_phmasyn_m,6190100,eco,fish,rockfishrosethorn,phmasyn,,Rosethorn rockfish,10,15,20,,,Rosethorn rockfish,no
+eco_fish_rockfishrougheyeblackspotted_phmasyn_m,eco_fish_rockfishrougheyeblackspotted_phmasyn_m,6200100,eco,fish,rockfishrougheyeblackspotted,phmasyn,,Rougheye/Blackspotted Rockfish,40,50,60,,,Rougheye/Blackspotted Rockfish,no
+eco_fish_rockfishshortraker_phmasyn_m,eco_fish_rockfishshortraker_phmasyn_m,6210100,eco,fish,rockfishshortraker,phmasyn,,Shortraker rockfish,20,30,40,,,Shortraker rockfish,no
+eco_fish_rockfishsilvergray_ccira_d,eco_fish_rockfishsilvergray_ccira_d,6230300,eco,fish,rockfishsilvergray,ccira,,Silvergray rockfish,10,15,20,,,Silvergray rockfish,no
+eco_fish_rockfishsilvergray_phmasyn_m,eco_fish_rockfishsilvergray_phmasyn_m,6230100,eco,fish,rockfishsilvergray,phmasyn,,Silvergray rockfish,10,15,20,,,Silvergray rockfish,no
+eco_fish_rockfishtiger_ccira_d,eco_fish_rockfishtiger_ccira_d,6240200,eco,fish,rockfishtiger,ccira,,Tiger rockfish,20,30,40,,,Tiger rockfish,no
+eco_fish_rockfishtiger_phma_m,eco_fish_rockfishtiger_phma_m,6240100,eco,fish,rockfishtiger,phma,,Tiger rockfish,20,30,40,,,Tiger rockfish,no
+eco_fish_rockfishvermilion_phma_m,eco_fish_rockfishvermilion_phma_m,6250100,eco,fish,rockfishvermilion,phma,,Vermillion rockfish,10,15,20,,,Vermillion rockfish,no
+eco_fish_rockfishwidow_syn_m,eco_fish_rockfishwidow_syn_m,6260100,eco,fish,rockfishwidow,syn,,Widow rockfish,20,30,40,,,Widow rockfish,no
+eco_fish_rockfishyelloweye_ccira_d,eco_fish_rockfishyelloweye_ccira_d,6270300,eco,fish,rockfishyelloweye,ccira,,Yelloweye rockfish,40,50,60,,,Yelloweye rockfish,no
+eco_fish_rockfishyelloweye_phmasyn_m,eco_fish_rockfishyelloweye_phmasyn_m,6270100,eco,fish,rockfishyelloweye,phmasyn,,Yelloweye rockfish,40,50,60,,,Yelloweye rockfish,no
+eco_fish_rockfishyellowmouth_phmasyn_m,eco_fish_rockfishyellowmouth_phmasyn_m,6280100,eco,fish,rockfishyellowmouth,phmasyn,,Yellowmouth rockfish ,20,30,40,,,Yellowmouth rockfish ,no
+eco_fish_rockfishyellowtail_phmasyn_m,eco_fish_rockfishyellowtail_phmasyn_m,6290100,eco,fish,rockfishyellowtail,phmasyn,,Yellowtail rockfish ,10,15,20,,,Yellowtail rockfish ,no
+eco_fish_sablefish_phmasynsab_m,eco_fish_sablefish_phmasynsab_m,6300100,eco,fish,sablefish,phmasynsab,,Sablefish,10,15,20,,,Sablefish,no
+eco_fish_salmon_biomass_d,eco_fish_salmon_biomass_d,6590100,eco,fish,salmon,biomass,,Pacific salmon,20,30,40,,,Pacific salmon,no
+eco_fish_salmonchinook_diversity_d,eco_fish_salmonchinook_diversity_d,6590200,eco,fish,salmonchinook,diversity,,Chinook salmon,40,50,60,,,Chinook salmon,no
+eco_fish_salmonchum_diversity_d,eco_fish_salmonchum_diversity_d,6590300,eco,fish,salmonchum,diversity,,Chum salmon,20,30,40,,,Chum salmon,no
+eco_fish_salmoncoho_diversity_d,eco_fish_salmoncoho_diversity_d,6590400,eco,fish,salmoncoho,diversity,,Coho Salmon,20,30,40,,,Coho Salmon,no
+eco_fish_salmonpinkeven_diversity_d,eco_fish_salmonpinkeven_diversity_d,6590600,eco,fish,salmonpinkeven,diversity,,Pink salmon (even),20,30,40,,,Pink salmon (even),no
+eco_fish_salmonpinkodd_diversity_d,eco_fish_salmonpinkodd_diversity_d,6590500,eco,fish,salmonpinkodd,diversity,,Pink salmon (odd),20,30,40,,,Pink salmon (odd),no
+eco_fish_salmonsockeye_diversity_d,eco_fish_salmonsockeye_diversity_d,6590700,eco,fish,salmonsockeye,diversity,,Sockeye salmon,20,30,40,,,Sockeye salmon,no
+eco_fish_sandlance_syn_m,eco_fish_sandlance_syn_m,6310100,eco,fish,sandlance,syn,,Pacific Sand Lance,20,30,40,,,Pacific Sand Lance,no
+eco_fish_skatebig_phmasyn_m,eco_fish_skatebig_phmasyn_m,6320100,eco,fish,skatebig,phmasyn,,Big Skate ,40,50,60,,,Big Skate ,no
+eco_fish_skatelongnose_phmasyn_m,eco_fish_skatelongnose_phmasyn_m,6330100,eco,fish,skatelongnose,phmasyn,,Longnose skate,20,30,40,,,Longnose skate,no
+eco_fish_skateroughtail_syn_m,eco_fish_skateroughtail_syn_m,6340100,eco,fish,skateroughtail,syn,,Roughtail skate^,0,0,0,,^,Roughtail skate,no
+eco_fish_skatesandpaper_phmasyn_m,eco_fish_skatesandpaper_phmasyn_m,6350100,eco,fish,skatesandpaper,phmasyn,,Sandpaper skate,10,15,20,,,Sandpaper skate,no
+eco_fish_soledover_syn_m,eco_fish_soledover_syn_m,6360100,eco,fish,soledover,syn,,Dover sole ,10,15,20,,,Dover sole ,no
+eco_fish_solepetrale_syn_m,eco_fish_solepetrale_syn_m,6370100,eco,fish,solepetrale,syn,,Petrale sole ,10,15,20,,,Petrale sole ,no
+eco_fish_solerex_syn_m,eco_fish_solerex_syn_m,6380100,eco,fish,solerex,syn,,Rex Sole,10,15,20,,,Rex Sole,no
+eco_fish_solerock_phmasyn_m,eco_fish_solerock_phmasyn_m,6390100,eco,fish,solerock,phmasyn,,Rock sole ,10,15,20,,,Rock sole ,no
+eco_fish_sturgeon_ia_d,eco_fish_sturgeon_ia_d,6400100,eco,fish,sturgeon,ia,,Green Sturgeon,20,30,40,,,Green Sturgeon,no
+eco_fish_thornyheadlongspine_syn_m,eco_fish_thornyheadlongspine_syn_m,6410100,eco,fish,thornyheadlongspine,syn,,Longspine Thornyhead,20,30,40,,,Longspine Thornyhead,no
+eco_fish_thornyheadshortspine_syn_m,eco_fish_thornyheadshortspine_syn_m,6420100,eco,fish,thornyheadshortspine,syn,,Shortspine Thornyhead,10,15,20,,,Shortspine Thornyhead,no
+eco_inverts_alcyonacea_model_d,eco_inverts_alcyonacea_model_d,7010100,eco,inverts,alcyonacea,model,,Soft corals,20,30,40,,,Soft corals,no
+eco_inverts_antipatharia_model_d,eco_inverts_antipatharia_model_d,7020100,eco,inverts,antipatharia,model,,Black corals,20,30,40,,,Black corals,no
+eco_inverts_clambutter_records_d,eco_inverts_clambutter_records_d,7420100,eco,inverts,clambutter,records,,Butter clams,20,30,40,,,Butter clams,no
+eco_inverts_clamhorse_records_d,eco_inverts_clamhorse_records_d,7470100,eco,inverts,clamhorse,records,,Horse clam,20,30,40,,,Horse clam,no
+eco_inverts_clamlittleneck_records_d,eco_inverts_clamlittleneck_records_d,7200100,eco,inverts,clamlittleneck,records,,Littleneck clam^,0,0,0,,^,Littleneck clam,no
+eco_inverts_clamrazor_ia_d,eco_inverts_clamrazor_ia_d,7440100,eco,inverts,clamrazor,ia,,Razor clam,20,30,40,,,Razor clam,no
+eco_inverts_cockle_records_d,eco_inverts_cockle_records_d,7080100,eco,inverts,cockle,records,,Cockles,20,30,40,,,Cockles,no
+eco_inverts_coral_ccira_m,eco_inverts_coral_ccira_m,7490100,eco,inverts,coral,ccira,,Corals,20,30,40,,,Corals,no
+eco_inverts_coral_trawlsyn_d,eco_inverts_coral_trawlsyn_d,7090100,eco,inverts,coral,trawlsyn,,Corals,20,30,40,,,Corals,no
+eco_inverts_dungeness_ia_d,eco_inverts_dungeness_ia_d,7240100,eco,inverts,dungeness,ia,,Dungeness crab ^,0,0,0,,^,Dungeness crab ,no
+eco_inverts_dungeness_records_d,eco_inverts_dungeness_records_d,7240200,eco,inverts,dungeness,records,,Dungeness crab ,10,15,20,,,Dungeness crab ,no
+eco_inverts_geoduck_records_d,eco_inverts_geoduck_records_d,7360100,eco,inverts,geoduck,records,,Geoduck,20,30,40,,,Geoduck,no
+eco_inverts_octopusgiantpacific_records_d,eco_inverts_octopusgiantpacific_records_d,7140100,eco,inverts,octopusgiantpacific,records,,Giant pacific octopus,20,30,40,,,Giant pacific octopus,no
+eco_inverts_olympiaoyster_records_d,eco_inverts_olympiaoyster_records_d,7290100,eco,inverts,olympiaoyster,records,,Olympia Oyster^,0,0,0,,^,Olympia Oyster,no
+eco_inverts_pennatulacea_model_d,eco_inverts_pennatulacea_model_d,7380200,eco,inverts,pennatulacea,model,,Sea pens,20,30,40,,,Sea pens,no
+eco_inverts_pennatulacea_trawlsyn_d,eco_inverts_pennatulacea_trawlsyn_d,7380100,eco,inverts,pennatulacea,trawlsyn,,Sea pens,20,30,40,,,Sea pens,no
+eco_inverts_scallops_syn_d,eco_inverts_scallops_syn_d,7480100,eco,inverts,scallops,syn,,Scallops,10,15,20,,,Scallops,no
+eco_inverts_scleractinia_model_d,eco_inverts_scleractinia_model_d,7430100,eco,inverts,scleractinia,model,,Hand or stony corals,20,30,40,,,Hand or stony corals,no
+eco_inverts_seastarsunflower_records_d,eco_inverts_seastarsunflower_records_d,7410100,eco,inverts,seastarsunflower,records,,Sunflower sea star,20,30,40,,,Sunflower sea star,no
+eco_inverts_sponge_ccira_m,eco_inverts_sponge_ccira_m,7500100,eco,inverts,sponge,ccira,,Sponge,40,50,60,,,Sponge,no
+eco_inverts_sponge_trawlsyn_d,eco_inverts_sponge_trawlsyn_d,7450100,eco,inverts,sponge,trawlsyn,,Demospongiae,20,30,40,,,Demospongiae,no
+eco_inverts_spongereef_polygons_m,eco_inverts_spongereef_polygons_m,7450200,eco,inverts,spongereef,polygons,,Hexactinellida,40,50,60,,,Hexactinellida,no
+eco_inverts_squidopal_records_d,eco_inverts_squidopal_records_d,7130100,eco,inverts,squidopal,records,,Opal squid,20,30,40,,,Opal squid,no
+eco_inverts_tannercrabdeep_sab_d,eco_inverts_tannercrabdeep_sab_d,7050100,eco,inverts,tannercrabdeep,sab,,Deepwater grooved tanner crab,10,15,20,,,Deepwater grooved tanner crab,no
+eco_inverts_urchingreen_records_d,eco_inverts_urchingreen_records_d,7460100,eco,inverts,urchingreen,records,,Green Urchin,20,30,40,,,Green Urchin,no
+eco_inverts_urchinred_records_d,eco_inverts_urchinred_records_d,7230100,eco,inverts,urchinred,records,,Red Urchin,20,30,40,,,Red Urchin,no
+eco_mammals_bluewhale_ia_d,eco_mammals_bluewhale_ia_d,8160100,eco,mammals,bluewhale,ia,,Blue Whale^,0,0,0,,^,Blue Whale,no
+eco_mammals_dallsporpoise_density_d,eco_mammals_dallsporpoise_density_d,8010100,eco,mammals,dallsporpoise,density,,Dall's Porpoise,10,15,20,,,Dall's Porpoise,no
+eco_mammals_finwhale_density_d,eco_mammals_finwhale_density_d,8180100,eco,mammals,finwhale,density,,Fin whale,10,15,20,,,Fin whale,no
+eco_mammals_finwhale_hsi_d,eco_mammals_finwhale_hsi_d,8180300,eco,mammals,finwhale,hsi,,Fin whale,0,0,0,,,Fin whale,no
+eco_mammals_finwhale_ia_d,eco_mammals_finwhale_ia_d,8180200,eco,mammals,finwhale,ia,,Fin whale^,0,0,0,,^,Fin whale,no
+eco_mammals_furseal_ia_d,eco_mammals_furseal_ia_d,8130100,eco,mammals,furseal,ia,,Northern fur seal^,0,0,0,,^,Northern fur seal,no
+eco_mammals_greywhale_density_d,eco_mammals_greywhale_density_d,8190100,eco,mammals,greywhale,density,,Grey Whale,10,15,20,,,Grey Whale,no
+eco_mammals_greywhale_migrationroute_d,eco_mammals_greywhale_migrationroute_d,8190200,eco,mammals,greywhale,migrationroute,,Grey Whale^,0,0,0,,^,Grey Whale,no
+eco_mammals_harbourporpoise_density_d,eco_mammals_harbourporpoise_density_d,8020100,eco,mammals,harbourporpoise,density,,Harbour porpoise^,0,0,0,,^,Harbour porpoise,no
+eco_mammals_harbourseal_haulouts_m,eco_mammals_harbourseal_haulouts_m,8110100,eco,mammals,harbourseal,haulouts,,Harbour seal,40,50,60,,,Harbour seal,no
+eco_mammals_humpbackwhale_ch_d,eco_mammals_humpbackwhale_ch_d,8200200,eco,mammals,humpbackwhale,ch,,Humpback Whale,20,30,40,,,Humpback Whale,no
+eco_mammals_humpbackwhale_density_d,eco_mammals_humpbackwhale_density_d,8200100,eco,mammals,humpbackwhale,density,,Humpback Whale,10,15,20,,,Humpback Whale,no
+eco_mammals_killerwhaleresident_ch_d,eco_mammals_killerwhaleresident_ch_d,8060100,eco,mammals,killerwhaleresident,ch,,Orca NE Pacific Northern Residents,40,50,60,,,Orca NE Pacific Northern Residents,no
+eco_mammals_killerwhaleresident_hsi_d,eco_mammals_killerwhaleresident_hsi_d,8060300,eco,mammals,killerwhaleresident,hsi,,Orca NE Pacific Northern Residents,40,50,60,,,Orca NE Pacific Northern Residents,no
+eco_mammals_killerwhaleresident_ia_d,eco_mammals_killerwhaleresident_ia_d,8060400,eco,mammals,killerwhaleresident,ia,,Orca NE Pacific Northern Residents^,0,0,0,,^,Orca NE Pacific Northern Residents,no
+eco_mammals_killerwhaleresident_potentialch_d,eco_mammals_killerwhaleresident_potentialch_d,8060200,eco,mammals,killerwhaleresident,potentialch,,Orca NE Pacific Northern Residents,40,50,60,,,Orca NE Pacific Northern Residents,no
+eco_mammals_killerwhaletransient_hsi_d,eco_mammals_killerwhaletransient_hsi_d,8090100,eco,mammals,killerwhaletransient,hsi,,Orca NE Pacific Transients^,0,0,0,,^,Orca NE Pacific Transients,no
+eco_mammals_minkewhale_density_d,eco_mammals_minkewhale_density_d,8170100,eco,mammals,minkewhale,density,,Minke whale^,0,0,0,,^,Minke whale,no
+eco_mammals_northernrightwhaledolphin_density_d,eco_mammals_northernrightwhaledolphin_density_d,8030100,eco,mammals,northernrightwhaledolphin,density,,Northern Right Whale Dolphin^,0,0,0,,^,Northern Right Whale Dolphin,no
+eco_mammals_pacificwhitesideddolphin_density_d,eco_mammals_pacificwhitesideddolphin_density_d,8040100,eco,mammals,pacificwhitesideddolphin,density,,Pacific white-sided dolphin,10,15,20,,,Pacific white-sided dolphin,no
+eco_mammals_seaotter_ia_d,eco_mammals_seaotter_ia_d,8150200,eco,mammals,seaotter,ia,,Sea otter^,0,0,0,,^,Sea otter,no
+eco_mammals_seaotter_modeledhabitat_d,eco_mammals_seaotter_modeledhabitat_d,8150100,eco,mammals,seaotter,modeledhabitat,,Sea otter,40,50,60,,,Sea otter,no
+eco_mammals_seiwhale_ia_d,eco_mammals_seiwhale_ia_d,8220100,eco,mammals,seiwhale,ia,,Sei whale^,0,0,0,,^,Sei whale,no
+eco_mammals_spermwhale_density_d,eco_mammals_spermwhale_density_d,8230100,eco,mammals,spermwhale,density,,Sperm Whale,10,15,20,,,Sperm Whale,no
+eco_mammals_spermwhale_ia_d,eco_mammals_spermwhale_ia_d,8230200,eco,mammals,spermwhale,ia,,Sperm Whale^,0,0,0,,^,Sperm Whale,no
+eco_mammals_stellersealion_hauloutswinter_m,eco_mammals_stellersealion_hauloutswinter_m,8140300,eco,mammals,stellersealion,hauloutswinter,,Steller sea lion,40,50,60,,,Steller sea lion,no
+eco_mammals_stellersealion_hauloutsyearround_m,eco_mammals_stellersealion_hauloutsyearround_m,8140100,eco,mammals,stellersealion,hauloutsyearround,,Steller sea lion,40,50,60,,,Steller sea lion,no
+eco_mammals_stellersealion_rookeries_m,eco_mammals_stellersealion_rookeries_m,8140200,eco,mammals,stellersealion,rookeries,,Steller sea lion,40,50,60,,,Steller sea lion,no
+eco_plants_bullkelp_biobands_d,eco_plants_bullkelp_biobands_d,4020200,eco,plants,bullkelp,biobands,,Bull Kelp,20,30,40,,,Bull Kelp,no
+eco_plants_bullkelp_polygons_d,eco_plants_bullkelp_polygons_d,4020100,eco,plants,bullkelp,polygons,,Bull Kelp,20,30,40,,,Bull Kelp,no
+eco_plants_chlorophylla_bloom_d,eco_plants_chlorophylla_bloom_d,4010200,eco,plants,chlorophylla,bloom,,Phytoplankton^,0,0,0,1,^,Phytoplankton,no
+eco_plants_chlorophylla_concentration_d,eco_plants_chlorophylla_concentration_d,4010100,eco,plants,chlorophylla,concentration,,Phytoplankton,20,30,40,,,Phytoplankton,no
+eco_plants_eelgrass_biobands_d,eco_plants_eelgrass_biobands_d,4040300,eco,plants,eelgrass,biobands,,Eelgrass,20,30,40,,,Eelgrass,no
+eco_plants_eelgrass_polygons_d,eco_plants_eelgrass_polygons_d,4040100,eco,plants,eelgrass,polygons,,Eelgrass,20,30,40,,,Eelgrass,no
+eco_plants_eelgrass_prioritypolygons_d,eco_plants_eelgrass_prioritypolygons_d,4040200,eco,plants,eelgrass,prioritypolygons,,Eelgrass,20,30,40,,,Eelgrass,no
+eco_plants_generalkelp_polygons_d,eco_plants_generalkelp_polygons_d,4060100,eco,plants,generalkelp,polygons,,General Kelp,20,30,40,,,General Kelp,no
+eco_plants_giantkelp_biobands_d,eco_plants_giantkelp_biobands_d,4030200,eco,plants,giantkelp,biobands,,Giant Kelp,20,30,40,,,Giant Kelp,no
+eco_plants_giantkelp_polygons_d,eco_plants_giantkelp_polygons_d,4030100,eco,plants,giantkelp,polygons,,Giant Kelp,20,30,40,,,Giant Kelp,no
+eco_plants_surfgrass_biobands_d,eco_plants_surfgrass_biobands_d,4050100,eco,plants,surfgrass,biobands,,Surfgrass,20,30,40,,,Surfgrass,no
+eco_reptiles_leatherbackturtle_ia_d,eco_reptiles_leatherbackturtle_ia_d,9010100,eco,reptiles,leatherbackturtle,ia,,Leatherback sea turtle,20,30,40,,,Leatherback sea turtle,no
+eco_mammals_californiasealion_haulouts_d,eco_mammals_californiasealion_haulouts_d,8100100,eco,mammals,californiasealion,haulouts,,California sea lion,0,0,0,,,California sea lion,no
+eco_inverts_crabpugetsoundking_records_d,eco_inverts_crabpugetsoundking_records_d,7220100,eco,inverts,crabpugetsoundking,records,,crab puget sound king^,0,0,0,,^,crab puget sound king,no
+eco_inverts_prawn_records_d,eco_inverts_prawn_records_d,7350100,eco,inverts,prawn,records,,Prawn^,0,0,0,,^,Prawn,no
+eco_inverts_purplerockscallop_records_d,eco_inverts_purplerockscallop_records_d,7100100,eco,inverts,purplerockscallop,records,,Purple-hinged rock scallop^,0,0,0,,^,Purple-hinged rock scallop,no
+eco_inverts_seastarochre_records_d,eco_inverts_seastarochre_records_d,7390100,eco,inverts,seastarochre,records,,Ochre star^,0,0,0,,^,Ochre star,no
+eco_inverts_shrimpcoonstripe_records_d,eco_inverts_shrimpcoonstripe_records_d,7320100,eco,inverts,shrimpcoonstripe,records,,Coonstripe/dock shrimp^,0,0,0,,^,Coonstripe/dock shrimp,no
+eco_inverts_shrimphumpback_records_d,eco_inverts_shrimphumpback_records_d,7330100,eco,inverts,shrimphumpback,records,,Humpback shrimp ^,0,0,0,,^,Humpback shrimp ,no
+eco_inverts_shrimpsidestripe_records_d,eco_inverts_shrimpsidestripe_records_d,7300100,eco,inverts,shrimpsidestripe,records,,Sidestripe shrimp^,0,0,0,,^,Sidestripe shrimp,no
+eco_inverts_shrimpsmoothpink_records_d,eco_inverts_shrimpsmoothpink_records_d,7340100,eco,inverts,shrimpsmoothpink,records,,Smooth pink shrimp^,0,0,0,,^,Smooth pink shrimp,no
+eco_inverts_shrimpspinypink_records_d,eco_inverts_shrimpspinypink_records_d,7310100,eco,inverts,shrimpspinypink,records,,Spiny or northern pink shrimp^,0,0,0,,^,Spiny or northern pink shrimp,no
