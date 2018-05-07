@@ -58,7 +58,7 @@ detailed_status = True
 #
 ##
 
-source_mxd = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\spatial\CP_HU_MPA_Layers.mxd'
+source_mxd = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\spatial\CP_HU_MPA_Layers.mxd'
 
 ### scaling_attribute & scaling_attribute_file ###
 #
@@ -94,7 +94,7 @@ scaling_attribute_file = None
 #
 ##
 
-working_gdb_folder = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\spatial\working_TEMP'
+working_gdb_folder = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\spatial\working_TEMP'
 
 ### sr_code ###
 #
@@ -165,7 +165,7 @@ mpa_name_fields = ['UID']
 # doesn't exist then you will miss the first row of your data.
 ##
 
-imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\interactionmatrix_FINAL_20180404.csv'
+imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\interactionmatrix_FINAL_20180404.csv'
 
 ### output1_path & output2_path ###
 #
@@ -173,9 +173,9 @@ imatrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_File
 #
 ##
 
-output1_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\output\table1.csv'
+output1_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\output\table1.csv'
 
-output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\output\table2.csv'
+output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\output\table2.csv'
 
 ### output3_path ###
 #
@@ -184,7 +184,7 @@ output2_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_File
 #
 ##
 
-output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\output\table3.csv'
+output3_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\output\table3.csv'
 
 ### complexFeatureClasses ###
 #
@@ -231,7 +231,7 @@ cleanUpTempData = False
 # variables below
 #
 
-inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\inclusionmatrix_FINAL_20180430.csv'
+inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\inclusionmatrix_FINAL_20180430.csv'
 
 ### override_y & _n & _u ###
 #
@@ -269,15 +269,15 @@ override_u = True # This one behaves differently from _y and _n please read abov
 # on every CP on every run.
 
 cpOverlap_newDict = True
-cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\cpOverlap.csv'
+cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\cpOverlap.csv'
 
 ### Join eco UIDs to table 1 output ###
 #
 # This requires pandas
 #
 
-ecoUIDs_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\input\mpatt_eco_UID-simple_FINAL_20180427.csv'
-output4_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180416\output\table1_joined.csv'
+ecoUIDs_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\mpatt_eco_UID-simple_FINAL_20180427.csv'
+output4_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\output\table1_joined.csv'
 
 
 ######################
@@ -715,7 +715,7 @@ def shouldInclude(pct_in_mpa, threshold, im, fc, mpa):
 def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scaling_attribute,
                      mpa_name_attribute, mpa_area_attribute, new_bc_total_area_field,
                      pct_of_mpa_field, pct_of_total_field, mpa_subregion_field, mpa_area_attribute_section,
-                     clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, feature_count_field, density_field, value_type):
+                     clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, density_field, value_type):
             
     working_intersect = base_layer + '_Intersect'
 
@@ -748,44 +748,9 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
         arcpy.CalculateField_management(working_intersect, new_bc_total_area_field, total_area, 'PYTHON_9.3')
 
 
-    # add feature count attribute to determine how many unique features of a cp fall within an mpa
-    # intersect will cut overlapping features up, so to get a count we need to identify by unique FID
-
-    arcpy.AddField_management(working_intersect, feature_count_field, 'FLOAT')
-
-    intersect_field = "FID_" + base_layer
-    if len(intersect_field) > 64:
-        cut = len(intersect_field) - 64
-        intersect_field = intersect_field[:-cut]
-
-    mpa_list = []
-    with arcpy.da.SearchCursor(working_intersect, [mpa_name_attribute]) as cursor:
-        for row in cursor:
-            if row[0] not in mpa_list:
-                mpa_list.append(row[0])
-
-    for mpa in mpa_list:
-        temp_list = []
-        mpa_name = (mpa.replace("'", "''")).encode('utf8') # the where clause requires double apostrophes
-        where = "{0} = '{1}'".format(mpa_name_attribute, mpa_name)
-        with arcpy.da.UpdateCursor(working_intersect, [intersect_field, feature_count_field], where) as cursor:
-            for row in cursor:
-                if row[0] not in temp_list:
-                    temp_list.append(row[0])
-            cursor.reset()
-
-            for num in temp_list:
-                count = 0
-                for row in cursor:
-                    if row[0] == num:
-                        count += 1
-                proportion = 1.0 / float(count)
-                cursor.reset()
-                for row in cursor:
-                    if row[0] == num:
-                        row[1] = proportion
-                        cursor.updateRow(row)
-                cursor.reset()
+    # 2080507 This is where the feature count functionality was.
+    # It was taking way too long to process. To separate out by mpa and ecosection it requires reseting the cursor many times - almost as many times as there are features, so for datasets with 19,000 features, this becomes very slow.
+    # The previous version maintains this code. The version before the previous version has the code where it only splits out by mpa. If it ends up where I still need feature count, then I should revert back to the verison from two versions ago.
 
     # Dissolve by mpa_name_attribute field summing adjusted area
     working_dissolved = base_layer + '_Dissolved'
@@ -795,7 +760,7 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
     arcpy.Dissolve_management(working_intersect, working_dissolved, [mpa_name_attribute, "ecosection"],
                               [[clipped_adjusted_area, 'SUM'], [new_bc_total_area_field, 'FIRST'],
                                [mpa_area_attribute, 'FIRST'], [mpa_area_attribute_section, 'FIRST'],
-                              [mpa_subregion_field, 'FIRST'], [feature_count_field, 'SUM']])
+                              [mpa_subregion_field, 'FIRST']])
 
     # Rename fields for simplicities sake
     renameField(working_dissolved, 'SUM_' + clipped_adjusted_area, clipped_adjusted_area, 'DOUBLE')
@@ -803,7 +768,6 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
     renameField(working_dissolved, 'FIRST_' + mpa_area_attribute, mpa_area_attribute, 'DOUBLE')
     renameField(working_dissolved, 'FIRST_' + mpa_area_attribute_section, mpa_area_attribute_section, 'DOUBLE')
     renameField(working_dissolved, 'FIRST_' + mpa_subregion_field, mpa_subregion_field, 'TEXT')
-    renameField(working_dissolved, 'SUM_' + feature_count_field, feature_count_field, 'FLOAT')
 
     
     arcpy.AddField_management(working_dissolved, pct_of_mpa_field, 'DOUBLE')
@@ -867,7 +831,7 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
 
 def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                        pct_of_total_field, pct_of_mpa_field, mpa_name_attribute,
-                       scaling_attribute, threshold, subregion, imatrix, mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, feature_count_field, density_field, value_type):
+                       scaling_attribute, threshold, subregion, imatrix, mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, density_field, value_type):
     mpas = {}
     sliver_freq = {} # added 20180205 to get sliver frequencies
 
@@ -888,21 +852,21 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                                        scaling_attribute, mpa_name_attribute, mpa_area_attribute,
                                        new_bc_total_area_field, pct_of_mpa_field, pct_of_total_field,
                                        mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal,
-                                      pct_of_mpa_field_Total, feature_count_field, density_field, value_type)
+                                      pct_of_mpa_field_Total, density_field, value_type)
 
     # Read the statistics for the whole region into a dict
     with arcpy.da.SearchCursor(
             processed_layer,
             [mpa_name_attribute,mpa_area_attribute,pct_of_mpa_field,pct_of_total_field,
              new_bc_total_area_field,clipped_adjusted_area, "ecosection", mpa_subregion_field,
-             mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, feature_count_field]
+             mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total]
     ) as cursor:
         # i.e. for each mpa which technically has hu/cp in it
         for row in cursor:
             mpa_name, mpa_area, pct_of_mpa = row[0], row[1], row[2]
             pct_of_total, hucp_og_area, hucp_clip_area = row[3], row[4], row[5]
             ecosect, subreg_mpa, mpa_area_ecosect  = row[6], row[7], row[8]
-            hucp_clip_area_mpaTotal, pct_of_mpa_Total, feature_count = row[9], row[10], row[11]
+            hucp_clip_area_mpaTotal, pct_of_mpa_Total = row[9], row[10]
 
             # each HU/CP is a dict w/ info on its name, clipped area, and total area of
             # the original layer
@@ -925,8 +889,7 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                                   'region_area': region_area,
                                   'pct_in_mpa': pct_of_mpa,
                                   'pct_of_region': pct_of_region,
-                                  'pct_of_total': pct_of_total,
-                                  'feature_count' : feature_count}
+                                  'pct_of_total': pct_of_total}
               
     # Clean up workspace
     if cleanUpTempData:
@@ -1254,8 +1217,7 @@ def prepareOutputTable1(cp_in_mpa_i, cp_in_mpas):
                                                       'pct_of_mpa': None,
                                                       'pct_of_og': None,
                                                       'pct_of_og_unscaled': None,
-                                                      'subregion': cp_in_mpas[mpa][ecosection][cp]['subregion'],
-                                                      'feature_count' : cp_in_mpas[mpa][ecosection][cp]['feature_count']}
+                                                      'subregion': cp_in_mpas[mpa][ecosection][cp]['subregion']}
 
                     # Calculate effectiveness
                     num_high, num_mod, num_low = countInteractions(cp_in_mpa_i[mpa][cp]['interactions'])
@@ -1289,7 +1251,7 @@ def writeOutputTable1(otable, opath, mpa_dict):
     with open(opath, 'wb') as f:
         w = csv.writer(f)
 
-        w.writerow(['UID','parentid','name', 'biome', 'type', 'management', 'subregion', 'ecosection', 'CP', 'proportion_scaled', 'proportion_unscaled', 'scaled_area','unscaled_area', 'total_area', 'feature_count_MPA'])
+        w.writerow(['UID','parentid','name', 'biome', 'type', 'management', 'subregion', 'ecosection', 'CP', 'proportion_scaled', 'proportion_unscaled', 'scaled_area','unscaled_area', 'total_area'])
 
         for mpa in otable:
             parentid = mpa_dict[mpa]['parent_id']
@@ -1305,8 +1267,7 @@ def writeOutputTable1(otable, opath, mpa_dict):
                     scaled_area = otable[mpa][ecosection][cp]['scaled_area']
                     total_area = otable[mpa][ecosection][cp]['og_area']
                     pct_of_og_unscaled = otable[mpa][ecosection][cp]['pct_of_og_unscaled']
-                    feature_count = otable[mpa][ecosection][cp]['feature_count']
-                    w.writerow([mpa.encode('utf8'), parentid, name.encode('utf8'), biome, type, mgmt, subregion, ecosection, cp, pct_of_og, pct_of_og_unscaled, scaled_area, unscaled_area, total_area, feature_count])
+                    w.writerow([mpa.encode('utf8'), parentid, name.encode('utf8'), biome, type, mgmt, subregion, ecosection, cp, pct_of_og, pct_of_og_unscaled, scaled_area, unscaled_area, total_area])
 
 def createOutputTable2(o_table_1, cp_area_overlap_dict):
     table2 = {}
@@ -1379,22 +1340,6 @@ def createOutputTable2(o_table_1, cp_area_overlap_dict):
     return table2
 
 
-#def writeOutputTable2(o_table_2, ofile):
-#    cols = ['Johnstone Strait','Continental Slope','Dixon Entrance','Strait of Georgia','Juan de Fuca Strait', 'Queen Charlotte Strait', 'North Coast Fjords', 'Hecate Strait', 'Queen Charlotte Sound', 'Vancouver Island Shelf', 'Transitional Pacific', 'Subarctic Pacific', 'NCVI', 'CC', 'NC', 'NCCC', 'HG']
-
-#    with open(ofile, 'wb') as f:
-#        w = csv.writer(f)
-
-#        # Write header
-#        w.writerow(['']+cols)
-
-#        for cp in o_table_2:
-#            row = ['' for i in range(len(cols))]
-#            for eco_sub in o_table_2[cp]:
-#                if eco_sub is not None:
-#                    row[cols.index(eco_sub)] = o_table_2[cp][eco_sub]['pct']
-
-#            w.writerow([cp] + row)
 def writeOutputTable2(o_table_2, ofile):
 
     with open(ofile, 'wb') as f:
@@ -1559,7 +1504,6 @@ pct_of_mpa_field = 'pct_of_mpa'
 # JC fields added
 clipped_adj_area_mpaTotal = 'etp_ac_area_adj_mpaTotal'
 pct_of_mpa_field_Total = 'pct_of_mpa_Total'
-feature_count_field = "feature_count"
 density_field = "value"
 
 hu_in_mpas,cp_in_mpas = {}, {}
@@ -1614,7 +1558,7 @@ for lyr in layer_list:
                                       pct_of_total_field, pct_of_mpa_field, merged_name_field,
                                       new_scaling_field, threshold, subregion, inclusion_matrix,
                                       mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal,
-                                      pct_of_mpa_field_Total, feature_count_field, density_field, value_type)
+                                      pct_of_mpa_field_Total, density_field, value_type)
 
 
     # If subregion fc split off that subregion tag on the fc name
