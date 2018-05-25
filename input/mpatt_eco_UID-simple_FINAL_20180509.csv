@@ -78,17 +78,17 @@ eco_birds_tuftedpuffin_colonies_d_ri1,eco_birds_tuftedpuffin_colonies_d_ri1,5030
 eco_birds_tuftedpuffin_colonies_d_ri2,eco_birds_tuftedpuffin_colonies_d_ri2,5030200,eco,birds,tuftedpuffin,colonies,ri2,Tufted Puffin ri2,40,50,60,,,Tufted Puffin,no
 eco_birds_tuftedpuffin_colonies_d_ri3,eco_birds_tuftedpuffin_colonies_d_ri3,5030300,eco,birds,tuftedpuffin,colonies,ri3,Tufted Puffin ri3,40,50,60,,,Tufted Puffin,no
 eco_coarse_biophysicalunits_polygons_d,eco_coarse_biophysicalunits_polygons_d,3040100-3040500,eco,coarse,biophysicalunits,polygons,,Biophysical Units,10,20,30,,,Biophysical Units,yes
-eco_coarse_biophysicalunits_polygons_d_dogfishbank,eco_coarse_biophysicalunits_polygons_d_DogFishBank,3040100,eco,coarse,biophysicalunits,polygons,dogfishbank,Biophysical Units dogfishbank,10,20,30,,,Biophysical Units,no
-eco_coarse_biophysicalunits_polygons_d_otherbank,eco_coarse_biophysicalunits_polygons_d_OtherBank,3040200,eco,coarse,biophysicalunits,polygons,otherbank,Biophysical Units otherbank,10,20,30,,,Biophysical Units,no
-eco_coarse_biophysicalunits_polygons_d_shelf,eco_coarse_biophysicalunits_polygons_d_Shelf,3040300,eco,coarse,biophysicalunits,polygons,shelf,Biophysical Units shelf,10,20,30,,,Biophysical Units,no
-eco_coarse_biophysicalunits_polygons_d_slope,eco_coarse_biophysicalunits_polygons_d_Slope,3040400,eco,coarse,biophysicalunits,polygons,slope,Biophysical Units slope,10,20,30,,,Biophysical Units,no
-eco_coarse_biophysicalunits_polygons_d_trough,eco_coarse_biophysicalunits_polygons_d_Trough,3040500,eco,coarse,biophysicalunits,polygons,trough,Biophysical Units trough,10,20,30,,,Biophysical Units,no
+eco_coarse_biophysicalunits_polygons_d_dogfishbank,eco_coarse_biophysicalunits_polygons_d_dogfishbank,3040100,eco,coarse,biophysicalunits,polygons,dogfishbank,Biophysical Units dogfishbank,10,20,30,,,Biophysical Units,no
+eco_coarse_biophysicalunits_polygons_d_otherbank,eco_coarse_biophysicalunits_polygons_d_otherbank,3040200,eco,coarse,biophysicalunits,polygons,otherbank,Biophysical Units otherbank,10,20,30,,,Biophysical Units,no
+eco_coarse_biophysicalunits_polygons_d_shelf,eco_coarse_biophysicalunits_polygons_d_shelf,3040300,eco,coarse,biophysicalunits,polygons,shelf,Biophysical Units shelf,10,20,30,,,Biophysical Units,no
+eco_coarse_biophysicalunits_polygons_d_slope,eco_coarse_biophysicalunits_polygons_d_slope,3040400,eco,coarse,biophysicalunits,polygons,slope,Biophysical Units slope,10,20,30,,,Biophysical Units,no
+eco_coarse_biophysicalunits_polygons_d_trough,eco_coarse_biophysicalunits_polygons_d_trough,3040500,eco,coarse,biophysicalunits,polygons,trough,Biophysical Units trough,10,20,30,,,Biophysical Units,no
 eco_coarse_bottompatches_polygons_d,eco_coarse_bottompatches_polygons_d,3050100-3050300,eco,coarse,bottompatches,polygons,,Bottom Patches,10,20,30,,,Bottom Patches,yes
-eco_coarse_bottompatches_polygons_d_hard,eco_coarse_bottompatches_polygons_d_BType11,3050100,eco,coarse,bottompatches,polygons,hard,Bottom Patches hard,10,20,30,,,Bottom Patches,no
-eco_coarse_bottompatches_polygons_d_mixed,eco_coarse_bottompatches_polygons_d_BType12,3050200,eco,coarse,bottompatches,polygons,mixed,Bottom Patches mixed,10,20,30,,,Bottom Patches,no
-eco_coarse_bottompatches_polygons_d_soft,eco_coarse_bottompatches_polygons_d_BType13,3050300,eco,coarse,bottompatches,polygons,soft,Bottom Patches soft,10,20,30,,,Bottom Patches,no
+eco_coarse_bottompatches_polygons_d_hard,eco_coarse_bottompatches_polygons_d_btype11,3050100,eco,coarse,bottompatches,polygons,hard,Bottom Patches hard,10,20,30,,,Bottom Patches,no
+eco_coarse_bottompatches_polygons_d_mixed,eco_coarse_bottompatches_polygons_d_btype12,3050200,eco,coarse,bottompatches,polygons,mixed,Bottom Patches mixed,10,20,30,,,Bottom Patches,no
+eco_coarse_bottompatches_polygons_d_soft,eco_coarse_bottompatches_polygons_d_btype13,3050300,eco,coarse,bottompatches,polygons,soft,Bottom Patches soft,10,20,30,,,Bottom Patches,no
 eco_coarse_coastalclasses_lines_d,eco_coarse_coastalclasses_lines_d,3090100-3091400,eco,coarse,coastalclasses,lines,,Coastal Classes,10,20,30,,,Coastal Classes,yes
-eco_coarse_coastalclasses_lines_d_channel,eco_coarse_coastalclasses_lines_d_Channel,3090100,eco,coarse,coastalclasses,lines,channel,Coastal Classes channel,10,20,30,,,Coastal Classes,no
+eco_coarse_coastalclasses_lines_d_channel,eco_coarse_coastalclasses_lines_d_channel,3090100,eco,coarse,coastalclasses,lines,channel,Coastal Classes channel,10,20,30,,,Coastal Classes,no
 eco_coarse_coastalclasses_lines_d_estuary,eco_coarse_coastalclasses_lines_d_estuaryorganicsfines,3090200,eco,coarse,coastalclasses,lines,estuary,Coastal Classes estuary,10,20,30,,,Coastal Classes,no
 eco_coarse_coastalclasses_lines_d_gravelbeach,eco_coarse_coastalclasses_lines_d_gravelbeach,3090300,eco,coarse,coastalclasses,lines,gravelbeach,Coastal Classes gravelbeach,10,20,30,,,Coastal Classes,no
 eco_coarse_coastalclasses_lines_d_gravelflat,eco_coarse_coastalclasses_lines_d_gravelflat,3090400,eco,coarse,coastalclasses,lines,gravelflat,Coastal Classes gravelflat,10,20,30,,,Coastal Classes,no
@@ -117,13 +117,13 @@ eco_coarse_ebsas_polygons_d_northislandstraits,eco_coarse_ebsas_polygons_d_north
 eco_coarse_ebsas_polygons_d_scottislands,eco_coarse_ebsas_polygons_d_scottislands,3101200,eco,coarse,ebsas,polygons,scottislands,EBSAS scottislands,10,20,30,,,EBSAS,no
 eco_coarse_ebsas_polygons_d_shelfbreak,eco_coarse_ebsas_polygons_d_shelfbreak,3101300,eco,coarse,ebsas,polygons,shelfbreak,EBSAS shelfbreak,10,20,30,,,EBSAS,no
 eco_coarse_ecosections_polygons_d,eco_coarse_ecosections_polygons_d,3060100-3060800,eco,coarse,ecosections,polygons,,Ecosections,10,20,30,,,Ecosections,yes
-eco_coarse_ecosections_polygons_d_js,eco_coarse_ecosections_polygons_d_JohnstoneStrait,3060100,eco,coarse,ecosections,polygons,js,Ecosections js,10,20,30,,,Ecosections,no
-eco_coarse_ecosections_polygons_d_cs,eco_coarse_ecosections_polygons_d_ContinentalSlope,3060200,eco,coarse,ecosections,polygons,cs,Ecosections cs,10,20,30,,,Ecosections,no
-eco_coarse_ecosections_polygons_d_de,eco_coarse_ecosections_polygons_d_DixonEntrance,3060300,eco,coarse,ecosections,polygons,de,Ecosections de,10,20,30,,,Ecosections,no
-eco_coarse_ecosections_polygons_d_qcst,eco_coarse_ecosections_polygons_d_QueenCharlotteStrait,3060400,eco,coarse,ecosections,polygons,qcst,Ecosections qcst,10,20,30,,,Ecosections,no
-eco_coarse_ecosections_polygons_d_ncf,eco_coarse_ecosections_polygons_d_NorthCoastFjords,3060500,eco,coarse,ecosections,polygons,ncf,Ecosections ncf,10,20,30,,,Ecosections,no
-eco_coarse_ecosections_polygons_d_hs,eco_coarse_ecosections_polygons_d_HecateStrait,3060600,eco,coarse,ecosections,polygons,hs,Ecosections hs,10,20,30,,,Ecosections,no
-eco_coarse_ecosections_polygons_d_qcso,eco_coarse_ecosections_polygons_d_QueenCharlotteSound,3060700,eco,coarse,ecosections,polygons,qcso,Ecosections qcso,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_js,eco_coarse_ecosections_polygons_d_johnstonestrait,3060100,eco,coarse,ecosections,polygons,js,Ecosections js,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_cs,eco_coarse_ecosections_polygons_d_continentalslope,3060200,eco,coarse,ecosections,polygons,cs,Ecosections cs,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_de,eco_coarse_ecosections_polygons_d_dixonentrance,3060300,eco,coarse,ecosections,polygons,de,Ecosections de,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_qcst,eco_coarse_ecosections_polygons_d_queencharlottestrait,3060400,eco,coarse,ecosections,polygons,qcst,Ecosections qcst,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_ncf,eco_coarse_ecosections_polygons_d_northcoastfjords,3060500,eco,coarse,ecosections,polygons,ncf,Ecosections ncf,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_hs,eco_coarse_ecosections_polygons_d_hecatestrait,3060600,eco,coarse,ecosections,polygons,hs,Ecosections hs,10,20,30,,,Ecosections,no
+eco_coarse_ecosections_polygons_d_qcso,eco_coarse_ecosections_polygons_d_queencharlottesound,3060700,eco,coarse,ecosections,polygons,qcso,Ecosections qcso,10,20,30,,,Ecosections,no
 eco_coarse_ecosections_polygons_d_vis,eco_coarse_ecosections_polygons_d_vancouverislandshelf,3060800,eco,coarse,ecosections,polygons,vis,Ecosections vis,10,20,30,,,Ecosections,no
 eco_coarse_geomorphicunits_polygons_d,eco_coarse_geomorphicunits_polygons_d,3030100-3031400,eco,coarse,geomorphicunits,polygons,,Geomorphic Units,10,20,30,,,Geomorphic Units,yes
 eco_coarse_geomorphicunits_polygons_d_fjordcrest,eco_coarse_geomorphicunits_polygons_d_fjordcrest,3030100,eco,coarse,geomorphicunits,polygons,fjordcrest,Geomorphic Units fjordcrest,10,20,30,,,Geomorphic Units,no
@@ -141,23 +141,23 @@ eco_coarse_geomorphicunits_polygons_d_sloperidge,eco_coarse_geomorphicunits_poly
 eco_coarse_geomorphicunits_polygons_d_slopewallsloping,eco_coarse_geomorphicunits_polygons_d_slopewallsloping,3031300,eco,coarse,geomorphicunits,polygons,slopewallsloping,Geomorphic Units slopewallsloping,10,20,30,,,Geomorphic Units,no
 eco_coarse_geomorphicunits_polygons_d_slopewallsteep,eco_coarse_geomorphicunits_polygons_d_slopewallsteep,3031400,eco,coarse,geomorphicunits,polygons,slopewallsteep,Geomorphic Units slopewallsteep,10,20,30,,,Geomorphic Units,no
 eco_coarse_oceanreg_polygons_d,eco_coarse_oceanreg_polygons_d,3080100-3081500,eco,coarse,oceanreg,polygons,,ocean reg,10,20,30,,,ocean reg,yes
-eco_coarse_oceanreg_polygons_d_aristazabalbanksupwelling,eco_coarse_oceanreg_polygons_d_Id10,3080100,eco,coarse,oceanreg,polygons,aristazabalbanksupwelling,ocean reg aristazabalbanksupwelling,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_mainlandfjords,eco_coarse_oceanreg_polygons_d_Id11,3080200,eco,coarse,oceanreg,polygons,mainlandfjords,ocean reg mainlandfjords,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_capestjamestidalmixing,eco_coarse_oceanreg_polygons_d_Id12,3080300,eco,coarse,oceanreg,polygons,capestjamestidalmixing,ocean reg capestjamestidalmixing,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_easternqueencharlottesound,eco_coarse_oceanreg_polygons_d_Id13,3080400,eco,coarse,oceanreg,polygons,easternqueencharlottesound,ocean reg easternqueencharlottesound,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_capescotttidalmixing,eco_coarse_oceanreg_polygons_d_Id14,3080500,eco,coarse,oceanreg,polygons,capescotttidalmixing,ocean reg capescotttidalmixing,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_johnstonestrait,eco_coarse_oceanreg_polygons_d_Id15,3080600,eco,coarse,oceanreg,polygons,johnstonestrait,ocean reg johnstonestrait,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_vancouverislandshelfbreak,eco_coarse_oceanreg_polygons_d_Id16,3080600,eco,coarse,oceanreg,polygons,vancouverislandshelfbreak,ocean reg vancouverislandshelfbreak,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_vancouverislandinnershelf,eco_coarse_oceanreg_polygons_d_Id17,3080600,eco,coarse,oceanreg,polygons,vancouverislandinnershelf,ocean reg vancouverislandinnershelf,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_northernstraitofgeorgia,eco_coarse_oceanreg_polygons_d_Id18,3080700,eco,coarse,oceanreg,polygons,northernstraitofgeorgia,ocean reg northernstraitofgeorgia,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_coastalmixingregion,eco_coarse_oceanreg_polygons_d_Id2,3080800,eco,coarse,oceanreg,polygons,coastalmixingregion,ocean reg coastalmixingregion,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_sealaskamixingregion,eco_coarse_oceanreg_polygons_d_Id3,3080900,eco,coarse,oceanreg,polygons,sealaskamixingregion,ocean reg sealaskamixingregion,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_dixonentrancecoastalflowregion,eco_coarse_oceanreg_polygons_d_Id4,3081000,eco,coarse,oceanreg,polygons,dixonentrancecoastalflowregion,ocean reg dixonentrancecoastalflowregion,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_westcoastqciupwellingregion,eco_coarse_oceanreg_polygons_d_Id5,3081100,eco,coarse,oceanreg,polygons,westcoastqciupwellingregion,ocean reg westcoastqciupwellingregion,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_lowflownearshore,eco_coarse_oceanreg_polygons_d_Id6,3081200,eco,coarse,oceanreg,polygons,lowflownearshore,ocean reg lowflownearshore,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_dogfishbankfrontalregion,eco_coarse_oceanreg_polygons_d_Id7,3081300,eco,coarse,oceanreg,polygons,dogfishbankfrontalregion,ocean reg dogfishbankfrontalregion,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_rosespiteddy,eco_coarse_oceanreg_polygons_d_Id8,3081400,eco,coarse,oceanreg,polygons,rosespiteddy,ocean reg rosespiteddy,10,20,30,,,ocean reg,no
-eco_coarse_oceanreg_polygons_d_hecatestrait,eco_coarse_oceanreg_polygons_d_Id9,3081500,eco,coarse,oceanreg,polygons,hecatestrait,ocean reg hecatestrait,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_aristazabalbanksupwelling,eco_coarse_oceanreg_polygons_d_id10,3080100,eco,coarse,oceanreg,polygons,aristazabalbanksupwelling,ocean reg aristazabalbanksupwelling,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_mainlandfjords,eco_coarse_oceanreg_polygons_d_id11,3080200,eco,coarse,oceanreg,polygons,mainlandfjords,ocean reg mainlandfjords,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_capestjamestidalmixing,eco_coarse_oceanreg_polygons_d_id12,3080300,eco,coarse,oceanreg,polygons,capestjamestidalmixing,ocean reg capestjamestidalmixing,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_easternqueencharlottesound,eco_coarse_oceanreg_polygons_d_id13,3080400,eco,coarse,oceanreg,polygons,easternqueencharlottesound,ocean reg easternqueencharlottesound,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_capescotttidalmixing,eco_coarse_oceanreg_polygons_d_id14,3080500,eco,coarse,oceanreg,polygons,capescotttidalmixing,ocean reg capescotttidalmixing,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_johnstonestrait,eco_coarse_oceanreg_polygons_d_id15,3080600,eco,coarse,oceanreg,polygons,johnstonestrait,ocean reg johnstonestrait,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_vancouverislandshelfbreak,eco_coarse_oceanreg_polygons_d_id16,3080600,eco,coarse,oceanreg,polygons,vancouverislandshelfbreak,ocean reg vancouverislandshelfbreak,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_vancouverislandinnershelf,eco_coarse_oceanreg_polygons_d_id17,3080600,eco,coarse,oceanreg,polygons,vancouverislandinnershelf,ocean reg vancouverislandinnershelf,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_northernstraitofgeorgia,eco_coarse_oceanreg_polygons_d_id18,3080700,eco,coarse,oceanreg,polygons,northernstraitofgeorgia,ocean reg northernstraitofgeorgia,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_coastalmixingregion,eco_coarse_oceanreg_polygons_d_id2,3080800,eco,coarse,oceanreg,polygons,coastalmixingregion,ocean reg coastalmixingregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_sealaskamixingregion,eco_coarse_oceanreg_polygons_d_id3,3080900,eco,coarse,oceanreg,polygons,sealaskamixingregion,ocean reg sealaskamixingregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_dixonentrancecoastalflowregion,eco_coarse_oceanreg_polygons_d_id4,3081000,eco,coarse,oceanreg,polygons,dixonentrancecoastalflowregion,ocean reg dixonentrancecoastalflowregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_westcoastqciupwellingregion,eco_coarse_oceanreg_polygons_d_id5,3081100,eco,coarse,oceanreg,polygons,westcoastqciupwellingregion,ocean reg westcoastqciupwellingregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_lowflownearshore,eco_coarse_oceanreg_polygons_d_id6,3081200,eco,coarse,oceanreg,polygons,lowflownearshore,ocean reg lowflownearshore,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_dogfishbankfrontalregion,eco_coarse_oceanreg_polygons_d_id7,3081300,eco,coarse,oceanreg,polygons,dogfishbankfrontalregion,ocean reg dogfishbankfrontalregion,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_rosespiteddy,eco_coarse_oceanreg_polygons_d_id8,3081400,eco,coarse,oceanreg,polygons,rosespiteddy,ocean reg rosespiteddy,10,20,30,,,ocean reg,no
+eco_coarse_oceanreg_polygons_d_hecatestrait,eco_coarse_oceanreg_polygons_d_id9,3081500,eco,coarse,oceanreg,polygons,hecatestrait,ocean reg hecatestrait,10,20,30,,,ocean reg,no
 eco_fish_arrowtooth_phmasynsab_m,eco_fish_arrowtooth_phmasynsab_m,6010100,eco,fish,arrowtooth,phmasynsab,,Arrowtooth flounder,10,15,20,,,Arrowtooth flounder,no
 eco_fish_bocaccio_phmasyn_m,eco_fish_rockfishbocaccio_phmasyn_m,6100100,eco,fish,rockfishbocaccio,phmasyn,,Bocaccio,40,50,60,,,Bocaccio,no
 eco_fish_dogfish_phmasyn_m,eco_fish_dogfish_phmasyn_m,6020100,eco,fish,dogfish,phmasyn,,Spiny Dogfish,10,15,20,,,Spiny Dogfish,no
@@ -294,3 +294,181 @@ eco_inverts_shrimphumpback_records_d,eco_inverts_shrimphumpback_records_d,733010
 eco_inverts_shrimpsidestripe_records_d,eco_inverts_shrimpsidestripe_records_d,7300100,eco,inverts,shrimpsidestripe,records,,Sidestripe shrimp^,0,0,0,,^,Sidestripe shrimp,no
 eco_inverts_shrimpsmoothpink_records_d,eco_inverts_shrimpsmoothpink_records_d,7340100,eco,inverts,shrimpsmoothpink,records,,Smooth pink shrimp^,0,0,0,,^,Smooth pink shrimp,no
 eco_inverts_shrimpspinypink_records_d,eco_inverts_shrimpspinypink_records_d,7310100,eco,inverts,shrimpspinypink,records,,Spiny or northern pink shrimp^,0,0,0,,^,Spiny or northern pink shrimp,no
+FNCCP_1000100_d,,1000100,,,,,,Central Coast 10,,,,,,,
+FNCCP_1000200_d,,1000200,,,,,,Central Coast 11,,,,,,,
+FNCCP_1000300_d,,1000300,,,,,,Central Coast 12,,,,,,,
+FNCCP_1000400_d,,1000400,,,,,,Central Coast 13,,,,,,,
+FNCCP_1000500_d,,1000500,,,,,,Central Coast 14,,,,,,,
+FNCCP_1000600_d,,1000600,,,,,,Central Coast 15,,,,,,,
+FNCCP_1000700_d,,1000700,,,,,,Central Coast 16,,,,,,,
+FNCCP_1000800_d,,1000800,,,,,,Central Coast 17,,,,,,,
+FNCCP_1000900_d,,1000900,,,,,,Central Coast 18,,,,,,,
+FNCCP_1001000_d,,1001000,,,,,,Central Coast 19,,,,,,,
+FNCCP_1001100_d,,1001100,,,,,,Central Coast 2,,,,,,,
+FNCCP_1001200_d,,1001200,,,,,,Central Coast 20,,,,,,,
+FNCCP_1001300_d,,1001300,,,,,,Central Coast 21,,,,,,,
+FNCCP_1001400_d,,1001400,,,,,,Central Coast 22,,,,,,,
+FNCCP_1001500_d,,1001500,,,,,,Central Coast 23,,,,,,,
+FNCCP_1001600_d,,1001600,,,,,,Central Coast 24,,,,,,,
+FNCCP_1001700_d,,1001700,,,,,,Central Coast 25,,,,,,,
+FNCCP_1001800_d,,1001800,,,,,,Central Coast 26,,,,,,,
+FNCCP_1001900_d,,1001900,,,,,,Central Coast 27,,,,,,,
+FNCCP_1002000_d,,1002000,,,,,,Central Coast 28,,,,,,,
+FNCCP_1002100_d,,1002100,,,,,,Central Coast 29,,,,,,,
+FNCCP_1002200_d,,1002200,,,,,,Central Coast 30,,,,,,,
+FNCCP_1002300_d,,1002300,,,,,,Central Coast 31,,,,,,,
+FNCCP_1002400_d,,1002400,,,,,,Central Coast 32,,,,,,,
+FNCCP_1002500_d,,1002500,,,,,,Central Coast 33,,,,,,,
+FNCCP_1002600_d,,1002600,,,,,,Central Coast 34,,,,,,,
+FNCCP_1002700_d,,1002700,,,,,,Central Coast 35,,,,,,,
+FNCCP_1002800_d,,1002800,,,,,,Central Coast 36,,,,,,,
+FNCCP_1002900_d,,1002900,,,,,,Central Coast 37,,,,,,,
+FNCCP_1003000_d,,1003000,,,,,,Central Coast 38,,,,,,,
+FNCCP_1003100_d,,1003100,,,,,,Central Coast 39,,,,,,,
+FNCCP_1003200_d,,1003200,,,,,,Central Coast 4,,,,,,,
+FNCCP_1003300_d,,1003300,,,,,,Central Coast 40,,,,,,,
+FNCCP_1003400_d,,1003400,,,,,,Central Coast 41,,,,,,,
+FNCCP_1003500_d,,1003500,,,,,,Central Coast 42,,,,,,,
+FNCCP_1003600_d,,1003600,,,,,,Central Coast 43,,,,,,,
+FNCCP_1003700_d,,1003700,,,,,,Central Coast 44,,,,,,,
+FNCCP_1003800_d,,1003800,,,,,,Central Coast 45,,,,,,,
+FNCCP_1003900_d,,1003900,,,,,,Central Coast 46,,,,,,,
+FNCCP_1004000_d,,1004000,,,,,,Central Coast 47,,,,,,,
+FNCCP_1004100_d,,1004100,,,,,,Central Coast 48,,,,,,,
+FNCCP_1004200_d,,1004200,,,,,,Central Coast 49,,,,,,,
+FNCCP_1004300_d,,1004300,,,,,,Central Coast 5,,,,,,,
+FNCCP_1004400_d,,1004400,,,,,,Central Coast 50,,,,,,,
+FNCCP_1004500_d,,1004500,,,,,,Central Coast 51,,,,,,,
+FNCCP_1004600_d,,1004600,,,,,,Central Coast 52,,,,,,,
+FNCCP_1004700_d,,1004700,,,,,,Central Coast 53,,,,,,,
+FNCCP_1004800_d,,1004800,,,,,,Central Coast 54,,,,,,,
+FNCCP_1004900_d,,1004900,,,,,,Central Coast 55,,,,,,,
+FNCCP_1005000_d,,1005000,,,,,,Central Coast 56,,,,,,,
+FNCCP_1005100_d,,1005100,,,,,,Central Coast 57,,,,,,,
+FNCCP_1005200_d,,1005200,,,,,,Central Coast 58,,,,,,,
+FNCCP_1005300_d,,1005300,,,,,,Central Coast 59,,,,,,,
+FNCCP_1005400_d,,1005400,,,,,,Central Coast 6,,,,,,,
+FNCCP_1005500_d,,1005500,,,,,,Central Coast 60,,,,,,,
+FNCCP_1005600_d,,1005600,,,,,,Central Coast 7,,,,,,,
+FNCCP_1005700_d,,1005700,,,,,,Central Coast 8,,,,,,,
+FNCCP_1005800_d,,1005800,,,,,,Central Coast 9,,,,,,,
+FNCCP_1005900_d,,1005900,,,,,,Ain,,,,,,,
+FNCCP_1006000_d,,1006000,,,,,,Awun,,,,,,,
+FNCCP_1006100_d,,1006100,,,,,,Cape St. James,,,,,,,
+FNCCP_1006200_d,,1006200,,,,,,Cartwright Sound,,,,,,,
+FNCCP_1006300_d,,1006300,,,,,,Celestial Reef,,,,,,,
+FNCCP_1006400_d,,1006400,,,,,,Copper Bay,,,,,,,
+FNCCP_1006500_d,,1006500,,,,,,"Cumshewa, Skedans, Reef, Mathers Ck.",,,,,,,
+FNCCP_1006600_d,,1006600,,,,,,Denham Shoals,,,,,,,
+FNCCP_1006700_d,,1006700,,,,,,Dogfish Bank,,,,,,,
+FNCCP_1006800_d,,1006800,,,,,,Englefield,,,,,,,
+FNCCP_1006900_d,,1006900,,,,,,Frederick to Hippa,,,,,,,
+FNCCP_1007000_d,,1007000,,,,,,Frederick to Slope,,,,,,,
+FNCCP_1007100_d,,1007100,,,,,,Jalun River Estuary,,,,,,,
+FNCCP_1007200_d,,1007200,,,,,,Juskatla Narrows,,,,,,,
+FNCCP_1007300_d,,1007300,,,,,,Kaisun,,,,,,,
+FNCCP_1007400_d,,1007400,,,,,,Kamdis Slough,,,,,,,
+FNCCP_1007500_d,,1007500,,,,,,Kano Inlet,,,,,,,
+FNCCP_1007600_d,,1007600,,,,,,Kindakun,,,,,,,
+FNCCP_1007700_d,,1007700,,,,,,Kindakun to Slope,,,,,,,
+FNCCP_1007800_d,,1007800,,,,,,Langara Island,,,,,,,
+FNCCP_1007900_d,,1007900,,,,,,Learmonth Bank,,,,,,,
+FNCCP_1008000_d,,1008000,,,,,,Lepas Bay,,,,,,,
+FNCCP_1008100_d,,1008100,,,,,,Lignite Creek Estuary,,,,,,,
+FNCCP_1008200_d,,1008200,,,,,,Masset Inlet,,,,,,,
+FNCCP_1008300_d,,1008300,,,,,,Masset Inlet South,,,,,,,
+FNCCP_1008400_d,,1008400,,,,,,McIntyre Bay,,,,,,,
+FNCCP_1008500_d,,1008500,,,,,,Mercer Creek Estuary,,,,,,,
+FNCCP_1008600_d,,1008600,,,,,,Mid-Moresby Trough,,,,,,,
+FNCCP_1008700_d,,1008700,,,,,,Mitchell's Trough,,,,,,,
+FNCCP_1008800_d,,1008800,,,,,,Naden Harbour,,,,,,,
+FNCCP_1008900_d,,1008900,,,,,,Naden/Davidson Complex Estaury,,,,,,,
+FNCCP_1009000_d,,1009000,,,,,,NW Graham Kiusta/Jalen/Wiah,,,,,,,
+FNCCP_1009100_d,,1009100,,,,,,Olde Masset - Yan,,,,,,,
+FNCCP_1009200_d,,1009200,,,,,,Port Louis,,,,,,,
+FNCCP_1009300_d,,1009300,,,,,,Rennell Sound / Gospel,,,,,,,
+FNCCP_1009400_d,,1009400,,,,,,Rose Spit,,,,,,,
+FNCCP_1009500_d,,1009500,,,,,,Skidegate Inlet,,,,,,,
+FNCCP_1009600_d,,1009600,,,,,,Skidegate Village,,,,,,,
+FNCCP_1009700_d,,1009700,,,,,,Slatechuck,,,,,,,
+FNCCP_1009800_d,,1009800,,,,,,South Moresby Trough,,,,,,,
+FNCCP_1009900_d,,1009900,,,,,,Yakoun,,,,,,,
+FNCCP_1010000_d,,1010000,,,,,,Aristazabal Island North AMENDED,,,,,,,
+FNCCP_1010100_d,,1010100,,,,,,Baker Inlet,,,,,,,
+FNCCP_1010200_d,,1010200,,,,,,Big Bay,,,,,,,
+FNCCP_1010300_d,,1010300,,,,,,Browning Entrance/Dolphin Island AMENDED,,,,,,,
+FNCCP_1010400_d,,1010400,,,,,,Butedale Klekane,,,,,,,
+FNCCP_1010500_d,,1010500,,,,,,Campania Sound/Whale Channel,,,,,,,
+FNCCP_1010600_d,,1010600,,,,,,Central Banks Island,,,,,,,
+FNCCP_1010700_d,,1010700,,,,,,Chatham Sound Sponge Reef,,,,,,,
+FNCCP_1010800_d,,1010800,,,,,,Chief Mathews Bay,,,,,,,
+FNCCP_1010900_d,,1010900,,,,,,Devastation Channel,,,,,,,
+FNCCP_1011000_d,,1011000,,,,,,Dewdney Island,,,,,,,
+FNCCP_1011100_d,,1011100,,,,,,Dundas Island,,,,,,,
+FNCCP_1011200_d,,1011200,,,,,,Edye Passage,,,,,,,
+FNCCP_1011300_d,,1011300,,,,,,Endhill,,,,,,,
+FNCCP_1011400_d,,1011400,,,,,,Fin Island/MacDonald Bay AMENDED,,,,,,,
+FNCCP_1011500_d,,1011500,,,,,,Flora Banks - Agnew - Horsey,,,,,,,
+FNCCP_1011600_d,,1011600,,,,,,Gardner Canal,,,,,,,
+FNCCP_1011700_d,,1011700,,,,,,Gardner Canal (SMZ),,,,,,,
+FNCCP_1011800_d,,1011800,,,,,,Gull Rocks South,,,,,,,
+FNCCP_1011900_d,,1011900,,,,,,Kemano,,,,,,,
+FNCCP_1012000_d,,1012000,,,,,,Kiltoish Inlet,,,,,,,
+FNCCP_1012100_d,,1012100,,,,,,Kiskosh Inlet,,,,,,,
+FNCCP_1012200_d,,1012200,,,,,,Kitkiata Inlet,,,,,,,
+FNCCP_1012300_d,,1012300,,,,,,Kitsaway Passage,,,,,,,
+FNCCP_1012400_d,,1012400,,,,,,Klewnugget Inlet,,,,,,,
+FNCCP_1012500_d,,1012500,,,,,,Kooryet Bay,,,,,,,
+FNCCP_1012600_d,,1012600,,,,,,Kumealon Inlet,,,,,,,
+FNCCP_1012700_d,,1012700,,,,,,Kxneal Inlet,,,,,,,
+FNCCP_1012800_d,,1012800,,,,,,Lowe Inlet,,,,,,,
+FNCCP_1012900_d,,1012900,,,,,,Lucy Island,,,,,,,
+FNCCP_1013000_d,,1013000,,,,,,Markle Pass,,,,,,,
+FNCCP_1013100_d,,1013100,,,,,,Metlakatla Pass,,,,,,,
+FNCCP_1013200_d,,1013200,,,,,,Mink Trap Bay,,,,,,,
+FNCCP_1013300_d,,1013300,,,,,,Moore Islands,,,,,,,
+FNCCP_1013400_d,,1013400,,,,,,North Banks Island,,,,,,,
+FNCCP_1013500_d,,1013500,,,,,,North Danger Rocks,,,,,,,
+FNCCP_1013600_d,,1013600,,,,,,Otter Passage,,,,,,,
+FNCCP_1013700_d,,1013700,,,,,,Skeena Mouth AMENDED,,,,,,,
+FNCCP_1013800_d,,1013800,,,,,,Smithers Island,,,,,,,
+FNCCP_1013900_d,,1013900,,,,,,Squally Channel,,,,,,,
+FNCCP_1014000_d,,1014000,,,,,,Stephens Island,,,,,,,
+FNCCP_1014100_d,,1014100,,,,,,Stephens Island East,,,,,,,
+FNCCP_1014200_d,,1014200,,,,,,Stephens Passage - Arthur Island,,,,,,,
+FNCCP_1014300_d,,1014300,,,,,,Tree Knob Group,,,,,,,
+FNCCP_1014400_d,,1014400,,,,,,Trutch Island,,,,,,,
+FNCCP_1014500_d,,1014500,,,,,,Union Passage/Tuwartz Inlet,,,,,,,
+FNCCP_1014600_d,,1014600,,,,,,Ursula Channel,,,,,,,
+FNCCP_1014700_d,,1014700,,,,,,West Banks Island,,,,,,,
+FNCCP_1014800_d,,1014800,,,,,,Wright Sound -Lower Douglas Channel,,,,,,,
+FNCCP_1014900_d,,1014900,,,,,,'Oo-Tso'--Lis'  / Frederick Sound,,,,,,,
+FNCCP_1015000_d,,1015000,,,,,,Ahelakerho / Nathlegalis / Wyclese / Naysash,,,,,,,
+FNCCP_1015100_d,,1015100,,,,,,Ba’as / Blunden Harbour/Bradley Lagoon,,,,,,,
+FNCCP_1015200_d,,1015200,,,,,,Beaver Harbour,,,,,,,
+FNCCP_1015300_d,,1015300,,,,,,Booker Lagoon,,,,,,,
+FNCCP_1015400_d,,1015400,,,,,,Broughton,,,,,,,
+FNCCP_1015500_d,,1015500,,,,,,Burdwood Group,,,,,,,
+FNCCP_1015600_d,,1015600,,,,,,Cape Caution,,,,,,,
+FNCCP_1015700_d,,1015700,,,,,,Cormorant Channel,,,,,,,
+FNCCP_1015800_d,,1015800,,,,,,Forward / Wellbore / Sunderland,,,,,,,
+FNCCP_1015900_d,,1015900,,,,,,H’ksum / Sayward,,,,,,,
+FNCCP_1016000_d,,1016000,,,,,,Hiladi / Adam River,,,,,,,
+FNCCP_1016100_d,,1016100,,,,,,Jackson / Topaz,,,,,,,
+FNCCP_1016200_d,,1016200,,,,,,Kalogwis,,,,,,,
+FNCCP_1016300_d,,1016300,,,,,,Knight Inlet North,,,,,,,
+FNCCP_1016400_d,,1016400,,,,,,Kokwiiss / Alison Sound / Wa'ump / Tsai-kwi-ee,,,,,,,
+FNCCP_1016500_d,,1016500,,,,,,Loughborough Inlet / Matlaten / Stafford Apple,,,,,,,
+FNCCP_1016600_d,,1016600,,,,,,Maple Cove & Gilfrod Creek,,,,,,,
+FNCCP_1016700_d,,1016700,,,,,,Minstrel Island / Call Inlet / Havanna Channel,,,,,,,
+FNCCP_1016800_d,,1016800,,,,,,Nenahlmai Lagoon / Woods Lagoon / Warner Bay,,,,,,,
+FNCCP_1016900_d,,1016900,,,,,,Nigei Island,,,,,,,
+FNCCP_1017000_d,,1017000,,,,,,Nimpkish Estuary,,,,,,,
+FNCCP_1017100_d,,1017100,,,,,,North Shore/ Boswell Inlet,,,,,,,
+FNCCP_1017200_d,,1017200,,,,,,Phillips Arm,,,,,,,
+FNCCP_1017300_d,,1017300,,,,,,Phillips Arm Entrance,,,,,,,
+FNCCP_1017400_d,,1017400,,,,,,Port Neville,,,,,,,
+FNCCP_1017500_d,,1017500,,,,,,Rock Bay,,,,,,,
+FNCCP_1017600_d,,1017600,,,,,,South East Quadra Island,,,,,,,
+FNCCP_1017700_d,,1017700,,,,,,Viner Sound & Shoal Bay,,,,,,,
+FNCCP_1017800_d,,1017800,,,,,,Wa?Watl / Seymour Extension,,,,,,,

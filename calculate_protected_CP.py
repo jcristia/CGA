@@ -10,32 +10,6 @@ import os, sys, csv, re
 import arcpy
 import pandas as pd
 
-## Authorship Information ##
-
-__author__ = "Eric Pledger"
-__email__ = "epledger@sfu.ca"
-__status__ = "Prototype"
-
-#############################################
-### About subregionally clipped CP layers ###
-#############################################
-
-# This script will also report out on CPs based on the subregions in which
-# they occur. A CP polygon layer that has been clipped by a subregion should
-# have its feature datasetname be suffixed by any of the following depending
-# on which subregion polygon it has been clipped by:
-#
-#       '_CC'   => Central Coast
-#       '_NC'   => North Coast
-#       '_HG'   => Haida Gwaii
-#       '_NCVI' => North Coast Vancouver Island
-#
-# For example a CP feature class for tufted tuffin colonies clipped by the
-# Haida Gwaii bioregion should be named:
-#
-#       mpatt_eco_birds_tuftedpuffin_colonies_seasketch_HG
-#
-
 #################################
 ### Configure these variables ###
 #################################
@@ -208,7 +182,7 @@ complexFeatureClasses = ['eco_coarse_bottompatches_polygons_d', 'eco_coarse_geom
 #
 ##
 
-cleanUpTempData = False
+cleanUpTempData = True
 
 ### inclusion_matrix_path ###
 #
@@ -267,6 +241,7 @@ override_u = True # This one behaves differently from _y and _n please read abov
 # and if not it will do an interesect and add it.
 # For repetitive runs of the CGA where the CP inputs don't change, it will save time to not do an intersect and dissolve
 # on every CP on every run.
+#
 
 cpOverlap_newDict = True
 cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\cpOverlap.csv'
@@ -276,7 +251,7 @@ cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CG
 # This requires pandas
 #
 
-ecoUIDs_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\mpatt_eco_UID-simple_FINAL_20180427.csv'
+ecoUIDs_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\mpatt_eco_UID-simple_FINAL_20180509.csv'
 output4_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\output\table1_joined.csv'
 
 
@@ -309,9 +284,7 @@ def fieldExists(layer, field):
 #
 
 def calculateArea(layer, area_field):
-    #if not fieldExists(layer, area_field):
     arcpy.AddField_management(layer, area_field, 'DOUBLE')
-
     arcpy.CalculateField_management(layer, area_field, '!shape.area!', 'PYTHON_9.3')
 
 ## calculateTotalArea ##
@@ -372,7 +345,6 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
     # Load layers into workspace (and project)
     working_layers = []
     for lyr in mpa_layers:
-        #project(lyr.dataSource, lyr.datasetName, arcpy.SpatialReference(sr_code))
         arcpy.Project_management(lyr.dataSource, lyr.datasetName,
                                  arcpy.SpatialReference(sr_code))
         working_layers.append(lyr.datasetName)
@@ -412,7 +384,6 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
         for layer in working_layers:
             arcpy.Delete_management(layer)
 
-    # JC 20180204
     # Determine which subregion each MPA is in
     arcpy.AddField_management("mpas_merged", mpa_subregion_field,"TEXT")
     arcpy.Intersect_analysis(["mpas_merged",subregions_ALL], "mpa_sub_intersect", "NO_FID")
@@ -431,13 +402,13 @@ def prepareMPAs(source_mxd, sr_code, mpa_area_field, mpa_area_attribute_section,
                 cursor_mpa.updateRow(mpa)
     arcpy.Delete_management("mpa_sub_intersect")
     
-    # JC: changed field name to _TOTAL so this needs to be done before the intersect with ecosections
+    # changed field name to _TOTAL so this needs to be done before the intersect with ecosections
     # so that the area of the total mpa gets carried forward
     calculateArea("mpas_merged", mpa_area_field)
     # now that we are using just the marine area of the protected area, we should just calculate the total as being the marine area
     arcpy.CalculateField_management("mpas_merged", mpa_area_field, '!' + mpa_marine_area + '!', 'PYTHON_9.3') 
 
-    # JC: intersect mpas and ecosections, then dissolve by mpa and ecosection
+    # intersect mpas and ecosections, then dissolve by mpa and ecosection
     arcpy.Intersect_analysis(["mpas_merged",ecosections_layer], "mpa_ecosect_intersect")
     arcpy.Dissolve_management("mpa_ecosect_intersect", final_mpa_fc_name, [merged_name_field, "ecosection"],[[mpa_subregion_field, "FIRST"],[mpa_area_field, "FIRST"]],"MULTI_PART")
     # Rename fields to get rid of the labels the dissolve appends to the beginning
@@ -783,7 +754,7 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
                                     '!{0}!/!{1}!'.format(clipped_adjusted_area,new_bc_total_area_field),
                                     'PYTHON_9.3')
     
-    # JC: calculate new total fields
+    # calculate new total fields
     # get unique list of mpas
     mpa_list = []
     with arcpy.da.SearchCursor(working_dissolved, [mpa_name_attribute]) as cursor:
@@ -833,7 +804,7 @@ def calculate_presence(working_layer, final_mpa_fc_name, clipped_adjusted_area,
                        pct_of_total_field, pct_of_mpa_field, mpa_name_attribute,
                        scaling_attribute, threshold, subregion, imatrix, mpa_subregion_field, mpa_area_attribute_section, clipped_adj_area_mpaTotal, pct_of_mpa_field_Total, density_field, value_type):
     mpas = {}
-    sliver_freq = {} # added 20180205 to get sliver frequencies
+    sliver_freq = {} # to get sliver frequencies
 
     # JC: this line doesn't make sense. For one, it will never be none, since if there is no
     # subregion code then 'region' gets passed to subregion.
@@ -965,7 +936,7 @@ def calcCPlyrOverlap(cp_area_overlap_dict, working_layer, ecosections_layer, sub
     arcpy.CalculateField_management(ecos_union, ecosub_area_field, '!shape.area!', 'PYTHON_9.3')
 
 
-    ## if it is a density/diversity based feature, recalculate totals
+    # if it is a density/diversity based feature, recalculate totals
     if value_type == 'density':
         with arcpy.da.UpdateCursor(subr_union, [density_field, ecosub_area_field, new_bc_area_field, new_bc_total_area_field]) as cursor:
             for row in cursor:
@@ -1400,7 +1371,6 @@ arcpy.env.workspace = working_gdb
 
 #####
 ### Load Ecosection layer into workspace
-### JC addition 20180207
 #####
 
 if print_status:
@@ -1520,7 +1490,6 @@ for lyr in layer_list:
         if lyr.datasetName.startswith(fc):
             is_complex = True
             break 
-    #is_complex = lyr.name in complexFeatureClasses
 
     working_layer = loadLayer(source_mxd, lyr.name, sr_code,
                               new_bc_area_field, new_bc_total_area_field,
@@ -1570,7 +1539,7 @@ for lyr in layer_list:
             if mpa not in hu_in_mpas:
                 hu_in_mpas[mpa] = {}
             hu_in_mpas[mpa][working_layer] = mpa_presence[mpa]
-            # JC: all we need to know is if an hu occurs in an mpa. We don't care about its area measurements at this point, so I can just keep this as is.
+            # all we need to know is if an hu occurs in an mpa. We don't care about its area measurements at this point, so I can just keep this as is.
     else:        
         for mpa in mpa_presence:
             if mpa not in cp_in_mpas:
@@ -1580,7 +1549,7 @@ for lyr in layer_list:
                     cp_in_mpas[mpa][ecosection] = {}
                 cp_in_mpas[mpa][ecosection][working_layer] = mpa_presence[mpa][ecosection]
 
-    # Populate percent_overlap dictionary (added 20180205)
+    # Populate percent_overlap dictionary
     for mpa in sliver_freq:
         if mpa not in percent_overlap:
             percent_overlap[mpa] = {}
