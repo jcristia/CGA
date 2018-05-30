@@ -252,7 +252,14 @@ cpOverlap_DictPath = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CG
 #
 
 ecoUIDs_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\mpatt_eco_UID-simple_FINAL_20180509.csv'
-output4_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\output\table1_joined.csv'
+output1join_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\output\table1_joined.csv'
+
+### Table 4 output ###
+#
+# A list of every cp and hu interaction by mpa
+#
+
+output4_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\output\table4.csv'
 
 
 ######################
@@ -1344,15 +1351,52 @@ def writeOutputTable3(percent_overlap, output3_path):
                         pct_o = percent_overlap[mpa][layer_type][cphu]['pct_overlap_cphu_mpa']
                         w.writerow([mpa.encode('utf8'), layer_type, cphu, pct_o])
 
-def joinUIDtoTable1(output1_path, ecoUIDs_path, output4_path):
+def joinUIDtoTable1(output1_path, ecoUIDs_path, output1join_path):
     
     a = pd.read_csv(output1_path)
     b = pd.read_csv(ecoUIDs_path)
 
     joined = a.merge(b, left_on = 'CP', right_on = 'Desktop_UID', how = 'left')
 
-    joined.to_csv(output4_path, index = False)
-    
+    joined.to_csv(output1join_path, index = False)
+
+# output table 4: list of cp and hus that interact    
+def createOutputTable4(hu_in_mpas, cp_in_mpas, imatrix, output4_path):
+    cphu_int = {}
+
+    for mpa in hu_in_mpas:
+        if mpa not in cp_in_mpas:
+            continue
+
+        if mpa not in cphu_int:
+            cphu_int[mpa] = {}
+
+        for ecosection in cp_in_mpas[mpa]:
+            # we only need to know the interaction once. The ecosection doesn't matter here.
+            for cp in cp_in_mpas[mpa][ecosection]:
+
+                for hu in hu_in_mpas[mpa]:
+                    interaction = determineInteraction(imatrix, cp, hu)
+                    if interaction is not None:
+
+                        if cp not in cphu_int[mpa]:
+                            cphu_int[mpa][cp] = {}
+                        cphu_int[mpa][cp][hu] = interaction
+                                          
+    # write to output csv
+    cols = ['mpa','cp','hu','score']
+
+    with open(output4_path, 'wb') as f:
+        w = csv.writer(f)
+
+        # Write header
+        w.writerow(cols)
+
+        for mpa in cphu_int:
+            for cp in cphu_int[mpa]:
+                for hu in cphu_int[mpa][cp]:
+                        score = cphu_int[mpa][cp][hu]
+                        w.writerow([mpa.encode('utf8'), cp, hu, score])
 
 
   ##               ##
@@ -1620,4 +1664,10 @@ writeOutputTable3(percent_overlap, output3_path)
 ### Join eco UID table to table1
 #####
 
-joinUIDtoTable1(output1_path, ecoUIDs_path, output4_path)
+joinUIDtoTable1(output1_path, ecoUIDs_path, output1join_path)
+
+#####
+### Create and write output table 4 (cp-hu list)
+#####
+
+createOutputTable4(hu_in_mpas, cp_in_mpas, imatrix, output4_path)
