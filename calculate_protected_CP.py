@@ -205,7 +205,7 @@ cleanUpTempData = True
 # variables below
 #
 
-inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\inclusionmatrix_FINAL_20180430.csv'
+inclusion_matrix_path = r'C:\Users\jcristia\Documents\GIS\DFO\Python_Script\MPAT_CGA_Files_TESTING\20180507\input\inclusionmatrix_FINAL_20180528.csv'
 
 ### override_y & _n & _u ###
 #
@@ -467,7 +467,7 @@ def buildScalingDict(scaling_attribute_file):
 #
 
 def loadLayer(source_mxd, layer_name, sr_code, new_bc_area_field, new_bc_total_area_field,
-              scaling_dict, scaling_attribute, new_scaling_field, is_complex, density_field):
+              scaling_dict, scaling_attribute, new_scaling_field, is_complex, density_field, value_type):
     if detailed_status:
         print 'Loading ' + layer_name
     
@@ -533,7 +533,12 @@ def loadLayer(source_mxd, layer_name, sr_code, new_bc_area_field, new_bc_total_a
 
     # Calculate feature area and total area
     calculateArea(working_layer, new_bc_area_field)
-    total_area = calculateTotalArea(working_layer, new_bc_area_field)
+    # calculate total based on if it is a density or area based feature
+    # we still need new_bc_area_field to be area at this point, but the total needs to be changed
+    if value_type == 'density':
+        total_area = calculateTotalArea(working_layer, density_field)
+    else:
+        total_area = calculateTotalArea(working_layer, new_bc_area_field)
     arcpy.CalculateField_management(working_layer, new_bc_total_area_field, total_area, 'PYTHON_9.3')
 
     if working_layer != orig_name:
@@ -709,9 +714,9 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
     arcpy.CalculateField_management(working_intersect, clipped_adjusted_area,
                                     '!shape.area!*!{0}!'.format(scaling_attribute), 'PYTHON_9.3')
 
-    # if it is a density/diversity based feature, recalculate totals
+    # if it is a density/diversity based feature, check if cell was clipped and rescale density value
     if value_type == 'density':
-        with arcpy.da.UpdateCursor(working_intersect, [density_field, clipped_adjusted_area, new_bc_area_field, new_bc_total_area_field]) as cursor:
+        with arcpy.da.UpdateCursor(working_intersect, [density_field, clipped_adjusted_area, new_bc_area_field]) as cursor:
             for row in cursor:
                 if row[1] != row[2]:
                     newValue = (row[1]/row[2]) * row[0]  # newValue = (newarea/oldarea) * value
@@ -721,10 +726,6 @@ def process_geometry(base_layer, final_mpa_fc_name, clipped_adjusted_area, scali
                     row[1] = row[0]
                     row[2] = row[0]
                 cursor.updateRow(row)
-        # then redo total area with new_bc_area_field
-        total_area = calculateTotalArea(working_intersect, new_bc_area_field)
-        arcpy.CalculateField_management(working_intersect, new_bc_total_area_field, total_area, 'PYTHON_9.3')
-
 
     # 2080507 This is where the feature count functionality was.
     # It was taking way too long to process. To separate out by mpa and ecosection it requires reseting the cursor many times - almost as many times as there are features, so for datasets with 19,000 features, this becomes very slow.
@@ -942,37 +943,26 @@ def calcCPlyrOverlap(cp_area_overlap_dict, working_layer, ecosections_layer, sub
     arcpy.CalculateField_management(subr_union, ecosub_area_field, '!shape.area!', 'PYTHON_9.3')
     arcpy.CalculateField_management(ecos_union, ecosub_area_field, '!shape.area!', 'PYTHON_9.3')
 
-
-    # if it is a density/diversity based feature, recalculate totals
+    # if it is a density/diversity based feature, recalculate area field in case it was clipped
     if value_type == 'density':
-        with arcpy.da.UpdateCursor(subr_union, [density_field, ecosub_area_field, new_bc_area_field, new_bc_total_area_field]) as cursor:
+        with arcpy.da.UpdateCursor(subr_union, [density_field, ecosub_area_field, new_bc_area_field]) as cursor:
             for row in cursor:
                 if row[1] != row[2]:
                     newValue = (row[1]/row[2]) * row[0]  # newValue = (newarea/oldarea) * value
                     row[1] = newValue
-                    row[2] = row[0] # make the feature area the original density value
                 else:
                     row[1] = row[0]
-                    row[2] = row[0]
                 cursor.updateRow(row)
-        # then redo total area with new_bc_area_field
-        total_area = calculateTotalArea(subr_union, new_bc_area_field)
-        arcpy.CalculateField_management(subr_union, new_bc_total_area_field, total_area, 'PYTHON_9.3')
 
     if value_type == 'density':
-        with arcpy.da.UpdateCursor(ecos_union, [density_field, ecosub_area_field, new_bc_area_field, new_bc_total_area_field]) as cursor:
+        with arcpy.da.UpdateCursor(ecos_union, [density_field, ecosub_area_field, new_bc_area_field]) as cursor:
             for row in cursor:
                 if row[1] != row[2]:
                     newValue = (row[1]/row[2]) * row[0]  # newValue = (newarea/oldarea) * value
                     row[1] = newValue
-                    row[2] = row[0] # make the feature area the original density value
                 else:
                     row[1] = row[0]
-                    row[2] = row[0]
                 cursor.updateRow(row)
-        # then redo total area with new_bc_area_field
-        total_area = calculateTotalArea(ecos_union, new_bc_area_field)
-        arcpy.CalculateField_management(ecos_union, new_bc_total_area_field, total_area, 'PYTHON_9.3')
 
     # Dissolve by ecosection/subregion field summing ecosub_area_field
     subr_dissolved = working_layer + '_subDissolved'
@@ -1229,7 +1219,7 @@ def writeOutputTable1(otable, opath, mpa_dict):
     with open(opath, 'wb') as f:
         w = csv.writer(f)
 
-        w.writerow(['UID','parentid','name', 'biome', 'type', 'management', 'subregion', 'ecosection', 'CP', 'proportion_scaled', 'proportion_unscaled', 'scaled_area','unscaled_area', 'total_area'])
+        w.writerow(['UID','parentid','name', 'biome', 'type', 'management', 'subregion', 'ecosection', 'CP', 'proportion_scaled', 'proportion_unscaled', 'value_scaled','value_unscaled', 'total_value'])
 
         for mpa in otable:
             parentid = mpa_dict[mpa]['parent_id']
@@ -1431,7 +1421,7 @@ for lyr in layer_list:
 ecosections_layer = loadLayer(source_mxd, ecosections.name, sr_code,
                               new_bc_area_field, new_bc_total_area_field,
                               None, scaling_attribute, new_scaling_field,
-                              None, "area")
+                              None, "value", "area")
 
 #####
 ### Load subregional layer into workspace
@@ -1535,10 +1525,17 @@ for lyr in layer_list:
             is_complex = True
             break 
 
+    # determine if layer values are based on area or density/diversity
+    value_type = 'area'
+    for field in arcpy.ListFields(lyr.dataSource):
+        if field.name == density_field:
+            value_type = 'density'
+            break
+
     working_layer = loadLayer(source_mxd, lyr.name, sr_code,
                               new_bc_area_field, new_bc_total_area_field,
                               scaling_dict, scaling_attribute, new_scaling_field,
-                              is_complex, density_field)
+                              is_complex, density_field, value_type)
 
     layer_type = 'cp' if working_layer.startswith('eco_') else 'hu'
 
@@ -1554,12 +1551,6 @@ for lyr in layer_list:
     rlayer = rlayers[subregion] if subregion in rlayers else None
     subregion = 'region' if rlayer is None else subregion
     
-    # determine if layer values are based on area or density/diversity
-    value_type = 'area'
-    for field in arcpy.ListFields(working_layer):
-        if field.name == density_field:
-            value_type = 'density'
-            break
 
     # find area of cp in each ecosection and subregion
     if layer_type == 'cp' and working_layer not in cp_area_overlap_dict:
