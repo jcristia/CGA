@@ -1059,8 +1059,10 @@ def loadInteractionsMatrix(imatrix_path):
             # mpatt dataset is called mpatt_eco_birds_tuftedpuffin_colonies_seasketch
             # without the s
             #
+
+            #cp = regex.sub('', row[2]).lower()
+            cp = '_'.join(row[1].split('_')[2:4])  # we are now referencing the 3rd and 4th parts of the UID
             hu = regex.sub('', row[3]).lower()
-            cp = regex.sub('', row[2]).lower()
             interaction = row[5]
 
             # The file uses a different conventions than the docs
@@ -1088,7 +1090,8 @@ def loadInteractionsMatrix(imatrix_path):
 #
 
 def determineInteraction(imatrix, cp, hu):
-    cp = cp.split('_')[2]
+    cp = '_'.join(cp.split('_')[2:4])
+    print cp
     hu = hu.split('_')[3]
 
     if cp in imatrix:
